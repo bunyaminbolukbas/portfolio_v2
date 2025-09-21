@@ -197,7 +197,7 @@ export default function Home() {
               size="sm"
               className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
             >
-              LEARN MORE
+              Learn more 
             </Button>
           </div>
         </div>
