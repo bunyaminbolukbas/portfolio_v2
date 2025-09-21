@@ -139,7 +139,7 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="text-white font-semibold text-base">E-mail me</h3>
-                <p className="text-gray-400 text-xs">Fill in the form and let's collaborate</p>
+                <p className="text-gray-400 text-xs">Shoot me a message and let’s explore your idea together</p>
               </div>
             </div>
             <Button
