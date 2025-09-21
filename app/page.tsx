@@ -9,6 +9,47 @@ import Link from 'next/link';
 export default function Home() {
   const [isHighgroundOpen, setIsHighgroundOpen] = useState(false);
   const [isFleetlyOpen, setIsFleetlyOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('https://formspree.io/f/mnndnple', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitMessage("Thank you for your message! I'll get back to you soon.");
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => {
+          setIsContactOpen(false);
+          setSubmitMessage('');
+        }, 1000);
+      } else {
+        setSubmitMessage('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmitMessage('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8 relative">
@@ -87,28 +128,29 @@ export default function Home() {
         </Link>
 
         {/* Email Card */}
-        <Link href="/contact" className="block mb-3">
-          <div className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center">
-            <div className="flex items-center justify-between w-full">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Mail size={24} className="text-white" />
-                </div>
-                <div>
-                  <h3 className="text-white font-semibold text-base">E-mail me</h3>
-                  <p className="text-gray-400 text-xs">Fill in the form and let's collaborate</p>
-                </div>
+        <div
+          onClick={() => setIsContactOpen(true)}
+          className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center mb-3"
+        >
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Mail size={24} className="text-white" />
               </div>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-4"
-              >
-                Message
-              </Button>
+              <div>
+                <h3 className="text-white font-semibold text-base">E-mail me</h3>
+                <p className="text-gray-400 text-xs">Fill in the form and let's collaborate</p>
+              </div>
             </div>
+            <Button
+              variant="secondary"
+              size="sm"
+              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-4"
+            >
+              Message
+            </Button>
           </div>
-        </Link>
+        </div>
 
         {/* The Highground Card */}
         <div
@@ -226,6 +268,93 @@ export default function Home() {
                 Close
               </Button>
             </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Contact Form Modal */}
+      <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
+        <DialogContent className="bg-gray-900 border-gray-700 text-white max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-semibold text-center mb-2">
+              <span className="text-xl">Contact Me</span>
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4 p-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full rounded-md border border-gray-600 bg-gray-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full rounded-md border border-gray-600 bg-gray-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows={4}
+                  required
+                  className="w-full rounded-md border border-gray-600 bg-gray-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Your message..."
+                />
+              </div>
+
+              {submitMessage && (
+                <div className="text-center text-green-400 text-sm">
+                  {submitMessage}
+                </div>
+              )}
+
+              <div className="flex justify-between pt-4 gap-3">
+                <Button
+                  type="button"
+                  onClick={() => setIsContactOpen(false)}
+                  variant="secondary"
+                  className="bg-gray-700 hover:bg-gray-600 text-white border-none flex-1"
+                  disabled={isSubmitting}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  className="bg-white hover:bg-gray-200 text-black border-none flex-1"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </Button>
+              </div>
+            </form>
           </div>
         </DialogContent>
       </Dialog>
