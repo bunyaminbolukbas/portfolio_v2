@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 export default function Home() {
   const [isHighgroundOpen, setIsHighgroundOpen] = useState(false);
+  const [isFleetlyOpen, setIsFleetlyOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8 relative">
@@ -62,7 +63,7 @@ export default function Home() {
       {/* Cards Section - All with equal spacing */}
       <div className="w-full max-w-xl space-y-5 px-4">
         {/* Portfolio Card */}
-        <Link href="/portfolio">
+        <Link href="/portfolio" className="block mb-3">
           <div className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center">
             <div className="flex items-center justify-between w-full">
               <div className="flex items-center space-x-4">
@@ -83,11 +84,10 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <br></br>
         </Link>
 
         {/* Email Card */}
-        <Link href="/contact">
+        <Link href="/contact" className="block mb-3">
           <div className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center">
             <div className="flex items-center justify-between w-full">
               <div className="flex items-center space-x-4">
@@ -95,8 +95,8 @@ export default function Home() {
                   <Mail size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-base">E-mail list</h3>
-                  <p className="text-gray-400 text-xs">Receive emails with valuable knowledge templates and more</p>
+                  <h3 className="text-white font-semibold text-base">E-mail me</h3>
+                  <p className="text-gray-400 text-xs">Fill in the form and let's collaborate</p>
                 </div>
               </div>
               <Button
@@ -104,7 +104,7 @@ export default function Home() {
                 size="sm"
                 className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-4"
               >
-                Sign up
+                Message
               </Button>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function Home() {
         {/* The Highground Card */}
         <div
           onClick={() => setIsHighgroundOpen(true)}
-          className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center"
+          className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center mb-3"
         >
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center space-x-4">
@@ -133,31 +133,32 @@ export default function Home() {
               Learn more
             </Button>
           </div>
-        </div><br></br>
+        </div>
 
-        {/* About Card */}
-        <Link href="/about">
-          <div className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center">
-            <div className="flex items-center justify-between w-full">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <InfinityIcon size={24} className="text-white" />
-                </div>
-                <div>
-                  <h3 className="text-white font-semibold text-base">Fleetly</h3>
-                  <p className="text-gray-400 text-xs">Tap into the future of fleetmanagment powered by</p>
-                </div>
+        {/* Fleetly Card */}
+        <div
+          onClick={() => setIsFleetlyOpen(true)}
+          className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center mb-3"
+        >
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                <InfinityIcon size={24} className="text-white" />
               </div>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-4"
-              >
-                Learn more
-              </Button>
+              <div>
+                <h3 className="text-white font-semibold text-base">Fleetly</h3>
+                <p className="text-gray-400 text-xs">Tap into the future of AI driven fleetmanagement</p>
+              </div>
             </div>
+            <Button
+              variant="secondary"
+              size="sm"
+              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-4"
+            >
+              Learn more
+            </Button>
           </div>
-        </Link>
+        </div>
       </div>
 
       {/* Footer - clearly separated from content */}
@@ -178,7 +179,7 @@ export default function Home() {
               <p className="text-lg leading-relaxed text-gray-300">
               </p>
               <p className="text-lg leading-relaxed">
-                Transforming the world of HR software in collaboration with <span className="font-semibold text-white">Tibor Olgers</span>.
+                Transforming the world of KPI software in collaboration with <br></br><span className="font-semibold text-white">Tibor Olgers</span>.
               </p>
               <p className="text-base text-gray-400 italic">
                 coming soon...
@@ -187,6 +188,38 @@ export default function Home() {
             <div className="flex justify-center pt-4">
               <Button
                 onClick={() => setIsHighgroundOpen(false)}
+                variant="secondary"
+                className="bg-gray-700 hover:bg-gray-600 text-white border-none"
+              >
+                Close
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* The Fleetly Modal */}
+      <Dialog open={isFleetlyOpen} onOpenChange={setIsFleetlyOpen}>
+        <DialogContent className="bg-gray-900 border-gray-700 text-white max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-semibold text-center mb-2">
+              <span className="text-xl">Fleetly</span>
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6 p-6">
+            <div className="text-center space-y-4">
+              <p className="text-lg leading-relaxed text-gray-300">
+              </p>
+              <p className="text-lg leading-relaxed">
+                Tap into the future of AI driven fleet management
+              </p>
+              <p className="text-base text-gray-400 italic">
+                coming soon...
+              </p>
+            </div>
+            <div className="flex justify-center pt-4">
+              <Button
+                onClick={() => setIsFleetlyOpen(false)}
                 variant="secondary"
                 className="bg-gray-700 hover:bg-gray-600 text-white border-none"
               >
