@@ -52,24 +52,24 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8 relative">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 relative">
       {/* Logo */}
       <div className="mb-6">
         <MonitorSmartphoneIcon size={30} className="text-white opacity-80" />
       </div>
 
       {/* Main Tagline */}
-      <div className="text-center mb-10 max-w-2xl">
-        <h1 className="text-3xl md:text-4xl font-normal leading-tight mb-4">
+      <div className="text-center mb-8 sm:mb-10 max-w-2xl px-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight mb-4">
           I turn your ideas,
         </h1>
-        <h2 className="text-3xl md:text-4xl font-normal leading-tight text-gray-300">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight text-gray-300">
           into software.
         </h2>
       </div>
 
       {/* Social Media Links */}
-      <div className="flex flex-wrap justify-center gap-8 mb-4 px-4">
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-4 px-4">
         <Link
           href="https://github.com/bunyaminbolukbas"
           target="_blank"
@@ -102,24 +102,24 @@ export default function Home() {
       </div>
 
       {/* Cards Section - All with equal spacing */}
-      <div className="w-full max-w-xl space-y-5 px-4">
+      <div className="w-full max-w-xl space-y-5 px-2 sm:px-4">
         {/* Portfolio Card */}
         <Link href="/portfolio" className="block mb-3">
-          <div className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center">
-            <div className="flex items-center justify-between w-full">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Briefcase size={24} className="text-white" />
+          <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
+            <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
+              <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Briefcase size={20} className="text-white sm:w-6 sm:h-6" />
                 </div>
-                <div>
-                  <h3 className="text-white font-semibold text-base">My portfolio</h3>
-                  <p className="text-gray-400 text-xs">Discover my work and projects</p>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-white font-semibold text-sm sm:text-base truncate">My portfolio</h3>
+                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Discover my work and projects</p>
                 </div>
               </div>
               <Button
                 variant="secondary"
                 size="sm"
-                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-3"
+                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-3 px-2 sm:px-3"
               >
                 View work
               </Button>
@@ -130,22 +130,22 @@ export default function Home() {
         {/* Email Card */}
         <div
           onClick={() => setIsContactOpen(true)}
-          className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center mb-3"
+          className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
         >
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Mail size={24} className="text-white" />
+          <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
+            <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Mail size={20} className="text-white sm:w-6 sm:h-6" />
               </div>
-              <div>
-                <h3 className="text-white font-semibold text-base">E-mail me</h3>
-                <p className="text-gray-400 text-xs">Shoot me a message and let’s explore your idea together</p>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-white font-semibold text-sm sm:text-base truncate">E-mail me</h3>
+                <p className="text-gray-400 text-xs sm:text-xs leading-tight">Shoot me a message and let's explore your idea together</p>
               </div>
             </div>
             <Button
               variant="secondary"
               size="sm"
-              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-4"
+              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
             >
               Message
             </Button>
@@ -155,22 +155,22 @@ export default function Home() {
         {/* The Highground Card */}
         <div
           onClick={() => setIsHighgroundOpen(true)}
-          className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center mb-3"
+          className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
         >
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gray-700 rounded-xl flex items-center justify-center flex-shrink-0">
-                <ExternalLink size={24} className="text-white" />
+          <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
+            <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-xl flex items-center justify-center flex-shrink-0">
+                <ExternalLink size={20} className="text-white sm:w-6 sm:h-6" />
               </div>
-              <div>
-                <h3 className="text-white font-medium text-base">Highground</h3>
-                <p className="text-gray-400 text-xs">Transforming the world of KPI software</p>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-white font-medium text-sm sm:text-base truncate">Highground</h3>
+                <p className="text-gray-400 text-xs sm:text-xs leading-tight">Transforming the world of KPI software</p>
               </div>
             </div>
             <Button
               variant="secondary"
               size="sm"
-              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-4"
+              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
             >
               Learn more
             </Button>
@@ -180,24 +180,24 @@ export default function Home() {
         {/* Fleetly Card */}
         <div
           onClick={() => setIsFleetlyOpen(true)}
-          className="bg-gray-900 rounded-2xl p-6 hover:bg-gray-800 transition-colors cursor-pointer group h-20 flex items-center mb-3"
+          className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
         >
-          <div className="flex items-center justify-between w-full">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                <InfinityIcon size={24} className="text-white" />
+          <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
+            <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                <InfinityIcon size={20} className="text-white sm:w-6 sm:h-6" />
               </div>
-              <div>
-                <h3 className="text-white font-semibold text-base">Fleetly</h3>
-                <p className="text-gray-400 text-xs">Tap into the future of AI driven fleetmanagement</p>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-white font-semibold text-sm sm:text-base truncate">Fleetly</h3>
+                <p className="text-gray-400 text-xs sm:text-xs leading-tight">Tap into the future of AI driven fleetmanagement</p>
               </div>
             </div>
             <Button
               variant="secondary"
               size="sm"
-              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-4"
+              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
             >
-              Learn more
+              LEARN MORE
             </Button>
           </div>
         </div>
