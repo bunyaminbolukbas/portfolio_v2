@@ -5,10 +5,11 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Bunyamin Bölükbas'
-  description: 'Landingpage of Bünyamin Bölükbas – Full-Stack Developer in Utrecht. Experienced in Next.js, TypeScript, Supabase, and AI-powered software solutions.',
+  title: 'Bunyamin Bölükbas',
+  description:
+    'Landingpage of Bünyamin Bölükbas – Full-Stack Developer in Utrecht. Experienced in Next.js, TypeScript, Supabase, and AI-powered software solutions.',
   keywords: [
-    'Bünyamin Bölükbas', 
+    'Bünyamin Bölükbas',
     'Bunyamin Bolukbas',
     'maatwerk software',
     'maatwerk software ontwikkeling',
@@ -26,15 +27,14 @@ export const metadata: Metadata = {
     'auto software',
     'AI solutions',
     'AI-powered applications',
-    'custom software development',
     'custom software solutions',
     'bespoke software development',
-    'Performance management software'
+    'Performance management software',
     'software developer',
     'web developer',
     'software engineer',
-    'software ontwikkelaar nederland'
-    'web developer nederland'
+    'software ontwikkelaar nederland',
+    'web developer nederland',
     'freelance developer',
     'freelance software developer',
     'freelance web developer',
