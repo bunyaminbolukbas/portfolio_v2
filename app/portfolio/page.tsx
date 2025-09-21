@@ -109,20 +109,20 @@ export default function Portfolio() {
               </div>
             </AnimatedSection>
 
-            {/* Erasmus Project */}
+            {/* N8N Cloud Automation Project */}
             <AnimatedSection delay={500}>
               <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group">
                 <div className="mb-4">
-                  <h3 className="text-xl font-semibold">Erasmus Project</h3>
+                  <h3 className="text-xl font-semibold">N8N Cloud Automation – Cloudshift BV</h3>
                 </div>
                 <p className="text-gray-300 mb-4">
-                  Major international project completed during Erasmus exchange in Belgium. Focused on collaborative software development and cross-cultural teamwork.
+                  Built automated workflows and business process automation solutions for Cloudshift BV using N8N cloud platform. Streamlined operations, reduced manual tasks, and improved efficiency across multiple departments.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Vue.js</span>
-                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Python</span>
-                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Docker</span>
-                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">PostgreSQL</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">N8N</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Workflow Automation</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">API Integration</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Cloud Solutions</span>
                 </div>
                 <div className="text-sm text-gray-400">
                   Status: <span className="text-green-400">Completed</span>
@@ -130,37 +130,61 @@ export default function Portfolio() {
               </div>
             </AnimatedSection>
 
-            {/* Automations Project */}
+            {/* Crane Simulation Project */}
             <AnimatedSection delay={600}>
               <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group">
                 <div className="mb-4">
-                  <h3 className="text-xl font-semibold">Automations</h3>
+                  <h3 className="text-xl font-semibold">Crane Simulation – Eye Concept Industrial Automation BV</h3>
                 </div>
                 <p className="text-gray-300 mb-4">
-                  Eye concept and cloud automation solutions. Streamlining business processes through intelligent automation and cloud infrastructure management.
+                  Contributed to an advanced crane simulation in collaboration with HOWEST University students, commissioned by Port of Antwerp/Bruges, Europoort, and Eye Concept. The simulation increased container handling efficiency by 20% in a proof of concept.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Python</span>
-                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">AWS</span>
-                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Docker</span>
-                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">APIs</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Industrial Automation</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Simulation</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">C++</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Port Operations</span>
+                </div>
+                <div className="text-sm text-gray-400">
+                  Status: <span className="text-green-400">Completed</span>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* NAGA Project */}
+            <AnimatedSection delay={700}>
+              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group">
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold">Web Developer – NAGA (Fintech)</h3>
+                </div>
+                <p className="text-gray-300 mb-4">
+                  Web development role at NAGA, a leading fintech company. Worked on financial trading platforms, user interfaces, and backend systems for cryptocurrency and traditional financial markets.
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Vue.js</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">TypeScript</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Fintech</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Trading Platforms</span>
+                </div>
+                <div className="text-sm text-gray-400">
+                  Status: <span className="text-green-400">Completed</span>
                 </div>
               </div>
             </AnimatedSection>
 
             {/* National Police Project */}
-            <AnimatedSection delay={700}>
+            <AnimatedSection delay={800}>
               <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group">
                 <div className="mb-4">
-                  <h3 className="text-xl font-semibold">National Police Backend</h3>
+                  <h3 className="text-xl font-semibold">Graduation Project – Dutch Police</h3>
                 </div>
                 <p className="text-gray-300 mb-4">
-                  Backend development project during internship at the National Police. Focused on secure data management and internal system integrations.
+                  Major graduation project in collaboration with the Dutch Police, specifically working on General Vehicle & Motor Management (GVMM) integration. Focused on secure data management, API development, and law enforcement system integration.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Java</span>
                   <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Spring Boot</span>
-                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">SQL</span>
+                  <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">API Integration</span>
                   <span className="px-3 py-1 text-xs bg-gray-700 text-white rounded-full">Security</span>
                 </div>
                 <div className="text-sm text-gray-400">
