@@ -66,14 +66,14 @@ export default function Portfolio() {
 
         {/* Projects Section */}
         <AnimatedSection className="px-2 sm:px-4 mb-16" delay={200}>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 md:auto-rows-fr">
             {/* Highground Project */}
             <AnimatedSection delay={300}>
-              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group">
+              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group flex flex-col h-full">
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold">Highground</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-300 mb-4 flex-grow">
                   A fullstack KPI management dashboard for tracking employee KPI's. Features real-time analytics, team collaboration and AI integration.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -90,11 +90,11 @@ export default function Portfolio() {
 
             {/* Fleetly Project */}
             <AnimatedSection delay={400}>
-              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group">
+              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group flex flex-col h-full">
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold">Fleetly</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-300 mb-4 flex-grow">
                   AI-driven fleet management solution that tracks vehicles and provides predictive sales insights for car dealerships.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -111,11 +111,11 @@ export default function Portfolio() {
 
             {/* N8N Cloud Automation Project */}
             <AnimatedSection delay={500}>
-              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group">
+              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group flex flex-col h-full">
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold">N8N Cloud Automation – Cloudshift BV</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-300 mb-4 flex-grow">
                   Built automated workflows and a crypto wallet tracker for Cloudshift BV using N8N cloud platform.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -132,11 +132,11 @@ export default function Portfolio() {
 
             {/* Crane Simulation Project */}
             <AnimatedSection delay={600}>
-              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group">
+              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group flex flex-col h-full">
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold">Crane Simulation – Eye Concept Industrial Automation BV</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-300 mb-4 flex-grow">
                   Contributed to an advanced crane simulation in collaboration with HOWEST University students, commissioned by Port of Antwerp/Bruges, Europoort, and Eye Concept. The simulation increased container handling efficiency by 20% in a proof of concept.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -153,11 +153,11 @@ export default function Portfolio() {
 
             {/* NAGA Project */}
             <AnimatedSection delay={700}>
-              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group">
+              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group flex flex-col h-full">
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold">Landingpage – NAGA</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-300 mb-4 flex-grow">
                   Worked on the landingpage of NAGA, a leading fintech company. Worked on financial trading platforms and improving the front, user interfaces, and backend systems for cryptocurrency and traditional financial markets. Worked onsite in Nicosia, Cyprus. 
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -174,11 +174,11 @@ export default function Portfolio() {
 
             {/* National Police Project */}
             <AnimatedSection delay={800}>
-              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group">
+              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors group flex flex-col h-full">
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold">Graduation Project – Dutch Police</h3>
                 </div>
-                <p className="text-gray-300 mb-4">
+                <p className="text-gray-300 mb-4 flex-grow">
                   Major graduation project in collaboration with the Dutch Police, worked on backend integration to a new database with various backend technologies.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -199,10 +199,10 @@ export default function Portfolio() {
         <AnimatedSection className="px-2 sm:px-4 mb-16" delay={400}>
           <h3 className="text-xl sm:text-2xl font-light mb-8 text-center">Technologies & Skills</h3>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-fr">
             {/* Frontend */}
             <AnimatedSection delay={500}>
-              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 text-center hover:bg-gray-800 transition-colors mb-3">
+              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 text-center hover:bg-gray-800 transition-colors mb-3 flex flex-col h-full">
                 <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Globe size={24} className="text-blue-400" />
                 </div>
@@ -218,7 +218,7 @@ export default function Portfolio() {
 
             {/* Backend */}
             <AnimatedSection delay={600}>
-              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 text-center hover:bg-gray-800 transition-colors mb-3">
+              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 text-center hover:bg-gray-800 transition-colors mb-3 flex flex-col h-full">
                 <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Code size={24} className="text-green-400" />
                 </div>
@@ -234,7 +234,7 @@ export default function Portfolio() {
 
             {/* Database */}
             <AnimatedSection delay={700}>
-              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 text-center hover:bg-gray-800 transition-colors mb-3">
+              <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 text-center hover:bg-gray-800 transition-colors mb-3 flex flex-col h-full">
                 <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Database size={24} className="text-purple-400" />
                 </div>
