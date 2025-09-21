@@ -227,7 +227,7 @@ export default function Portfolio() {
                   <div>Node.js & Express</div>
                   <div>Python & FastAPI</div>
                   <div>REST APIs</div>
-                  <div>Authentication</div>
+                  <div>CI/CD</div>
                 </div>
               </div>
             </AnimatedSection>
@@ -240,10 +240,10 @@ export default function Portfolio() {
                 </div>
                 <h3 className="text-lg font-semibold mb-3">Database</h3>
                 <div className="space-y-2 text-sm text-gray-300">
-                  <div>MongoDB</div>
+                  <div>Supabase</div>
                   <div>PostgreSQL</div>
                   <div>Firebase</div>
-                  <div>Redis</div>
+                  <div>PPLSQL</div>
                 </div>
               </div>
             </AnimatedSection>
