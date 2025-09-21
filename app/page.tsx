@@ -1,10 +1,50 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Github, Linkedin, Instagram, Mail, ExternalLink, Briefcase, Infinity as InfinityIcon, MonitorSmartphoneIcon } from 'lucide-react';
 import Link from 'next/link';
+
+// Animated component for scroll effects
+const AnimatedSection = ({ children, delay = 0, className = "" }: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setIsVisible(true), delay);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [delay]);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${
+        isVisible
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-8'
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default function Home() {
   const [isHighgroundOpen, setIsHighgroundOpen] = useState(false);
@@ -54,22 +94,22 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 relative">
       {/* Logo */}
-      <div className="mb-6">
+      <AnimatedSection className="mb-6">
         <MonitorSmartphoneIcon size={30} className="text-white opacity-80" />
-      </div>
+      </AnimatedSection>
 
       {/* Main Tagline */}
-      <div className="text-center mb-8 sm:mb-10 max-w-2xl px-4">
+      <AnimatedSection className="text-center mb-8 sm:mb-10 max-w-2xl px-4" delay={200}>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight mb-4">
           I turn your ideas,
         </h1>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight text-gray-300">
           into software.
         </h2>
-      </div>
+      </AnimatedSection>
 
       {/* Social Media Links */}
-      <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-4 px-4">
+      <AnimatedSection className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-4 px-4" delay={400}>
         <Link
           href="https://github.com/bunyaminbolukbas"
           target="_blank"
@@ -79,7 +119,7 @@ export default function Home() {
           <Github size={20} />
           <span>@bunyamin</span>
         </Link>
-        
+
         <Link
           href="https://www.linkedin.com/in/bunyaminbolukbas/"
           target="_blank"
@@ -89,7 +129,7 @@ export default function Home() {
           <Linkedin size={20} />
           <span>@bunyamin</span>
         </Link>
-        
+
         <Link
           href="https://instagram.com/thebunyaminn"
           target="_blank"
@@ -99,108 +139,116 @@ export default function Home() {
           <Instagram size={20} />
           <span>@thebunyaminn</span>
         </Link>
-      </div>
+      </AnimatedSection>
 
       {/* Cards Section - All with equal spacing */}
       <div className="w-full max-w-xl space-y-5 px-2 sm:px-4">
         {/* Portfolio Card */}
-        <Link href="/portfolio" className="block mb-3">
-          <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
+        <AnimatedSection delay={600}>
+          <Link href="/portfolio" className="block mb-3">
+            <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
+              <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
+                <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Briefcase size={20} className="text-white sm:w-6 sm:h-6" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-white font-semibold text-sm sm:text-base truncate">My portfolio</h3>
+                    <p className="text-gray-400 text-xs sm:text-xs leading-tight">Discover my work and projects</p>
+                  </div>
+                </div>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-3 px-2 sm:px-3"
+                >
+                  View work
+                </Button>
+              </div>
+            </div>
+          </Link>
+        </AnimatedSection>
+
+        {/* Email Card */}
+        <AnimatedSection delay={700}>
+          <div
+            onClick={() => setIsContactOpen(true)}
+            className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
+          >
             <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
               <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Briefcase size={20} className="text-white sm:w-6 sm:h-6" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Mail size={20} className="text-white sm:w-6 sm:h-6" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-white font-semibold text-sm sm:text-base truncate">My portfolio</h3>
-                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Discover my work and projects</p>
+                  <h3 className="text-white font-semibold text-sm sm:text-base truncate">E-mail me</h3>
+                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Shoot me a message and let's explore your idea together</p>
                 </div>
               </div>
               <Button
                 variant="secondary"
                 size="sm"
-                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-3 px-2 sm:px-3"
+                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
               >
-                View work
+                Message
               </Button>
             </div>
           </div>
-        </Link>
-
-        {/* Email Card */}
-        <div
-          onClick={() => setIsContactOpen(true)}
-          className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
-        >
-          <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
-            <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Mail size={20} className="text-white sm:w-6 sm:h-6" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-white font-semibold text-sm sm:text-base truncate">E-mail me</h3>
-                <p className="text-gray-400 text-xs sm:text-xs leading-tight">Shoot me a message and let's explore your idea together</p>
-              </div>
-            </div>
-            <Button
-              variant="secondary"
-              size="sm"
-              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
-            >
-              Message
-            </Button>
-          </div>
-        </div>
+        </AnimatedSection>
 
         {/* The Highground Card */}
-        <div
-          onClick={() => setIsHighgroundOpen(true)}
-          className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
-        >
-          <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
-            <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-xl flex items-center justify-center flex-shrink-0">
-                <ExternalLink size={20} className="text-white sm:w-6 sm:h-6" />
+        <AnimatedSection delay={800}>
+          <div
+            onClick={() => setIsHighgroundOpen(true)}
+            className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
+          >
+            <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
+              <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <ExternalLink size={20} className="text-white sm:w-6 sm:h-6" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-white font-medium text-sm sm:text-base truncate">Highground</h3>
+                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Transforming the world of KPI software</p>
+                </div>
               </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-white font-medium text-sm sm:text-base truncate">Highground</h3>
-                <p className="text-gray-400 text-xs sm:text-xs leading-tight">Transforming the world of KPI software</p>
-              </div>
+              <Button
+                variant="secondary"
+                size="sm"
+                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
+              >
+                Learn more
+              </Button>
             </div>
-            <Button
-              variant="secondary"
-              size="sm"
-              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
-            >
-              Learn more
-            </Button>
           </div>
-        </div>
+        </AnimatedSection>
 
         {/* Fleetly Card */}
-        <div
-          onClick={() => setIsFleetlyOpen(true)}
-          className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
-        >
-          <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
-            <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                <InfinityIcon size={20} className="text-white sm:w-6 sm:h-6" />
+        <AnimatedSection delay={900}>
+          <div
+            onClick={() => setIsFleetlyOpen(true)}
+            className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
+          >
+            <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
+              <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <InfinityIcon size={20} className="text-white sm:w-6 sm:h-6" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-white font-semibold text-sm sm:text-base truncate">Fleetly</h3>
+                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Tap into the future of AI driven fleetmanagement</p>
+                </div>
               </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-white font-semibold text-sm sm:text-base truncate">Fleetly</h3>
-                <p className="text-gray-400 text-xs sm:text-xs leading-tight">Tap into the future of AI driven fleetmanagement</p>
-              </div>
+              <Button
+                variant="secondary"
+                size="sm"
+                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
+              >
+                Learn more
+              </Button>
             </div>
-            <Button
-              variant="secondary"
-              size="sm"
-              className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
-            >
-              Learn more 
-            </Button>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
 
       {/* Footer - clearly separated from content */}
