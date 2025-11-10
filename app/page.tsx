@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Github, Linkedin, Instagram, Mail, ExternalLink, Briefcase, Infinity as InfinityIcon, MonitorSmartphoneIcon } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Animated component for scroll effects
 const AnimatedSection = ({ children, delay = 0, className = "" }: {
@@ -48,7 +49,7 @@ const AnimatedSection = ({ children, delay = 0, className = "" }: {
 
 export default function Home() {
   const [isHighgroundOpen, setIsHighgroundOpen] = useState(false);
-  const [isFleetlyOpen, setIsFleetlyOpen] = useState(false);
+  const [isN8nOpen, setIsN8nOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -142,11 +143,11 @@ export default function Home() {
       </AnimatedSection>
 
       {/* Cards Section - All with equal spacing */}
-      <div className="w-full max-w-xl space-y-5 px-2 sm:px-4">
+      <div className="w-full max-w-xl space-y-3 px-2 sm:px-4 mt-8 sm:mt-10">
         {/* Portfolio Card */}
         <AnimatedSection delay={600}>
           <Link href="/portfolio" className="block mb-3">
-            <div className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
+            <div className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
               <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
                 <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -173,7 +174,7 @@ export default function Home() {
         <AnimatedSection delay={700}>
           <div
             onClick={() => setIsContactOpen(true)}
-            className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
+            className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
           >
             <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
               <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
@@ -200,12 +201,18 @@ export default function Home() {
         <AnimatedSection delay={800}>
           <div
             onClick={() => setIsHighgroundOpen(true)}
-            className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
+            className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
           >
             <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
               <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <ExternalLink size={20} className="text-white sm:w-6 sm:h-6" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0 p-1.5">
+                  <Image
+                    src="/images/web-app-manifest-512x512 kopie.png"
+                    alt="Highground Logo"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h3 className="text-white font-medium text-sm sm:text-base truncate">Highground</h3>
@@ -223,20 +230,26 @@ export default function Home() {
           </div>
         </AnimatedSection>
 
-        {/* Fleetly Card */}
+        {/* N8N Automation Card */}
         <AnimatedSection delay={900}>
           <div
-            onClick={() => setIsFleetlyOpen(true)}
-            className="bg-gray-900 rounded-2xl p-4 sm:p-6 hover:bg-gray-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
+            onClick={() => setIsN8nOpen(true)}
+            className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
           >
             <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
               <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <InfinityIcon size={20} className="text-white sm:w-6 sm:h-6" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-xl flex items-center justify-center flex-shrink-0 p-1.5">
+                  <Image
+                    src="/images/n8n_pink+white_logo.png"
+                    alt="N8N Logo"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-white font-semibold text-sm sm:text-base truncate">Fleetly</h3>
-                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Tap into the future of AI driven fleetmanagement</p>
+                  <h3 className="text-white font-semibold text-sm sm:text-base truncate">N8N Automation</h3>
+                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Streamline your workflows with powerful automation</p>
                 </div>
               </div>
               <Button
@@ -258,7 +271,7 @@ export default function Home() {
 
       {/* The Highground Modal */}
       <Dialog open={isHighgroundOpen} onOpenChange={setIsHighgroundOpen}>
-        <DialogContent className="bg-gray-900 border-gray-700 text-white max-w-2xl">
+        <DialogContent className="bg-zinc-900 border-zinc-700 text-white max-w-2xl">
           <DialogHeader>
             <DialogTitle className="text-2xl font-semibold text-center mb-2">
               <span className="text-xl">Highground</span>
@@ -279,7 +292,7 @@ export default function Home() {
               <Button
                 onClick={() => setIsHighgroundOpen(false)}
                 variant="secondary"
-                className="bg-gray-700 hover:bg-gray-600 text-white border-none"
+                className="bg-zinc-700 hover:bg-zinc-600 text-white border-none"
               >
                 Close
               </Button>
@@ -288,30 +301,28 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* The Fleetly Modal */}
-      <Dialog open={isFleetlyOpen} onOpenChange={setIsFleetlyOpen}>
-        <DialogContent className="bg-gray-900 border-gray-700 text-white max-w-2xl">
+      {/* The N8N Modal */}
+      <Dialog open={isN8nOpen} onOpenChange={setIsN8nOpen}>
+        <DialogContent className="bg-zinc-900 border-zinc-700 text-white max-w-2xl">
           <DialogHeader>
             <DialogTitle className="text-2xl font-semibold text-center mb-2">
-              <span className="text-xl">Fleetly</span>
+              <span className="text-xl">N8N Automation</span>
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-6 p-6">
             <div className="text-center space-y-4">
-              <p className="text-lg leading-relaxed text-gray-300">
-              </p>
               <p className="text-lg leading-relaxed">
-                Tap into the future of AI driven fleet management
+                I help businesses streamline their workflows and boost productivity through intelligent automation using N8N.
               </p>
-              <p className="text-base text-gray-400 italic">
-                coming soon...
+              <p className="text-base text-gray-300">
+                From simple task automation to complex multi-system integrations, I create custom solutions that save time and reduce manual work.
               </p>
             </div>
             <div className="flex justify-center pt-4">
               <Button
-                onClick={() => setIsFleetlyOpen(false)}
+                onClick={() => setIsN8nOpen(false)}
                 variant="secondary"
-                className="bg-gray-700 hover:bg-gray-600 text-white border-none"
+                className="bg-zinc-700 hover:bg-zinc-600 text-white border-none"
               >
                 Close
               </Button>
@@ -322,7 +333,7 @@ export default function Home() {
 
       {/* Contact Form Modal */}
       <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
-        <DialogContent className="bg-gray-900 border-gray-700 text-white max-w-md">
+        <DialogContent className="bg-zinc-900 border-zinc-700 text-white max-w-md">
           <DialogHeader>
             <DialogTitle className="text-2xl font-semibold text-center mb-2">
               <span className="text-xl">Contact Me</span>
@@ -341,7 +352,7 @@ export default function Home() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full rounded-md border border-gray-600 bg-gray-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-zinc-600 bg-zinc-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your name"
                 />
               </div>
@@ -357,7 +368,7 @@ export default function Home() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full rounded-md border border-gray-600 bg-gray-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-zinc-600 bg-zinc-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="your@email.com"
                 />
               </div>
@@ -373,7 +384,7 @@ export default function Home() {
                   onChange={handleInputChange}
                   rows={4}
                   required
-                  className="w-full rounded-md border border-gray-600 bg-gray-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-zinc-600 bg-zinc-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Your message..."
                 />
               </div>
