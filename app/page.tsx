@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Github, Linkedin, Instagram, Mail, ExternalLink, Briefcase, Infinity as InfinityIcon, MonitorSmartphoneIcon } from 'lucide-react';
+import { Github, Linkedin, Instagram, Mail, ExternalLink, FolderOpen, Infinity as InfinityIcon, MonitorSmartphoneIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -48,8 +48,6 @@ const AnimatedSection = ({ children, delay = 0, className = "" }: {
 };
 
 export default function Home() {
-  const [isHighgroundOpen, setIsHighgroundOpen] = useState(false);
-  const [isN8nOpen, setIsN8nOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -76,14 +74,14 @@ export default function Home() {
       });
 
       if (response.ok) {
-        setSubmitMessage("Thank you for your message! I'll get back to you soon.");
+        setSubmitMessage("Bedankt voor je bericht! Ik neem snel contact met je op.");
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => {
           setIsContactOpen(false);
           setSubmitMessage('');
         }, 1000);
       } else {
-        setSubmitMessage('Something went wrong. Please try again.');
+        setSubmitMessage('Er ging iets mis. Probeer het opnieuw.');
       }
     } catch (error) {
       setSubmitMessage('Something went wrong. Please try again.');
@@ -144,18 +142,18 @@ export default function Home() {
 
       {/* Cards Section - All with equal spacing */}
       <div className="w-full max-w-xl space-y-3 px-2 sm:px-4 mt-8 sm:mt-10">
-        {/* Portfolio Card */}
+        {/* Vibe → Production Card */}
         <AnimatedSection delay={600}>
-          <Link href="/portfolio" className="block mb-3">
+          <Link href="https://salesdeck-tau.vercel.app/" target="_blank" rel="noopener noreferrer" className="block mb-3">
             <div className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
               <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
                 <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Briefcase size={20} className="text-white sm:w-6 sm:h-6" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-700 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-mono text-xs sm:text-sm">&gt;_</span>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-white font-semibold text-sm sm:text-base truncate">My portfolio</h3>
-                    <p className="text-gray-400 text-xs sm:text-xs leading-tight">Discover my work and projects</p>
+                    <h3 className="text-white font-semibold text-sm sm:text-base truncate">Vibe → Production</h3>
+                    <p className="text-gray-400 text-xs sm:text-xs leading-tight">Van prototype naar productie software</p>
                   </div>
                 </div>
                 <Button
@@ -163,7 +161,65 @@ export default function Home() {
                   size="sm"
                   className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-3 px-2 sm:px-3"
                 >
-                  View work
+                  Aan de slag
+                </Button>
+              </div>
+            </div>
+          </Link>
+        </AnimatedSection>
+
+        {/* Portfolio Card */}
+        <AnimatedSection delay={700}>
+          <Link href="/portfolio" className="block mb-3">
+            <div className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
+              <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
+                <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <FolderOpen size={20} className="text-white sm:w-6 sm:h-6" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-white font-semibold text-sm sm:text-base truncate">Mijn portfolio</h3>
+                    <p className="text-gray-400 text-xs sm:text-xs leading-tight">Ontdek mijn werk en projecten</p>
+                  </div>
+                </div>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-3 px-2 sm:px-3"
+                >
+                  Bekijk werk
+                </Button>
+              </div>
+            </div>
+          </Link>
+        </AnimatedSection>
+
+        {/* OS49 Card */}
+        <AnimatedSection delay={800}>
+          <Link href="https://club49.org/" target="_blank" rel="noopener noreferrer" className="block mb-3">
+            <div className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
+              <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
+                <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-700 rounded-xl flex items-center justify-center flex-shrink-0 p-1.5">
+                    <Image
+                      src="/images/club49-logo.png"
+                      alt="Club49 Logo"
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-white font-medium text-sm sm:text-base truncate">OS49</h3>
+                    <p className="text-gray-400 text-xs sm:text-xs leading-tight">Het Operating System voor schaalbare bedrijven</p>
+                  </div>
+                </div>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
+                >
+                  Ontdek meer
                 </Button>
               </div>
             </div>
@@ -171,19 +227,19 @@ export default function Home() {
         </AnimatedSection>
 
         {/* Email Card */}
-        <AnimatedSection delay={700}>
+        <AnimatedSection delay={900}>
           <div
             onClick={() => setIsContactOpen(true)}
             className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
           >
             <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
               <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-700 rounded-xl flex items-center justify-center flex-shrink-0">
                   <Mail size={20} className="text-white sm:w-6 sm:h-6" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-white font-semibold text-sm sm:text-base truncate">E-mail me</h3>
-                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Shoot me a message and let's explore your idea together</p>
+                  <h3 className="text-white font-semibold text-sm sm:text-base truncate">E-mail mij</h3>
+                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Laten we jouw ideeën verkennen</p>
                 </div>
               </div>
               <Button
@@ -191,159 +247,32 @@ export default function Home() {
                 size="sm"
                 className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
               >
-                Message
+                Bericht
               </Button>
             </div>
           </div>
         </AnimatedSection>
 
-        {/* The Highground Card */}
-        <AnimatedSection delay={800}>
-          <div
-            onClick={() => setIsHighgroundOpen(true)}
-            className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
-          >
-            <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
-              <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0 p-1.5">
-                  <Image
-                    src="/images/web-app-manifest-512x512 kopie.png"
-                    alt="Highground Logo"
-                    width={40}
-                    height={40}
-                    className="object-contain"
-                  />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-white font-medium text-sm sm:text-base truncate">Highground</h3>
-                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Transforming the world of KPI software</p>
-                </div>
-              </div>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
-              >
-                Learn more
-              </Button>
-            </div>
-          </div>
-        </AnimatedSection>
-
-        {/* N8N Automation Card */}
-        <AnimatedSection delay={900}>
-          <div
-            onClick={() => setIsN8nOpen(true)}
-            className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
-          >
-            <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
-              <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-700 rounded-xl flex items-center justify-center flex-shrink-0 p-1.5">
-                  <Image
-                    src="/images/n8n_pink+white_logo.png"
-                    alt="N8N Logo"
-                    width={40}
-                    height={40}
-                    className="object-contain"
-                  />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-white font-semibold text-sm sm:text-base truncate">N8N Automation</h3>
-                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Streamline your workflows with powerful automation</p>
-                </div>
-              </div>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
-              >
-                Learn more
-              </Button>
-            </div>
-          </div>
-        </AnimatedSection>
       </div>
 
       {/* Footer - clearly separated from content */}
       <div className="mt-32 pb-8 text-gray-500 text-sm">
-        <span className="text-xs">© 2025 Bunyamin</span>
+        <span className="text-xs">© 2025 Bunyamin - Alle rechten voorbehouden - @thebunyaminn</span>
       </div>
-
-      {/* The Highground Modal */}
-      <Dialog open={isHighgroundOpen} onOpenChange={setIsHighgroundOpen}>
-        <DialogContent className="bg-zinc-900 border-zinc-700 text-white max-w-2xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-semibold text-center mb-2">
-              <span className="text-xl">Highground</span>
-            </DialogTitle>
-          </DialogHeader>
-          <div className="space-y-6 p-6">
-            <div className="text-center space-y-4">
-              <p className="text-lg leading-relaxed text-gray-300">
-              </p>
-              <p className="text-lg leading-relaxed">
-                Transforming the world of KPI software in collaboration with <br></br><span className="font-semibold text-white">Tibor Olgers</span>.
-              </p>
-              <p className="text-base text-gray-400 italic">
-                coming soon...
-              </p>
-            </div>
-            <div className="flex justify-center pt-4">
-              <Button
-                onClick={() => setIsHighgroundOpen(false)}
-                variant="secondary"
-                className="bg-zinc-700 hover:bg-zinc-600 text-white border-none"
-              >
-                Close
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      {/* The N8N Modal */}
-      <Dialog open={isN8nOpen} onOpenChange={setIsN8nOpen}>
-        <DialogContent className="bg-zinc-900 border-zinc-700 text-white max-w-2xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-semibold text-center mb-2">
-              <span className="text-xl">N8N Automation</span>
-            </DialogTitle>
-          </DialogHeader>
-          <div className="space-y-6 p-6">
-            <div className="text-center space-y-4">
-              <p className="text-lg leading-relaxed">
-                I help businesses streamline their workflows and boost productivity through intelligent automation using N8N.
-              </p>
-              <p className="text-base text-gray-300">
-                From simple task automation to complex multi-system integrations, I create custom solutions that save time and reduce manual work.
-              </p>
-            </div>
-            <div className="flex justify-center pt-4">
-              <Button
-                onClick={() => setIsN8nOpen(false)}
-                variant="secondary"
-                className="bg-zinc-700 hover:bg-zinc-600 text-white border-none"
-              >
-                Close
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
 
       {/* Contact Form Modal */}
       <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
         <DialogContent className="bg-zinc-900 border-zinc-700 text-white max-w-md">
           <DialogHeader>
             <DialogTitle className="text-2xl font-semibold text-center mb-2">
-              <span className="text-xl">Contact Me</span>
+              <span className="text-xl">Contact</span>
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4 p-6">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
-                  Name
+                  Naam
                 </label>
                 <input
                   type="text"
@@ -353,13 +282,13 @@ export default function Home() {
                   onChange={handleInputChange}
                   required
                   className="w-full rounded-md border border-zinc-600 bg-zinc-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Your name"
+                  placeholder="Je naam"
                 />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
-                  Email
+                  E-mail
                 </label>
                 <input
                   type="email"
@@ -369,13 +298,13 @@ export default function Home() {
                   onChange={handleInputChange}
                   required
                   className="w-full rounded-md border border-zinc-600 bg-zinc-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="your@email.com"
+                  placeholder="jouw@email.com"
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
-                  Message
+                  Bericht
                 </label>
                 <textarea
                   id="message"
@@ -385,7 +314,7 @@ export default function Home() {
                   rows={4}
                   required
                   className="w-full rounded-md border border-zinc-600 bg-zinc-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Your message..."
+                  placeholder="Je bericht..."
                 />
               </div>
 
@@ -403,14 +332,14 @@ export default function Home() {
                   className="bg-gray-700 hover:bg-gray-600 text-white border-none flex-1"
                   disabled={isSubmitting}
                 >
-                  Cancel
+                  Annuleren
                 </Button>
                 <Button
                   type="submit"
                   className="bg-white hover:bg-gray-200 text-black border-none flex-1"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? 'Verzenden...' : 'Verstuur'}
                 </Button>
               </div>
             </form>
