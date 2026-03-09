@@ -1,351 +1,133 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Github, Linkedin, Instagram, Mail, ExternalLink, FolderOpen, Infinity as InfinityIcon, MonitorSmartphoneIcon } from 'lucide-react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-// Animated component for scroll effects
-const AnimatedSection = ({ children, delay = 0, className = "" }: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setIsVisible(true), delay);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [delay]);
-
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        isVisible
-          ? 'opacity-100 translate-y-0'
-          : 'opacity-0 translate-y-8'
-      } ${className}`}
-    >
-      {children}
-    </div>
-  );
-};
-
 export default function Home() {
-  const [isContactOpen, setIsContactOpen] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState('');
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitMessage('');
-
+    // TODO: Vervang dit met je ConvertKit form action URL
+    // Voor nu gebruiken we Formspree als fallback
     try {
-      const response = await fetch('https://formspree.io/f/mnndnple', {
+      await fetch('https://formspree.io/f/mnndnple', {
         method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, type: 'newsletter_signup' }),
       });
-
-      if (response.ok) {
-        setSubmitMessage("Bedankt voor je bericht! Ik neem snel contact met je op.");
-        setFormData({ name: '', email: '', message: '' });
-        setTimeout(() => {
-          setIsContactOpen(false);
-          setSubmitMessage('');
-        }, 1000);
-      } else {
-        setSubmitMessage('Er ging iets mis. Probeer het opnieuw.');
-      }
+      setIsSubmitted(true);
+      setEmail('');
     } catch (error) {
-      setSubmitMessage('Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+      console.error('Error:', error);
     }
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 relative">
-      {/* Logo */}
-      <AnimatedSection className="mb-6">
-        <MonitorSmartphoneIcon size={30} className="text-white opacity-80" />
-      </AnimatedSection>
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6">
+      {/* Main Content */}
+      <div className="max-w-2xl w-full text-center space-y-8">
 
-      {/* Main Tagline */}
-      <AnimatedSection className="text-center mb-8 sm:mb-10 max-w-2xl px-4" delay={200}>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight mb-4">
-          I turn your ideas,
+        {/* Headline */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
+          I build software and
+          <br />
+          share what I learn.
         </h1>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal leading-tight text-gray-300">
-          into software.
-        </h2>
-      </AnimatedSection>
 
-      {/* Social Media Links */}
-      <AnimatedSection className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-4 px-4" delay={400}>
-        <Link
-          href="https://github.com/bunyaminbolukbas"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center space-x-2 text-white hover:text-gray-400 transition-colors text-sm"
-        >
-          <Github size={20} />
-          <span>@bunyamin</span>
-        </Link>
-
-        <Link
-          href="https://www.linkedin.com/in/bunyaminbolukbas/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors text-sm"
-        >
-          <Linkedin size={20} />
-          <span>@bunyamin</span>
-        </Link>
-
-        <Link
-          href="https://instagram.com/thebunyaminn"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center space-x-2 text-pink-400 hover:text-pink-200 transition-colors text-sm"
-        >
-          <Instagram size={20} />
-          <span>@thebunyaminn</span>
-        </Link>
-      </AnimatedSection>
-
-      {/* Cards Section - All with equal spacing */}
-      <div className="w-full max-w-xl space-y-3 px-2 sm:px-4 mt-8 sm:mt-10">
-        {/* Vibe → Production Card */}
-        <AnimatedSection delay={600}>
-          <Link href="https://salesdeck-tau.vercel.app/" target="_blank" rel="noopener noreferrer" className="block mb-3">
-            <div className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
-              <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
-                <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-700 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-mono text-xs sm:text-sm">&gt;_</span>
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-white font-semibold text-sm sm:text-base truncate">Vibe → Production</h3>
-                    <p className="text-gray-400 text-xs sm:text-xs leading-tight">Van prototype naar productie software</p>
-                  </div>
-                </div>
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-3 px-2 sm:px-3"
-                >
-                  Aan de slag
-                </Button>
-              </div>
-            </div>
-          </Link>
-        </AnimatedSection>
-
-        {/* Portfolio Card */}
-        <AnimatedSection delay={700}>
-          <Link href="/portfolio" className="block mb-3">
-            <div className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
-              <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
-                <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <FolderOpen size={20} className="text-white sm:w-6 sm:h-6" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-white font-semibold text-sm sm:text-base truncate">Mijn portfolio</h3>
-                    <p className="text-gray-400 text-xs sm:text-xs leading-tight">Ontdek mijn werk en projecten</p>
-                  </div>
-                </div>
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-3 px-2 sm:px-3"
-                >
-                  Bekijk werk
-                </Button>
-              </div>
-            </div>
-          </Link>
-        </AnimatedSection>
-
-        {/* OS49 Card */}
-        <AnimatedSection delay={800}>
-          <Link href="https://club49.org/" target="_blank" rel="noopener noreferrer" className="block mb-3">
-            <div className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center">
-              <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
-                <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-700 rounded-xl flex items-center justify-center flex-shrink-0 p-1.5">
-                    <Image
-                      src="/images/club49-logo.png"
-                      alt="Club49 Logo"
-                      width={40}
-                      height={40}
-                      className="object-contain"
-                    />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-white font-medium text-sm sm:text-base truncate">OS49</h3>
-                    <p className="text-gray-400 text-xs sm:text-xs leading-tight">Het Operating System voor schaalbare bedrijven</p>
-                  </div>
-                </div>
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
-                >
-                  Ontdek meer
-                </Button>
-              </div>
-            </div>
-          </Link>
-        </AnimatedSection>
-
-        {/* Email Card */}
-        <AnimatedSection delay={900}>
-          <div
-            onClick={() => setIsContactOpen(true)}
-            className="bg-zinc-900 rounded-2xl p-4 sm:p-6 hover:bg-zinc-800 transition-colors cursor-pointer group min-h-[80px] sm:h-20 flex items-center mb-3"
+        {/* Social Links */}
+        <div className="flex justify-center gap-2 sm:gap-3 flex-wrap">
+          <Link
+            href="https://youtube.com/@bunyaminemre3877"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 transition-colors px-3 sm:px-4 py-2 rounded-full text-sm"
           >
-            <div className="flex items-center justify-between w-full gap-2 sm:gap-0">
-              <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-700 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Mail size={20} className="text-white sm:w-6 sm:h-6" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-white font-semibold text-sm sm:text-base truncate">E-mail mij</h3>
-                  <p className="text-gray-400 text-xs sm:text-xs leading-tight">Laten we jouw ideeën verkennen</p>
-                </div>
-              </div>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="bg-gray-700 hover:bg-gray-600 text-white border-none group-hover:bg-gray-600 text-xs flex-shrink-0 ml-2 sm:ml-4 px-2 sm:px-3"
+            <svg className="w-[18px] h-[18px] text-red-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span>@bunyaminemre</span>
+          </Link>
+
+          <Link
+            href="https://instagram.com/thebunyaminn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 transition-colors px-3 sm:px-4 py-2 rounded-full text-sm"
+          >
+            <svg className="w-[18px] h-[18px] text-pink-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            <span>@thebunyaminn</span>
+          </Link>
+
+          <Link
+            href="https://linkedin.com/in/bunyaminbolukbas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 transition-colors px-3 sm:px-4 py-2 rounded-full text-sm"
+          >
+            <svg className="w-[18px] h-[18px] text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <span>@bunyamin</span>
+          </Link>
+
+          <Link
+            href="mailto:bbe-operations@outlook.com"
+            className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 transition-colors px-3 sm:px-4 py-2 rounded-full text-sm"
+          >
+            <svg className="w-[18px] h-[18px] text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            <span>Work with me</span>
+          </Link>
+        </div>
+
+        {/* Email Signup */}
+        <div className="pt-6">
+          <p className="text-zinc-400 mb-6 text-base sm:text-lg max-w-lg mx-auto">
+            I write about software, business, and everything I learn along the way. Join the list.
+          </p>
+
+          {isSubmitted ? (
+            <p className="text-green-400">You're in! Check your inbox.</p>
+          ) : (
+            <form onSubmit={handleEmailSubmit} className="flex gap-2 max-w-md mx-auto">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="name@email.com"
+                required
+                className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-500 transition-colors"
+              />
+              <button
+                type="submit"
+                className="bg-white text-black font-medium px-6 py-3 rounded-lg hover:bg-zinc-200 transition-colors"
               >
-                Bericht
-              </Button>
-            </div>
-          </div>
-        </AnimatedSection>
-
-      </div>
-
-      {/* Footer - clearly separated from content */}
-      <div className="mt-32 pb-8 text-gray-500 text-sm">
-        <span className="text-xs">© 2025 Bunyamin - Alle rechten voorbehouden - @thebunyaminn</span>
-      </div>
-
-      {/* Contact Form Modal */}
-      <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
-        <DialogContent className="bg-zinc-900 border-zinc-700 text-white max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-semibold text-center mb-2">
-              <span className="text-xl">Contact</span>
-            </DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4 p-6">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
-                  Naam
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full rounded-md border border-zinc-600 bg-zinc-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Je naam"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
-                  E-mail
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full rounded-md border border-zinc-600 bg-zinc-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="jouw@email.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
-                  Bericht
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={4}
-                  required
-                  className="w-full rounded-md border border-zinc-600 bg-zinc-800 text-white px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Je bericht..."
-                />
-              </div>
-
-              {submitMessage && (
-                <div className="text-center text-green-400 text-sm">
-                  {submitMessage}
-                </div>
-              )}
-
-              <div className="flex justify-between pt-4 gap-3">
-                <Button
-                  type="button"
-                  onClick={() => setIsContactOpen(false)}
-                  variant="secondary"
-                  className="bg-gray-700 hover:bg-gray-600 text-white border-none flex-1"
-                  disabled={isSubmitting}
-                >
-                  Annuleren
-                </Button>
-                <Button
-                  type="submit"
-                  className="bg-white hover:bg-gray-200 text-black border-none flex-1"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? 'Verzenden...' : 'Verstuur'}
-                </Button>
-              </div>
+                Sign up
+              </button>
             </form>
-          </div>
-        </DialogContent>
-      </Dialog>
+          )}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="absolute bottom-6 flex flex-col items-center gap-3">
+        <Image
+          src="/images/Scherm­afbeelding 2025-10-25 om 14.34.26.png"
+          alt="BBE"
+          width={50}
+          height={25}
+          className="opacity-60"
+        />
+        <p className="text-zinc-600 text-sm">
+          © 2026 BBE Operations. All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 }
