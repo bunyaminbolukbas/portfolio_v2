@@ -1,159 +1,479 @@
-"use client";
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
-import { translations, Language } from '@/lib/translations';
+import { Reveal } from '@/components/site/Reveal';
+import { MediaSlot } from '@/components/site/MediaSlot';
+import { ProjectForm } from '@/components/site/ProjectForm';
+import { NewsletterForm } from '@/components/site/NewsletterForm';
+import { Testimonials } from '@/components/site/Testimonials';
+import { featuredProjects, proofNames } from '@/lib/projects';
+import { site } from '@/lib/site';
+
+const capabilities = [
+  {
+    number: '01',
+    title: 'Websites & digital experiences',
+    description:
+      'Een website die net zo professioneel overkomt als het bedrijf erachter, en bezoekers richting actie beweegt.',
+    items: ['Positionering & structuur', 'Design & development', 'Conversie & meetbaarheid'],
+  },
+  {
+    number: '02',
+    title: 'Software & digital products',
+    description:
+      'Custom platforms, portalen en dashboards, gebouwd rond hoe je bedrijf daadwerkelijk werkt.',
+    items: ['Webapplicaties & portalen', 'Dashboards & interne tooling', 'Koppelingen met je systemen'],
+  },
+  {
+    number: '03',
+    title: 'AI & automation',
+    description:
+      'Stop met handmatig werk dat software voor je kan uitvoeren. Slimme workflows die je operatie efficiënter maken.',
+    items: ['AI-workflows', 'Procesautomatisering', 'Integraties (n8n, API’s)'],
+  },
+];
+
+const processSteps = [
+  {
+    number: '01',
+    title: 'Begrijpen',
+    description: 'We bepalen eerst welk probleem er daadwerkelijk opgelost moet worden.',
+  },
+  {
+    number: '02',
+    title: 'Richting',
+    description: 'Positionering, structuur en oplossing worden helder, vóór er iets gebouwd wordt.',
+  },
+  {
+    number: '03',
+    title: 'Bouwen',
+    description: 'Design en development zonder onnodige complexiteit, met wekelijkse updates.',
+  },
+  {
+    number: '04',
+    title: 'Lanceren',
+    description: 'Live zetten, meten en verbeteren.',
+  },
+];
+
+const differentiators = [
+  { term: 'Business', detail: 'Wat moet dit opleveren?' },
+  { term: 'Gebruiker', detail: 'Voor wie bouwen we dit echt?' },
+  { term: 'Positionering', detail: 'Hoe kom je over op je markt?' },
+  { term: 'Conversie', detail: 'Beweegt dit bezoekers tot actie?' },
+  { term: 'Technologie', detail: 'De juiste oplossing, niet de hipste.' },
+  { term: 'Schaalbaarheid', detail: 'Werkt dit ook als je groeit?' },
+];
 
 export default function Home() {
-  const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [language, setLanguage] = useState<Language>('nl');
-
-  useEffect(() => {
-    const saved = localStorage.getItem('language') as Language;
-    if (saved && translations[saved]) {
-      setLanguage(saved);
-    }
-  }, []);
-
-  const handleLanguageChange = (lang: Language) => {
-    setLanguage(lang);
-    localStorage.setItem('language', lang);
-  };
-
-  const t = translations[language];
-
-  const handleEmailSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      // TODO: Vervang met Kit (ConvertKit) form action URL
-      await fetch('https://formspree.io/f/mnndnple', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, type: 'newsletter_signup', language }),
-      });
-      setIsSubmitted(true);
-      setEmail('');
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6">
-      {/* Language Switcher */}
-      <div className="absolute top-6 right-6">
-        <LanguageSwitcher
-          currentLanguage={language}
-          onLanguageChange={handleLanguageChange}
-        />
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-2xl w-full text-center space-y-8">
-
-        {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-          {t.headline}
-          <br />
-          {t.headlineBreak}
-        </h1>
-
-        {/* Social Links */}
-        <div className="flex justify-center gap-2 sm:gap-3 flex-wrap">
-          <Link
-            href="https://youtube.com/@thebunyaminn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 transition-colors px-3 sm:px-4 py-2 rounded-full text-sm"
-          >
-            <svg className="w-[18px] h-[18px] text-red-500" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-            </svg>
-            <span>{t.youtube}</span>
-          </Link>
-
-          <Link
-            href="https://instagram.com/thebunyaminn"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 transition-colors px-3 sm:px-4 py-2 rounded-full text-sm"
-          >
-            <svg className="w-[18px] h-[18px] text-pink-500" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-            <span>{t.instagram}</span>
-          </Link>
-
-          <Link
-            href="https://linkedin.com/in/bunyaminbolukbas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 transition-colors px-3 sm:px-4 py-2 rounded-full text-sm"
-          >
-            <svg className="w-[18px] h-[18px] text-blue-500" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-            <span>{t.linkedin}</span>
-          </Link>
-
+    <>
+      {/* 01 — HERO */}
+      <section className="flex min-h-svh flex-col justify-center pt-16">
+        <div className="mx-auto w-full max-w-site px-5 sm:px-8">
+          <Reveal>
+            <h1 className="max-w-4xl font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+              Websites, software en AI die je bedrijf vooruithelpen.
+            </h1>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
+              Ik ontwerp en bouw digitale producten voor ondernemers en groeiende
+              bedrijven. Van premium websites tot custom software en slimme
+              automatisering: technologie, design en business in één hand.
+            </p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <Link href="/start" className="btn-primary">
+                Start een project
+              </Link>
+              <Link href="/werk" className="btn-secondary">
+                Bekijk mijn werk
+              </Link>
+            </div>
+          </Reveal>
         </div>
-
-        {/* Werkwijze Link */}
-        <div className="pt-2">
-          <Link
-            href="/werkwijze"
-            className="group relative inline-block text-zinc-400 hover:text-white transition-colors"
-          >
-            <span>{t.workWithMe}</span>
-            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300" />
-          </Link>
+        <div className="mx-auto mt-16 w-full max-w-site px-5 pb-8 sm:px-8">
+          <Reveal delay={0.15}>
+            <div className="flex flex-col gap-2 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
+              <p className="mono-label text-muted">Strategie · Design · Development</p>
+              <p className="mono-label text-muted">Bünyamin Bölükbaş, founder</p>
+            </div>
+          </Reveal>
         </div>
+      </section>
 
-        {/* Email Signup */}
-        <div className="pt-6">
-          <p className="text-zinc-400 mb-6 text-base sm:text-lg max-w-lg mx-auto">
-            {t.subtext}
-          </p>
+      {/* 02 — DIRECT BEWIJS */}
+      <section aria-label="Opdrachtgevers" className="border-t border-line">
+        <div className="mx-auto max-w-site px-5 py-14 sm:px-8">
+          <Reveal>
+            <p className="mono-label text-muted">Gewerkt met en gebouwd voor o.a.</p>
+            <ul className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4">
+              {proofNames.map((name) => (
+                <li
+                  key={name}
+                  className="font-display text-xl font-medium tracking-tight text-ink/40 transition-colors hover:text-ink sm:text-2xl"
+                >
+                  {name}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
 
-          {isSubmitted ? (
-            <p className="text-blue-400">{t.success}</p>
-          ) : (
-            <form onSubmit={handleEmailSubmit} className="flex gap-2 max-w-xs mx-auto">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={t.emailPlaceholder}
-                required
-                className="flex-1 bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-500 transition-colors"
-              />
-              <button
-                type="submit"
-                className="bg-white text-black font-medium px-4 py-2 text-sm rounded-lg hover:bg-zinc-200 transition-colors"
+      {/* 03 — PROBLEEM / VISIE */}
+      <section aria-labelledby="visie-titel" className="border-t border-line">
+        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
+          <Reveal>
+            <p className="mono-label text-muted">Waar ik in geloof</p>
+            <h2
+              id="visie-titel"
+              className="mt-6 max-w-4xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
+            >
+              Je bedrijf heeft niet méér software nodig. Het heeft{' '}
+              <em className="not-italic underline decoration-1 underline-offset-8">betere</em>{' '}
+              software nodig.
+            </h2>
+            <div className="mt-10 max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
+              <p>
+                Veel bedrijven hebben een website die technisch werkt, maar niet
+                uitstraalt hoe goed het bedrijf werkelijk is. Dat kost vertrouwen.
+                En dus aanvragen.
+              </p>
+              <p>
+                Hetzelfde geldt intern: processen vol handmatige stappen die
+                software allang zou kunnen overnemen. Ik bouw digitale producten
+                die je positionering versterken én je operatie versimpelen.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 04 — CAPABILITIES */}
+      <section aria-labelledby="capabilities-titel" className="border-t border-line">
+        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
+          <Reveal>
+            <p className="mono-label text-muted">Wat ik doe</p>
+            <h2
+              id="capabilities-titel"
+              className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+            >
+              Drie dingen. Goed.
+            </h2>
+          </Reveal>
+          <div className="mt-14">
+            {capabilities.map((cap) => (
+              <Reveal key={cap.number}>
+                <div className="grid gap-6 border-t border-line py-10 sm:grid-cols-12 sm:gap-8">
+                  <span className="mono-label text-muted sm:col-span-1">{cap.number}</span>
+                  <h3 className="font-display text-2xl font-medium tracking-tight sm:col-span-5 sm:text-3xl">
+                    {cap.title}
+                  </h3>
+                  <p className="leading-relaxed text-muted sm:col-span-4">{cap.description}</p>
+                  <ul className="space-y-2 sm:col-span-2">
+                    {cap.items.map((item) => (
+                      <li key={item} className="mono-label text-muted">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 05 — FEATURED WORK */}
+      <section id="werk" aria-labelledby="werk-titel" className="border-t border-line">
+        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
+          <Reveal>
+            <div className="flex items-end justify-between gap-6">
+              <div>
+                <p className="mono-label text-muted">Uitgelicht werk</p>
+                <h2
+                  id="werk-titel"
+                  className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+                >
+                  Gebouwd om iets op te leveren.
+                </h2>
+              </div>
+              <Link
+                href="/werk"
+                className="mono-label hidden shrink-0 border-b border-ink/30 pb-1 transition-colors hover:border-ink sm:block"
               >
-                {t.signUp}
-              </button>
-            </form>
-          )}
-        </div>
-      </div>
+                Alle projecten →
+              </Link>
+            </div>
+          </Reveal>
 
-      {/* Footer */}
-      <footer className="absolute bottom-6 flex flex-col items-center gap-3">
-        <Image
-          src="/images/Scherm­afbeelding 2025-10-25 om 14.34.26.png"
-          alt="BBE"
-          width={50}
-          height={25}
-          className="opacity-60"
-        />
-        <p className="text-zinc-600 text-sm">
-          {t.copyright}
-        </p>
-      </footer>
-    </div>
+          <div className="mt-16 space-y-24">
+            {featuredProjects.map((project, index) => (
+              <Reveal key={project.slug}>
+                <article className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+                  <MediaSlot
+                    image={project.image}
+                    video={project.video}
+                    alt={`Website van ${project.name}`}
+                    chromeUrl={project.url?.replace(/^https?:\/\//, '')}
+                    fallbackText={project.name}
+                    fallbackMeta={`Project ${String(index + 1).padStart(2, '0')}`}
+                    className={`${project.image || project.video ? '' : 'aspect-video'} ${
+                      index % 2 === 1 ? 'lg:order-2' : ''
+                    }`}
+                  />
+                  <div>
+                    <p className="mono-label text-muted">
+                      Project {String(index + 1).padStart(2, '0')} / {project.category}
+                    </p>
+                    <h3 className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl">
+                      {project.name}
+                    </h3>
+                    <dl className="mt-8 space-y-6">
+                      {project.problem && (
+                        <div>
+                          <dt className="mono-label text-muted">Probleem</dt>
+                          <dd className="mt-2 leading-relaxed">{project.problem}</dd>
+                        </div>
+                      )}
+                      {project.solution && (
+                        <div>
+                          <dt className="mono-label text-muted">Oplossing</dt>
+                          <dd className="mt-2 leading-relaxed">{project.solution}</dd>
+                        </div>
+                      )}
+                      {project.role && (
+                        <div>
+                          <dt className="mono-label text-muted">Mijn rol</dt>
+                          <dd className="mt-2 leading-relaxed">{project.role}</dd>
+                        </div>
+                      )}
+                    </dl>
+                    <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+                      <p className="mono-label text-muted">{project.stack.join(' · ')}</p>
+                      {project.url && (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mono-label border-b border-ink/30 pb-1 transition-colors hover:border-ink"
+                        >
+                          Bekijk live ↗
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-16 sm:hidden">
+            <Link href="/werk" className="btn-secondary w-full">
+              Alle projecten →
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 06 — DIFFERENTIATOR */}
+      <section aria-labelledby="aanpak-titel" className="bg-ink text-paper">
+        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
+          <Reveal>
+            <p className="mono-label text-paper/50">Waarom het werkt</p>
+            <h2
+              id="aanpak-titel"
+              className="mt-6 max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
+            >
+              Ik bouw niet alleen wat je vraagt.
+            </h2>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-paper/70">
+              Goede software begint niet bij code, maar bij begrijpen wat je
+              bedrijf nodig heeft. Ik werkte als developer en tech lead in
+              softwareteams en bouw nu producten voor ondernemers. Ik denk dus
+              mee over meer dan techniek alleen, en neem ownership over het
+              eindresultaat.
+            </p>
+          </Reveal>
+          <div className="mt-16 grid gap-px bg-line-dark sm:grid-cols-2 lg:grid-cols-3">
+            {differentiators.map((item, index) => (
+              <Reveal key={item.term} className="bg-ink p-8">
+                <p className="mono-label text-paper/40">{String(index + 1).padStart(2, '0')}</p>
+                <h3 className="mt-4 font-display text-xl font-medium tracking-tight">
+                  {item.term}
+                </h3>
+                <p className="mt-2 text-sm text-paper/60">{item.detail}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 07 — SOCIAL PROOF (verschijnt zodra er echte testimonials zijn) */}
+      <Testimonials />
+
+      {/* 08 — PROCES */}
+      <section aria-labelledby="proces-titel" className="border-t border-line">
+        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
+          <Reveal>
+            <p className="mono-label text-muted">Zo werken we samen</p>
+            <h2
+              id="proces-titel"
+              className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+            >
+              Vier stappen. Geen gedoe.
+            </h2>
+          </Reveal>
+          <div className="mt-14 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((step) => (
+              <Reveal key={step.number} className="bg-paper py-8 sm:p-8 sm:pl-0 lg:pl-8">
+                <p className="mono-label text-muted">{step.number}</p>
+                <h3 className="mt-4 font-display text-xl font-medium tracking-tight">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{step.description}</p>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="mt-10">
+            <Link
+              href="/werkwijze"
+              className="mono-label border-b border-ink/30 pb-1 transition-colors hover:border-ink"
+            >
+              Meer over mijn werkwijze →
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 09 — ABOUT / PERSONAL BRAND */}
+      <section aria-labelledby="over-titel" className="border-t border-line">
+        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <Reveal>
+              {/* Later: persoonlijke foto of korte video via image/video prop */}
+              <MediaSlot fallbackText="tb." className="aspect-[4/5] max-w-md" />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mono-label text-muted">De persoon achter het werk</p>
+              <h2
+                id="over-titel"
+                className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+              >
+                Ik ben Bünyamin Bölükbaş.
+              </h2>
+              <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted">
+                <p>
+                  Developer, tech lead en ondernemer. Ik bouw digitale producten,
+                  stuur softwareteams aan en help bedrijven om ideeën en
+                  operationele problemen te vertalen naar werkende technologie.
+                </p>
+                <p>
+                  Geen bureau met lagen ertussen: je werkt direct met de persoon
+                  die je product ontwerpt én bouwt.
+                </p>
+              </div>
+              <div className="mt-8 flex gap-6">
+                {(
+                  [
+                    ['YouTube', site.social.youtube],
+                    ['Instagram', site.social.instagram],
+                    ['LinkedIn', site.social.linkedin],
+                  ] as const
+                ).map(([label, href]) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mono-label border-b border-ink/30 pb-1 transition-colors hover:border-ink"
+                  >
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 10 — CONTENT / PERSONAL BRAND */}
+      <section aria-labelledby="content-titel" className="border-t border-line">
+        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+            <Reveal>
+              <p className="mono-label text-muted">Content</p>
+              <h2
+                id="content-titel"
+                className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+              >
+                Ik bouw. Ik leer. Ik deel.
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="max-w-xl text-lg leading-relaxed text-muted">
+                Over software bouwen, ondernemen en alles wat ik onderweg leer.
+                Volg mee, of schrijf je in en blijf per mail op de hoogte.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {(
+                  [
+                    ['YouTube', site.social.youtube],
+                    ['Instagram', site.social.instagram],
+                    ['LinkedIn', site.social.linkedin],
+                  ] as const
+                ).map(([label, href]) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary px-5 py-3"
+                  >
+                    {label} ↗
+                  </a>
+                ))}
+              </div>
+              <div className="mt-8">
+                <NewsletterForm />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 11 — FINAL CTA */}
+      <section aria-labelledby="cta-titel" className="bg-ink text-paper">
+        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <p className="mono-label text-paper/50">Volgende stap</p>
+              <h2
+                id="cta-titel"
+                className="mt-6 font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
+              >
+                Heb je iets dat gebouwd moet worden?
+              </h2>
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-paper/70">
+                Vertel me waar je aan werkt. Je krijgt een eerlijk antwoord over
+                de beste aanpak, ook als dat betekent dat je mij niet nodig hebt.
+              </p>
+              <p className="mt-8 text-sm text-paper/60">
+                Liever direct praten?{' '}
+                <a
+                  href={site.calendly}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 transition-colors hover:text-paper"
+                >
+                  Plan een gesprek van 30 minuten
+                </a>
+                . Vrijblijvend.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <ProjectForm dark />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

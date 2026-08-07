@@ -1,14 +1,44 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Space_Grotesk, IBM_Plex_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
+import { Nav } from '@/components/site/Nav';
+import { Footer } from '@/components/site/Footer';
+import { SmoothScroll } from '@/components/site/SmoothScroll';
+import { site } from '@/lib/site';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-display' });
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono',
+});
 
 export const metadata: Metadata = {
-  title: 'Bunyamin Bolukbas',
+  title: {
+    default: 'thebunyaminn. | Websites, software en AI die je bedrijf vooruithelpen',
+    template: '%s | thebunyaminn.',
+  },
   description:
-    'Ik bouw software en deel wat ik leer — over software, business en alles daartussenin.',
+    'Ik ontwerp en bouw digitale producten voor ondernemers en groeiende bedrijven: premium websites, custom software en AI-automatisering.',
+  openGraph: {
+    title: 'thebunyaminn. | Websites, software en AI die je bedrijf vooruithelpen',
+    description:
+      'Premium websites, custom software en AI-automatisering, ontworpen en gebouwd door Bünyamin Bölükbaş.',
+    locale: 'nl_NL',
+    type: 'website',
+    siteName: 'thebunyaminn.',
+  },
+};
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Bünyamin Bölükbaş',
+  alternateName: 'thebunyaminn',
+  jobTitle: 'Developer, tech lead en ondernemer',
+  sameAs: [site.social.youtube, site.social.instagram, site.social.linkedin],
 };
 
 export default function RootLayout({
@@ -17,9 +47,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="nl">
-      <body className={`${inter.className} bg-black`}>
-        {children}
+    <html
+      lang="nl"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${plexMono.variable}`}
+    >
+      <body className="font-sans">
+        <SmoothScroll />
+        <Nav />
+        <main>{children}</main>
+        <Footer />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <Analytics />
       </body>
     </html>

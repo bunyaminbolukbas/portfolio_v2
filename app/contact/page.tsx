@@ -1,28 +1,22 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default function Contact() {
+// Oude route — stuurt door naar /start (statische export, dus client-side).
+export default function ContactRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/start');
+  }, [router]);
+
   return (
-    <div className="min-h-screen bg-white p-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-light tracking-wider text-black mb-4">
-            CONTACT
-          </h1>
-          <div className="w-24 h-0.5 bg-black mx-auto mb-8"></div>
-        </div>
-        
-        <div className="space-y-8 text-center">
-          <p className="text-xl text-gray-700 leading-relaxed">
-            Add your contact information and form here
-          </p>
-          <Link
-            href="/"
-            className="inline-block px-6 py-3 border border-black text-black hover:bg-black hover:text-white transition-all duration-300"
-          >
-            ← Back to Home
-          </Link>
-        </div>
-      </div>
+    <div className="flex min-h-svh items-center justify-center">
+      <Link href="/start" className="mono-label">
+        Verder naar /start →
+      </Link>
     </div>
   );
 }
