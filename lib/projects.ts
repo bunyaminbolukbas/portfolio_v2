@@ -62,7 +62,6 @@ export const projects: Project[] = [
     role: 'Product, design en development',
     stack: ['React', 'TypeScript', 'Supabase', 'Firebase'],
     logo: '/images/club49.png',
-    featured: true,
   },
   {
     slug: 'operations-grid',
