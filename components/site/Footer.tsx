@@ -60,9 +60,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-line-dark pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-paper/40">© 2026 thebunyaminn.</p>
-          <BuiltBy className="text-paper" />
+        <div className="mt-16 flex justify-center border-t border-line-dark pt-10">
+          <BuiltBy />
         </div>
       </div>
     </footer>
