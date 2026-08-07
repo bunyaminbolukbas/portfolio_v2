@@ -9,8 +9,6 @@ export type Project = {
   solution?: string;
   role?: string;
   stack: string[];
-  logo?: string;
-  logoOnDark?: boolean;
   url?: string;
   // MediaSlot: vul `image` of `video` zodra materiaal beschikbaar is.
   image?: string;
@@ -61,7 +59,6 @@ export const projects: Project[] = [
       'Een boekingsflow waarin klanten zaal, datum, catering en pakketten kiezen en direct betalen, naast een ledenapp voor de community.',
     role: 'Product, design en development',
     stack: ['React', 'TypeScript', 'Supabase', 'Firebase'],
-    logo: '/images/club49.png',
   },
   {
     slug: 'operations-grid',
@@ -70,7 +67,6 @@ export const projects: Project[] = [
     summary:
       'Whiteboard-tool waarmee bedrijven hun waardeketen visualiseren: processen, SOP’s, KPI’s en taken op één canvas, met AI-procesanalyse.',
     stack: ['React', 'TypeScript', 'Supabase'],
-    logo: '/images/operations-grid.png',
   },
   {
     slug: 'highground',
@@ -79,7 +75,6 @@ export const projects: Project[] = [
     summary:
       'Platform voor medewerkersprestaties: dagelijkse taken, puntensysteem, metrics en 360°-feedback, met een AI-consultant.',
     stack: ['React', 'TypeScript', 'Supabase'],
-    logo: '/images/highground.png',
   },
   {
     slug: 'personal-intel',
@@ -88,13 +83,7 @@ export const projects: Project[] = [
     summary:
       'AI-assessmentplatform: gebruikers doorlopen scenario-simulaties in tekst of live spraak en krijgen een persoonlijk coachingsrapport.',
     stack: ['AI', 'NestJS', 'React'],
-    logo: '/images/personal-intel.webp',
   },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
-
-// Naamstrip op de homepage: opdrachtgevers en eigen merken.
-// Bewust als tekst (geen verouderde logobestanden); zodra actuele
-// logobestanden beschikbaar zijn kan dit weer een beeldstrip worden.
-export const proofNames = ['Beek Automotive', 'FinClean', 'Club49', 'Code49'];

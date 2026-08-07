@@ -4,7 +4,7 @@ import { MediaSlot } from '@/components/site/MediaSlot';
 import { ProjectForm } from '@/components/site/ProjectForm';
 import { NewsletterForm } from '@/components/site/NewsletterForm';
 import { Testimonials } from '@/components/site/Testimonials';
-import { featuredProjects, proofNames } from '@/lib/projects';
+import { featuredProjects } from '@/lib/projects';
 import { site } from '@/lib/site';
 
 const capabilities = [
@@ -86,25 +86,6 @@ export default function Home() {
                 Bekijk mijn werk
               </Link>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 02 — DIRECT BEWIJS */}
-      <section aria-label="Opdrachtgevers" className="border-t border-line">
-        <div className="mx-auto max-w-site px-5 py-14 sm:px-8">
-          <Reveal>
-            <p className="mono-label text-muted">Gewerkt met en gebouwd voor o.a.</p>
-            <ul className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-4">
-              {proofNames.map((name) => (
-                <li
-                  key={name}
-                  className="font-display text-xl font-medium tracking-tight text-ink/40 transition-colors hover:text-ink sm:text-2xl"
-                >
-                  {name}
-                </li>
-              ))}
-            </ul>
           </Reveal>
         </div>
       </section>
@@ -320,8 +301,11 @@ export default function Home() {
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
-              {/* Later: persoonlijke foto of korte video via image/video prop */}
-              <MediaSlot fallbackText="tb." className="aspect-[4/5] max-w-md" />
+              <MediaSlot
+                video="/videos/over-mij.mp4"
+                poster="/videos/over-mij-poster.jpg"
+                className="aspect-[4/5] max-w-md"
+              />
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mono-label text-muted">De persoon achter het werk</p>

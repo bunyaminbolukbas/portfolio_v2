@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { MotionVideo } from '@/components/site/MotionVideo';
 
 /**
  * Universele media-container, voorbereid op video.
@@ -10,6 +11,7 @@ import Image from 'next/image';
  */
 export function MediaSlot({
   video,
+  poster,
   image,
   alt = '',
   chromeUrl,
@@ -18,6 +20,7 @@ export function MediaSlot({
   className = '',
 }: {
   video?: string;
+  poster?: string;
   image?: string;
   alt?: string;
   chromeUrl?: string;
@@ -39,12 +42,9 @@ export function MediaSlot({
           </div>
           <div className="overflow-hidden">
             {video ? (
-              <video
+              <MotionVideo
                 src={video}
-                autoPlay
-                muted
-                loop
-                playsInline
+                poster={poster}
                 className="w-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
               />
             ) : (
@@ -65,13 +65,10 @@ export function MediaSlot({
   return (
     <div className={`relative overflow-hidden bg-ink ${className}`}>
       {video ? (
-        <video
+        <MotionVideo
           src={video}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover"
+          poster={poster}
+          className="absolute inset-0 h-full w-full object-cover object-[50%_35%]"
         />
       ) : image ? (
         <Image
