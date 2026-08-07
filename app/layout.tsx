@@ -29,6 +29,11 @@ export const metadata: Metadata = {
     locale: 'nl_NL',
     type: 'website',
     siteName: 'thebunyaminn.',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'thebunyaminn.' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og.png'],
   },
 };
 

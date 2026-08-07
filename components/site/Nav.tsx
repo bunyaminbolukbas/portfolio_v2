@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
@@ -19,12 +20,15 @@ export function Nav() {
         aria-label="Hoofdnavigatie"
         className="mx-auto flex h-16 max-w-site items-center justify-between px-5 sm:px-8"
       >
-        <Link
-          href="/"
-          className="font-display text-lg font-medium tracking-tight"
-          onClick={() => setOpen(false)}
-        >
-          thebunyaminn.
+        <Link href="/" onClick={() => setOpen(false)}>
+          <Image
+            src="/brand/thebunyaminn-black.svg"
+            alt="thebunyaminn."
+            width={150}
+            height={20}
+            priority
+            className="h-[15px] w-auto"
+          />
         </Link>
 
         {/* Desktop */}

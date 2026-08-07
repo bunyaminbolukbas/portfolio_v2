@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { site } from '@/lib/site';
 import { BuiltBy } from './BuiltBy';
 
@@ -7,9 +8,13 @@ export function Footer() {
     <footer className="bg-ink text-paper">
       <div className="mx-auto max-w-site px-5 py-16 sm:px-8 sm:py-20">
         <div className="flex flex-col justify-between gap-12 md:flex-row md:items-end">
-          <p className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
-            thebunyaminn.
-          </p>
+          <Image
+            src="/brand/thebunyaminn-white.svg"
+            alt="thebunyaminn."
+            width={280}
+            height={37}
+            className="h-7 w-auto sm:h-8"
+          />
 
           <div className="grid grid-cols-2 gap-10 sm:gap-20">
             <nav aria-label="Footer" className="flex flex-col gap-3 text-sm">

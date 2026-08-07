@@ -88,14 +88,6 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
-        <div className="mx-auto mt-16 w-full max-w-site px-5 pb-8 sm:px-8">
-          <Reveal delay={0.15}>
-            <div className="flex flex-col gap-2 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
-              <p className="mono-label text-muted">Strategie · Design · Development</p>
-              <p className="mono-label text-muted">Bünyamin Bölükbaş, founder</p>
-            </div>
-          </Reveal>
-        </div>
       </section>
 
       {/* 02 — DIRECT BEWIJS */}
