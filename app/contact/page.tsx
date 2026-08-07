@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Contact() {
   return (
     <div className="min-h-screen bg-white p-8">
@@ -13,12 +15,12 @@ export default function Contact() {
           <p className="text-xl text-gray-700 leading-relaxed">
             Add your contact information and form here
           </p>
-          <a 
-            href="/" 
+          <Link
+            href="/"
             className="inline-block px-6 py-3 border border-black text-black hover:bg-black hover:text-white transition-all duration-300"
           >
             ← Back to Home
-          </a>
+          </Link>
         </div>
       </div>
     </div>

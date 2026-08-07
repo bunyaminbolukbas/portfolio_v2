@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import { Github, ExternalLink, Calendar, MapPin, ArrowLeft, Code, Database, Globe } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -162,7 +161,7 @@ export default function Portfolio() {
                   <h3 className="text-lg font-semibold">Highground – Web Application</h3>
                 </div>
                 <p className="text-gray-400 text-sm mb-3">
-                  A fullstack KPI management dashboard for tracking employee KPI's. Features real-time analytics, team collaboration and AI integration.
+                  A fullstack KPI management dashboard for tracking employee KPI&apos;s. Features real-time analytics, team collaboration and AI integration.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-2 py-1 text-xs bg-zinc-700 text-white rounded-full">React</span>
