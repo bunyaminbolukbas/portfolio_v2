@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Reveal } from '@/components/site/Reveal';
 import { projects } from '@/lib/projects';
@@ -36,26 +35,9 @@ export default function Werk() {
                   {String(index + 1).padStart(2, '0')}
                 </p>
                 <div className="sm:col-span-4">
-                  <div className="flex items-center gap-3">
-                    {project.logo && (
-                      <span
-                        className={`flex h-9 w-9 shrink-0 items-center justify-center ${
-                          project.logoOnDark ? 'bg-ink' : 'border border-line bg-white'
-                        }`}
-                      >
-                        <Image
-                          src={project.logo}
-                          alt=""
-                          width={24}
-                          height={24}
-                          className="h-6 w-6 object-contain"
-                        />
-                      </span>
-                    )}
-                    <h2 className="font-display text-xl font-medium tracking-tight sm:text-2xl">
-                      {project.name}
-                    </h2>
-                  </div>
+                  <h2 className="font-display text-xl font-medium tracking-tight sm:text-2xl">
+                    {project.name}
+                  </h2>
                   <p className="mono-label mt-3 text-muted">{project.category}</p>
                 </div>
                 <p className="leading-relaxed text-muted sm:col-span-5">{project.summary}</p>
