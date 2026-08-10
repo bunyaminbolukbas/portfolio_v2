@@ -13,6 +13,7 @@ export function MediaSlot({
   video,
   poster,
   image,
+  scrollImage,
   alt = '',
   chromeUrl,
   fallbackText,
@@ -22,13 +23,15 @@ export function MediaSlot({
   video?: string;
   poster?: string;
   image?: string;
+  /** Lange full-page screenshot die op hover door het frame scrolt. */
+  scrollImage?: string;
   alt?: string;
   chromeUrl?: string;
   fallbackText?: string;
   fallbackMeta?: string;
   className?: string;
 }) {
-  const hasMedia = Boolean(video || image);
+  const hasMedia = Boolean(video || image || scrollImage);
 
   if (hasMedia && chromeUrl) {
     return (
@@ -41,7 +44,12 @@ export function MediaSlot({
             <span className="mono-label ml-3 text-paper/50">{chromeUrl}</span>
           </div>
           <div className="overflow-hidden">
-            {video ? (
+            {scrollImage ? (
+              <div className="scroll-preview aspect-[16/10]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={scrollImage} alt={alt} loading="lazy" />
+              </div>
+            ) : video ? (
               <MotionVideo
                 src={video}
                 poster={poster}

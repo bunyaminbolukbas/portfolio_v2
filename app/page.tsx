@@ -54,6 +54,12 @@ const processSteps = [
   },
 ];
 
+const socialLinks = [
+  ['YouTube', site.social.youtube, '#FF0000'],
+  ['Instagram', site.social.instagram, '#E1306C'],
+  ['LinkedIn', site.social.linkedin, '#0A66C2'],
+] as const;
+
 const differentiators = [
   { term: 'Business', detail: 'Wat moet dit opleveren?' },
   { term: 'Gebruiker', detail: 'Voor wie bouwen we dit echt?' },
@@ -103,7 +109,7 @@ export default function Home() {
               Ik begin niet bij technologie. Ik begin bij het{' '}
               <em className="not-italic underline decoration-1 underline-offset-8">probleem</em>.
             </h2>
-            <div className="mt-10 max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
+            <div className="ml-auto mt-10 max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
               <p>
                 Soms is een website de oplossing. Soms een automatisering, soms
                 custom software. En soms hoef je helemaal niets te bouwen.
@@ -168,6 +174,7 @@ export default function Home() {
                   <MediaSlot
                     image={project.image}
                     video={project.video}
+                    scrollImage={project.scrollImage}
                     alt={`Website van ${project.name}`}
                     chromeUrl={project.url?.replace(/^https?:\/\//, '')}
                     fallbackText={project.name}
@@ -325,6 +332,20 @@ export default function Home() {
               >
                 Ik ben Bünyamin Bölükbaş.
               </h2>
+              <div className="mt-6 flex gap-6">
+                {socialLinks.map(([label, href, color]) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mono-label border-b pb-1 transition-opacity hover:opacity-70"
+                    style={{ color, borderColor: `${color}66` }}
+                  >
+                    {label}
+                  </a>
+                ))}
+              </div>
               <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted">
                 <p>
                   Developer, tech lead en ondernemer. Ik werk als Tech Lead bij
@@ -337,25 +358,6 @@ export default function Home() {
                   ondernemers. Geen bureau met lagen ertussen: je werkt direct
                   met de persoon die je product ontwerpt én bouwt.
                 </p>
-              </div>
-              <div className="mt-8 flex gap-6">
-                {(
-                  [
-                    ['YouTube', site.social.youtube],
-                    ['Instagram', site.social.instagram],
-                    ['LinkedIn', site.social.linkedin],
-                  ] as const
-                ).map(([label, href]) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mono-label border-b border-ink/30 pb-1 transition-colors hover:border-ink"
-                  >
-                    {label}
-                  </a>
-                ))}
               </div>
             </Reveal>
           </div>
@@ -381,19 +383,14 @@ export default function Home() {
                 werkt en wat ik onderweg leer.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                {(
-                  [
-                    ['YouTube', site.social.youtube],
-                    ['Instagram', site.social.instagram],
-                    ['LinkedIn', site.social.linkedin],
-                  ] as const
-                ).map(([label, href]) => (
+                {socialLinks.map(([label, href, color]) => (
                   <a
                     key={label}
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-secondary px-5 py-3"
+                    style={{ color }}
                   >
                     {label} ↗
                   </a>

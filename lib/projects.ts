@@ -14,6 +14,8 @@ export type Project = {
   // MediaSlot: vul `image` of `video` zodra materiaal beschikbaar is.
   image?: string;
   video?: string;
+  // Lange full-page screenshot voor de scrollende preview in het browser-frame.
+  scrollImage?: string;
   featured?: boolean;
 };
 
@@ -34,6 +36,7 @@ export const projects: Project[] = [
     stack: ['Next.js', 'TypeScript', 'Tailwind'],
     url: 'https://finncleaning.nl',
     image: '/images/cases/finclean.jpeg',
+    scrollImage: '/images/cases/finclean-scroll.webp',
     featured: true,
   },
   {
@@ -52,6 +55,7 @@ export const projects: Project[] = [
     stack: ['Next.js', 'Neon Postgres', 'Hexon-koppeling', 'Vercel'],
     url: 'https://www.beekautomotive.nl',
     image: '/images/cases/beek-automotive.jpeg',
+    scrollImage: '/images/cases/beek-automotive-scroll.webp',
     featured: true,
   },
   {

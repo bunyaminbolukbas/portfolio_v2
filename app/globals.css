@@ -54,3 +54,49 @@ html.lenis body {
     @apply w-full border border-ink/20 bg-transparent px-4 py-3.5 text-sm placeholder:text-muted focus:border-ink focus:outline-none transition-colors;
   }
 }
+
+/* Scrollende site-preview in case-frames: lange screenshot scrolt door het
+   browser-frame heen. Desktop: op hover. Touch (geen hover): trage loop. */
+.scroll-preview {
+  position: relative;
+  overflow: hidden;
+}
+.scroll-preview > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transition:
+    top 9s cubic-bezier(0.33, 0, 0.2, 1),
+    transform 9s cubic-bezier(0.33, 0, 0.2, 1);
+}
+@media (hover: hover) {
+  .group:hover .scroll-preview > img {
+    top: 100%;
+    transform: translateY(-100%);
+  }
+}
+@media (hover: none) {
+  .scroll-preview > img {
+    animation: scroll-preview 22s ease-in-out infinite alternate;
+    animation-delay: 1.5s;
+  }
+}
+@keyframes scroll-preview {
+  0%,
+  8% {
+    top: 0;
+    transform: translateY(0);
+  }
+  100% {
+    top: 100%;
+    transform: translateY(-100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-preview > img {
+    animation: none;
+    transition: none;
+  }
+}
