@@ -55,12 +55,6 @@ const processSteps = [
   },
 ];
 
-const socialLinks = [
-  ['YouTube', site.social.youtube, '#FF0000'],
-  ['Instagram', site.social.instagram, '#E1306C'],
-  ['LinkedIn', site.social.linkedin, '#0A66C2'],
-] as const;
-
 const differentiators = [
   { term: 'Business', detail: 'Wat moet dit opleveren?' },
   { term: 'Gebruiker', detail: 'Voor wie bouwen we dit echt?' },
@@ -335,19 +329,10 @@ export default function Home() {
               >
                 Ik ben Bünyamin Bölükbaş.
               </h2>
-              <div className="mt-6 flex gap-6">
-                {socialLinks.map(([label, href, color]) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mono-label border-b pb-1 transition-opacity hover:opacity-70"
-                    style={{ color, borderColor: `${color}66` }}
-                  >
-                    {label}
-                  </a>
-                ))}
+              <div className="mt-6 flex flex-wrap gap-3">
+                <SocialPill platform="youtube" handle="@thebunyaminn" href={site.social.youtube} />
+                <SocialPill platform="instagram" handle="@thebunyaminn" href={site.social.instagram} />
+                <SocialPill platform="linkedin" handle="bunyaminbolukbas" href={site.social.linkedin} />
               </div>
               <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted">
                 <p>
@@ -362,36 +347,14 @@ export default function Home() {
                   met de persoon die je product ontwerpt én bouwt.
                 </p>
               </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 10 — CONTENT / PERSONAL BRAND */}
-      <section aria-labelledby="content-titel" className="border-t border-line">
-        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <p className="mono-label text-muted">Content</p>
-              <h2
-                id="content-titel"
-                className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
-              >
-                Ik bouw software en deel wat ik onderweg leer.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="max-w-xl text-lg leading-relaxed text-muted">
-                Op YouTube en in mijn nieuwsbrief deel ik wat werkt, wat niet
-                werkt en wat ik onderweg leer.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <SocialPill platform="youtube" handle="@thebunyaminn" href={site.social.youtube} />
-                <SocialPill platform="instagram" handle="@thebunyaminn" href={site.social.instagram} />
-                <SocialPill platform="linkedin" handle="bunyaminbolukbas" href={site.social.linkedin} />
-              </div>
-              <div className="mt-8">
-                <NewsletterForm />
+              <div className="mt-10 max-w-xl border-t border-line pt-8">
+                <p className="text-lg leading-relaxed text-muted">
+                  Op YouTube en in mijn nieuwsbrief deel ik wat werkt, wat niet
+                  werkt en wat ik onderweg leer.
+                </p>
+                <div className="mt-6">
+                  <NewsletterForm />
+                </div>
               </div>
             </Reveal>
           </div>
