@@ -16,16 +16,17 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bunyaminbolukbas.com'),
   title: {
-    default: 'thebunyaminn. | Websites, software en AI die je bedrijf vooruithelpen',
+    default: 'Bünyamin Bölükbaş | Digitale systemen die bedrijven slimmer laten werken',
     template: '%s | thebunyaminn.',
   },
   description:
-    'Ik ontwerp en bouw digitale producten voor ondernemers en groeiende bedrijven: premium websites, custom software en AI-automatisering.',
+    'Van probleem naar werkend product: custom software, automatisering, AI en digitale producten voor ondernemers en groeiende bedrijven.',
   openGraph: {
-    title: 'thebunyaminn. | Websites, software en AI die je bedrijf vooruithelpen',
+    title: 'Bünyamin Bölükbaş | Digitale systemen die bedrijven slimmer laten werken',
     description:
-      'Premium websites, custom software en AI-automatisering, ontworpen en gebouwd door Bünyamin Bölükbaş.',
+      'Van probleem naar werkend product: custom software, automatisering, AI en digitale producten, ontworpen en gebouwd door Bünyamin Bölükbaş.',
     locale: 'nl_NL',
     type: 'website',
     siteName: 'thebunyaminn.',
@@ -43,7 +44,30 @@ const personJsonLd = {
   name: 'Bünyamin Bölükbaş',
   alternateName: 'thebunyaminn',
   jobTitle: 'Developer, tech lead en ondernemer',
+  url: 'https://bunyaminbolukbas.com',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Code49',
+  },
   sameAs: [site.social.youtube, site.social.instagram, site.social.linkedin],
+};
+
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'thebunyaminn.',
+  url: 'https://bunyaminbolukbas.com',
+  founder: { '@type': 'Person', name: 'Bünyamin Bölükbaş' },
+  description:
+    'Custom software, automatisering, AI en digitale producten voor ondernemers en groeiende bedrijven.',
+  areaServed: 'NL',
+  knowsAbout: [
+    'Custom software',
+    'Procesautomatisering',
+    'AI-workflows',
+    'Webapplicaties',
+    'Websites',
+  ],
 };
 
 export default function RootLayout({
@@ -64,6 +88,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
         />
         <Analytics />
       </body>

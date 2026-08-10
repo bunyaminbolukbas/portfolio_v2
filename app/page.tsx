@@ -10,24 +10,24 @@ import { site } from '@/lib/site';
 const capabilities = [
   {
     number: '01',
-    title: 'Websites & digital experiences',
+    title: 'Meer omzet',
     description:
-      'Een website die net zo professioneel overkomt als het bedrijf erachter, en bezoekers richting actie beweegt.',
-    items: ['Positionering & structuur', 'Design & development', 'Conversie & meetbaarheid'],
+      'Digitale producten die klanten binnenhalen en vasthouden: van premium websites tot leadflows en klantportalen.',
+    items: ['Websites & positionering', 'Leadflows & conversie', 'Klantportalen'],
   },
   {
     number: '02',
-    title: 'Software & digital products',
+    title: 'Minder handmatig werk',
     description:
-      'Custom platforms, portalen en dashboards, gebouwd rond hoe je bedrijf daadwerkelijk werkt.',
-    items: ['Webapplicaties & portalen', 'Dashboards & interne tooling', 'Koppelingen met je systemen'],
+      'Stop met werk dat software voor je kan uitvoeren. AI en automatiseringen die je operatie efficiënter maken.',
+    items: ['AI-workflows', 'Procesautomatisering', 'Integraties (n8n, API’s)'],
   },
   {
     number: '03',
-    title: 'AI & automation',
+    title: 'Betere systemen',
     description:
-      'Stop met handmatig werk dat software voor je kan uitvoeren. Slimme workflows die je operatie efficiënter maken.',
-    items: ['AI-workflows', 'Procesautomatisering', 'Integraties (n8n, API’s)'],
+      'Custom software, dashboards en platforms, gebouwd rond hoe je bedrijf daadwerkelijk werkt.',
+    items: ['Webapplicaties & platforms', 'Dashboards & interne tooling', 'Technische architectuur'],
   },
 ];
 
@@ -70,17 +70,18 @@ export default function Home() {
       <section className="flex min-h-svh flex-col justify-center pt-16">
         <div className="mx-auto w-full max-w-site px-5 sm:px-8">
           <Reveal>
-            <h1 className="max-w-4xl font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Websites, software en AI die je bedrijf vooruithelpen.
+            <p className="mono-label text-muted">Developer · Tech Lead · Ondernemer</p>
+            <h1 className="mt-6 max-w-4xl font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+              Ik bouw digitale systemen die bedrijven slimmer laten werken.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-              Ik ontwerp en bouw digitale producten voor ondernemers en groeiende
-              bedrijven. Van premium websites tot custom software en slimme
-              automatisering: technologie, design en business in één hand.
+              Van probleem naar werkend product. Ik combineer business, design en
+              development — van interne tools en automatiseringen tot digitale
+              producten die klanten opleveren.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link href="/start" className="btn-primary">
-                Start een project
+                Bespreek een idee
               </Link>
               <Link href="/werk" className="btn-secondary">
                 Bekijk mijn werk
@@ -94,25 +95,23 @@ export default function Home() {
       <section aria-labelledby="visie-titel" className="border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
-            <p className="mono-label text-muted">Waar ik in geloof</p>
+            <p className="mono-label text-muted">Hoe ik denk</p>
             <h2
               id="visie-titel"
               className="mt-6 max-w-4xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
             >
-              Je bedrijf heeft niet méér software nodig. Het heeft{' '}
-              <em className="not-italic underline decoration-1 underline-offset-8">betere</em>{' '}
-              software nodig.
+              Ik begin niet bij technologie. Ik begin bij het{' '}
+              <em className="not-italic underline decoration-1 underline-offset-8">probleem</em>.
             </h2>
             <div className="mt-10 max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
               <p>
-                Veel bedrijven hebben een website die technisch werkt, maar niet
-                uitstraalt hoe goed het bedrijf werkelijk is. Dat kost vertrouwen.
-                En dus aanvragen.
+                Soms is een website de oplossing. Soms een automatisering, soms
+                custom software. En soms hoef je helemaal niets te bouwen.
               </p>
               <p>
-                Hetzelfde geldt intern: processen vol handmatige stappen die
-                software allang zou kunnen overnemen. Ik bouw digitale producten
-                die je positionering versterken én je operatie versimpelen.
+                Daarom begint elk traject met begrijpen wat je bedrijf
+                daadwerkelijk nodig heeft. Je krijgt een eerlijk antwoord, ook
+                als dat betekent dat je mij niet nodig hebt.
               </p>
             </div>
           </Reveal>
@@ -123,12 +122,12 @@ export default function Home() {
       <section aria-labelledby="capabilities-titel" className="border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
-            <p className="mono-label text-muted">Wat ik doe</p>
+            <p className="mono-label text-muted">Wat ik oplos</p>
             <h2
               id="capabilities-titel"
               className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
             >
-              Drie dingen. Goed.
+              Drie soorten problemen.
             </h2>
           </Reveal>
           <div className="mt-14">
@@ -151,6 +150,11 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+          <Reveal className="mt-10">
+            <p className="mono-label text-muted">
+              Hiervoor gebruik ik o.a. Next.js, TypeScript, Supabase, n8n en AI/LLM’s.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -190,6 +194,12 @@ export default function Home() {
                         <div>
                           <dt className="mono-label text-muted">Oplossing</dt>
                           <dd className="mt-2 leading-relaxed">{project.solution}</dd>
+                        </div>
+                      )}
+                      {project.result && (
+                        <div>
+                          <dt className="mono-label text-muted">Resultaat</dt>
+                          <dd className="mt-2 leading-relaxed">{project.result}</dd>
                         </div>
                       )}
                       {project.role && (
@@ -317,13 +327,15 @@ export default function Home() {
               </h2>
               <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted">
                 <p>
-                  Developer, tech lead en ondernemer. Ik bouw digitale producten,
-                  stuur softwareteams aan en help bedrijven om ideeën en
-                  operationele problemen te vertalen naar werkende technologie.
+                  Developer, tech lead en ondernemer. Ik werk als Tech Lead bij
+                  Code49, het bedrijf van Tibor Olgers, waar ik aan OS49 bouw:
+                  architectuur, development en het aansturen van het
+                  developmentteam.
                 </p>
                 <p>
-                  Geen bureau met lagen ertussen: je werkt direct met de persoon
-                  die je product ontwerpt én bouwt.
+                  Daarnaast bouw ik zelfstandig digitale producten voor
+                  ondernemers. Geen bureau met lagen ertussen: je werkt direct
+                  met de persoon die je product ontwerpt én bouwt.
                 </p>
               </div>
               <div className="mt-8 flex gap-6">
@@ -365,7 +377,8 @@ export default function Home() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="max-w-xl text-lg leading-relaxed text-muted">
-                Volg mee, of schrijf je in en blijf per mail op de hoogte.
+                Op YouTube en in mijn nieuwsbrief deel ik wat werkt, wat niet
+                werkt en wat ik onderweg leer.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {(
@@ -407,8 +420,8 @@ export default function Home() {
                 Heb je iets dat gebouwd moet worden?
               </h2>
               <p className="mt-6 max-w-md text-lg leading-relaxed text-paper/70">
-                Vertel me waar je aan werkt. Je krijgt een eerlijk antwoord over
-                de beste aanpak, ook als dat betekent dat je mij niet nodig hebt.
+                Vertel me waar je aan werkt, dan hoor je welke aanpak ik zou
+                kiezen.
               </p>
               <p className="mt-8 text-sm text-paper/60">
                 Liever direct praten?{' '}

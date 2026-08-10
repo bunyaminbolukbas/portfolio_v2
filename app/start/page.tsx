@@ -4,7 +4,7 @@ import { ProjectForm } from '@/components/site/ProjectForm';
 import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Start een project',
+  title: 'Bespreek een idee',
   description:
     'Vertel waar je aan werkt: een website, custom software of automatisering. Je krijgt een eerlijk advies over de beste aanpak.',
 };
@@ -15,7 +15,7 @@ export default function Start() {
       <section className="mx-auto max-w-site px-5 py-20 sm:px-8 sm:py-28">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <p className="mono-label text-muted">Start een project</p>
+            <p className="mono-label text-muted">Bespreek een idee</p>
             <h1 className="mt-6 font-display text-4xl font-medium leading-tight tracking-tight sm:text-5xl">
               Vertel me waar je aan werkt.
             </h1>

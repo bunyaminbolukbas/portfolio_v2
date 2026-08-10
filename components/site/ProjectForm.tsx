@@ -126,7 +126,7 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
           disabled={status === 'sending'}
           className={`${dark ? 'btn-primary-inverted' : 'btn-primary'} w-full disabled:opacity-60 sm:w-auto`}
         >
-          {status === 'sending' ? 'Versturen…' : 'Start een project'}
+          {status === 'sending' ? 'Versturen…' : 'Verstuur'}
         </button>
         {status === 'error' ? (
           <p className={`mt-3 text-sm ${dark ? 'text-paper/70' : 'text-muted'}`}>

@@ -7,6 +7,7 @@ export type Project = {
   summary: string;
   problem?: string;
   solution?: string;
+  result?: string;
   role?: string;
   stack: string[];
   url?: string;
@@ -27,6 +28,8 @@ export const projects: Project[] = [
       'FinClean richt zich op VvE’s en vastgoedbeheerders: een doelgroep die professionaliteit verwacht voordat ze een aanvraag doet.',
     solution:
       'Een strakke bedrijfswebsite met een offerte-tool waarin bezoekers pandtype, frequentie, oppervlakte en diensten kiezen en direct hun aanvraag versturen.',
+    result:
+      'Bezoekers stellen hun offerte-aanvraag zelf samen; aanvragen komen volledig gekwalificeerd binnen in plaats van als los telefoontje.',
     role: 'Ontwerp en development, van eerste opzet tot livegang',
     stack: ['Next.js', 'TypeScript', 'Tailwind'],
     url: 'https://finncleaning.nl',
@@ -43,6 +46,8 @@ export const projects: Project[] = [
       'De voorraad op de website handmatig bijhouden kost tijd en loopt altijd achter op het dealersysteem.',
     solution:
       'Een showroom-website waarvan de occasionvoorraad automatisch wordt gevoed vanuit het dealersysteem, inclusief automatische opschoning en contactafhandeling.',
+    result:
+      'Dubbel voorraadbeheer verdween: het dealersysteem is de enige bron en de website loopt er automatisch mee.',
     role: 'Ontwerp, development en integraties',
     stack: ['Next.js', 'Neon Postgres', 'Hexon-koppeling', 'Vercel'],
     url: 'https://www.beekautomotive.nl',
@@ -59,30 +64,6 @@ export const projects: Project[] = [
       'Een boekingsflow waarin klanten zaal, datum, catering en pakketten kiezen en direct betalen, naast een ledenapp voor de community.',
     role: 'Product, design en development',
     stack: ['React', 'TypeScript', 'Supabase', 'Firebase'],
-  },
-  {
-    slug: 'operations-grid',
-    name: 'Operations Grid',
-    category: 'Eigen product / Software',
-    summary:
-      'Whiteboard-tool waarmee bedrijven hun waardeketen visualiseren: processen, SOP’s, KPI’s en taken op één canvas, met AI-procesanalyse.',
-    stack: ['React', 'TypeScript', 'Supabase'],
-  },
-  {
-    slug: 'highground',
-    name: 'Highground',
-    category: 'Eigen product / Software',
-    summary:
-      'Platform voor medewerkersprestaties: dagelijkse taken, puntensysteem, metrics en 360°-feedback, met een AI-consultant.',
-    stack: ['React', 'TypeScript', 'Supabase'],
-  },
-  {
-    slug: 'personal-intel',
-    name: 'Personal Intel',
-    category: 'Eigen product / AI',
-    summary:
-      'AI-assessmentplatform: gebruikers doorlopen scenario-simulaties in tekst of live spraak en krijgen een persoonlijk coachingsrapport.',
-    stack: ['AI', 'NestJS', 'React'],
   },
 ];
 

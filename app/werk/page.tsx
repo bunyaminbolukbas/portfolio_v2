@@ -55,7 +55,7 @@ export default function Werk() {
               Hier kan jouw project staan.
             </h2>
             <Link href="/start" className="btn-primary">
-              Start een project
+              Bespreek een idee
             </Link>
           </div>
         </Reveal>

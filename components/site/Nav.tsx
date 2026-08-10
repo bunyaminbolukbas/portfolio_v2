@@ -48,7 +48,7 @@ export function Nav() {
             href="/start"
             className="bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-ink/85"
           >
-            Start een project
+            Bespreek een idee
           </Link>
         </div>
 
@@ -82,7 +82,7 @@ export function Nav() {
               className="btn-primary mt-2 w-full"
               onClick={() => setOpen(false)}
             >
-              Start een project
+              Bespreek een idee
             </Link>
           </div>
         </div>

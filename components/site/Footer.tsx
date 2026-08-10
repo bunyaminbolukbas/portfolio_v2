@@ -18,7 +18,7 @@ export function Footer() {
 
           <div className="grid grid-cols-2 gap-10 sm:gap-20">
             <nav aria-label="Footer" className="flex flex-col gap-3 text-sm">
-              <span className="mono-label text-paper/40">Navigatie</span>
+              <span className="mono-label text-paper/60">Navigatie</span>
               <Link href="/werk" className="text-paper/70 transition-colors hover:text-paper">
                 Werk
               </Link>
@@ -26,12 +26,12 @@ export function Footer() {
                 Werkwijze
               </Link>
               <Link href="/start" className="text-paper/70 transition-colors hover:text-paper">
-                Start een project
+                Bespreek een idee
               </Link>
             </nav>
 
             <div className="flex flex-col gap-3 text-sm">
-              <span className="mono-label text-paper/40">Volg</span>
+              <span className="mono-label text-paper/60">Volg</span>
               <a
                 href={site.social.youtube}
                 target="_blank"
