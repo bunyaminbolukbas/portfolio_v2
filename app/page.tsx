@@ -360,12 +360,11 @@ export default function Home() {
                 id="content-titel"
                 className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
               >
-                Ik bouw. Ik leer. Ik deel.
+                Ik bouw software en deel wat ik onderweg leer.
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="max-w-xl text-lg leading-relaxed text-muted">
-                Over software bouwen, ondernemen en alles wat ik onderweg leer.
                 Volg mee, of schrijf je in en blijf per mail op de hoogte.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
