@@ -3,6 +3,7 @@ import { Reveal } from '@/components/site/Reveal';
 import { MediaSlot } from '@/components/site/MediaSlot';
 import { ProjectForm } from '@/components/site/ProjectForm';
 import { NewsletterForm } from '@/components/site/NewsletterForm';
+import { SocialPill } from '@/components/site/SocialPill';
 import { Testimonials } from '@/components/site/Testimonials';
 import { featuredProjects } from '@/lib/projects';
 import { site } from '@/lib/site';
@@ -82,7 +83,7 @@ export default function Home() {
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
               Van probleem naar werkend product. Ik combineer business, design en
-              development — van interne tools en automatiseringen tot digitale
+              development: van interne tools en automatiseringen tot digitale
               producten die klanten opleveren.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -101,24 +102,26 @@ export default function Home() {
       <section aria-labelledby="visie-titel" className="border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
-            <p className="mono-label text-muted">Hoe ik denk</p>
-            <h2
-              id="visie-titel"
-              className="mt-6 max-w-4xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
-            >
-              Ik begin niet bij technologie. Ik begin bij het{' '}
-              <em className="not-italic underline decoration-1 underline-offset-8">probleem</em>.
-            </h2>
-            <div className="ml-auto mt-10 max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
-              <p>
-                Soms is een website de oplossing. Soms een automatisering, soms
-                custom software. En soms hoef je helemaal niets te bouwen.
-              </p>
-              <p>
-                Daarom begint elk traject met begrijpen wat je bedrijf
-                daadwerkelijk nodig heeft. Je krijgt een eerlijk antwoord, ook
-                als dat betekent dat je mij niet nodig hebt.
-              </p>
+            <div className="ml-auto max-w-3xl">
+              <p className="mono-label text-muted">Hoe ik denk</p>
+              <h2
+                id="visie-titel"
+                className="mt-6 font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
+              >
+                Ik begin niet bij technologie. Ik begin bij het{' '}
+                <em className="not-italic underline decoration-1 underline-offset-8">probleem</em>.
+              </h2>
+              <div className="mt-10 max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
+                <p>
+                  Soms is een website de oplossing. Soms een automatisering, soms
+                  custom software. En soms hoef je helemaal niets te bouwen.
+                </p>
+                <p>
+                  Daarom begint elk traject met begrijpen wat je bedrijf
+                  daadwerkelijk nodig heeft. Je krijgt een eerlijk antwoord, ook
+                  als dat betekent dat je mij niet nodig hebt.
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -383,18 +386,9 @@ export default function Home() {
                 werkt en wat ik onderweg leer.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                {socialLinks.map(([label, href, color]) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-secondary px-5 py-3"
-                    style={{ color }}
-                  >
-                    {label} ↗
-                  </a>
-                ))}
+                <SocialPill platform="youtube" handle="@thebunyaminn" href={site.social.youtube} />
+                <SocialPill platform="instagram" handle="@thebunyaminn" href={site.social.instagram} />
+                <SocialPill platform="linkedin" handle="bunyaminbolukbas" href={site.social.linkedin} />
               </div>
               <div className="mt-8">
                 <NewsletterForm />

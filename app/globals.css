@@ -55,8 +55,8 @@ html.lenis body {
   }
 }
 
-/* Scrollende site-preview in case-frames: lange screenshot scrolt door het
-   browser-frame heen. Desktop: op hover. Touch (geen hover): trage loop. */
+/* Scrollende site-preview in case-frames: lange screenshot loopt vanzelf
+   rustig van boven naar beneden door het browser-frame en weer terug. */
 .scroll-preview {
   position: relative;
   overflow: hidden;
@@ -67,28 +67,16 @@ html.lenis body {
   left: 0;
   width: 100%;
   height: auto;
-  transition:
-    top 9s cubic-bezier(0.33, 0, 0.2, 1),
-    transform 9s cubic-bezier(0.33, 0, 0.2, 1);
-}
-@media (hover: hover) {
-  .group:hover .scroll-preview > img {
-    top: 100%;
-    transform: translateY(-100%);
-  }
-}
-@media (hover: none) {
-  .scroll-preview > img {
-    animation: scroll-preview 22s ease-in-out infinite alternate;
-    animation-delay: 1.5s;
-  }
+  animation: scroll-preview 40s ease-in-out infinite alternate;
+  animation-delay: 1s;
 }
 @keyframes scroll-preview {
   0%,
-  8% {
+  4% {
     top: 0;
     transform: translateY(0);
   }
+  96%,
   100% {
     top: 100%;
     transform: translateY(-100%);
@@ -97,6 +85,5 @@ html.lenis body {
 @media (prefers-reduced-motion: reduce) {
   .scroll-preview > img {
     animation: none;
-    transition: none;
   }
 }
