@@ -61,6 +61,7 @@ export const projects: Project[] = [
       '/images/cases/beek-slide-1.webp',
       '/images/cases/beek-slide-2.webp',
       '/images/cases/beek-slide-3.webp',
+      '/images/cases/beek-slide-4.webp',
     ],
     featured: true,
   },

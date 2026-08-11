@@ -26,7 +26,7 @@ export function MediaSlot({
   image?: string;
   /** Lange full-page screenshot die vanzelf door het frame scrolt. */
   scrollImage?: string;
-  /** Pagina-captures die als slideshow crossfaden (timing: 3 slides). */
+  /** Pagina-captures die als slideshow crossfaden (timing: 4 slides). */
   slideImages?: string[];
   alt?: string;
   chromeUrl?: string;

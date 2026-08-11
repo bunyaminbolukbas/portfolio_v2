@@ -89,7 +89,7 @@ html.lenis body {
 }
 
 /* Pagina-slideshow in case-frames: crossfade langs meerdere schermen,
-   alsof je door de site klikt. Timing is afgestemd op 3 slides (12s cyclus). */
+   alsof je door de site klikt. Timing is afgestemd op 4 slides (16s cyclus). */
 .slide-preview {
   position: relative;
   overflow: hidden;
@@ -101,17 +101,17 @@ html.lenis body {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  animation: slide-preview 12s ease-in-out infinite;
+  animation: slide-preview 16s ease-in-out infinite;
 }
 @keyframes slide-preview {
   0% {
     opacity: 0;
   }
-  7%,
-  33% {
+  5%,
+  25% {
     opacity: 1;
   }
-  41%,
+  31%,
   100% {
     opacity: 0;
   }
