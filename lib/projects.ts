@@ -16,6 +16,8 @@ export type Project = {
   video?: string;
   // Lange full-page screenshot voor de scrollende preview in het browser-frame.
   scrollImage?: string;
+  // Pagina-captures die als slideshow door het browser-frame crossfaden.
+  slideImages?: string[];
   featured?: boolean;
 };
 
@@ -55,7 +57,11 @@ export const projects: Project[] = [
     stack: ['Next.js', 'Neon Postgres', 'Hexon-koppeling', 'Vercel'],
     url: 'https://www.beekautomotive.nl',
     image: '/images/cases/beek-automotive.jpeg',
-    scrollImage: '/images/cases/beek-automotive-scroll.webp',
+    slideImages: [
+      '/images/cases/beek-slide-1.webp',
+      '/images/cases/beek-slide-2.webp',
+      '/images/cases/beek-slide-3.webp',
+    ],
     featured: true,
   },
   {

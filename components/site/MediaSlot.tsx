@@ -14,6 +14,7 @@ export function MediaSlot({
   poster,
   image,
   scrollImage,
+  slideImages,
   alt = '',
   chromeUrl,
   fallbackText,
@@ -23,15 +24,17 @@ export function MediaSlot({
   video?: string;
   poster?: string;
   image?: string;
-  /** Lange full-page screenshot die op hover door het frame scrolt. */
+  /** Lange full-page screenshot die vanzelf door het frame scrolt. */
   scrollImage?: string;
+  /** Pagina-captures die als slideshow crossfaden (timing: 3 slides). */
+  slideImages?: string[];
   alt?: string;
   chromeUrl?: string;
   fallbackText?: string;
   fallbackMeta?: string;
   className?: string;
 }) {
-  const hasMedia = Boolean(video || image || scrollImage);
+  const hasMedia = Boolean(video || image || scrollImage || slideImages);
 
   if (hasMedia && chromeUrl) {
     return (
@@ -44,7 +47,20 @@ export function MediaSlot({
             <span className="mono-label ml-3 text-paper/50">{chromeUrl}</span>
           </div>
           <div className="overflow-hidden">
-            {scrollImage ? (
+            {slideImages ? (
+              <div className="slide-preview aspect-[16/10]">
+                {slideImages.map((src, i) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={src}
+                    src={src}
+                    alt={alt}
+                    loading="lazy"
+                    style={{ animationDelay: `${i * 4}s` }}
+                  />
+                ))}
+              </div>
+            ) : scrollImage ? (
               <div className="scroll-preview aspect-[16/10]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={scrollImage} alt={alt} loading="lazy" />

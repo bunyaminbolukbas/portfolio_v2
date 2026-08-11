@@ -172,6 +172,7 @@ export default function Home() {
                     image={project.image}
                     video={project.video}
                     scrollImage={project.scrollImage}
+                    slideImages={project.slideImages}
                     alt={`Website van ${project.name}`}
                     chromeUrl={project.url?.replace(/^https?:\/\//, '')}
                     fallbackText={project.name}

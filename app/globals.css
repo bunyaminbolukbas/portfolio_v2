@@ -87,3 +87,40 @@ html.lenis body {
     animation: none;
   }
 }
+
+/* Pagina-slideshow in case-frames: crossfade langs meerdere schermen,
+   alsof je door de site klikt. Timing is afgestemd op 3 slides (12s cyclus). */
+.slide-preview {
+  position: relative;
+  overflow: hidden;
+}
+.slide-preview > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: slide-preview 12s ease-in-out infinite;
+}
+@keyframes slide-preview {
+  0% {
+    opacity: 0;
+  }
+  7%,
+  33% {
+    opacity: 1;
+  }
+  41%,
+  100% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide-preview > img {
+    animation: none;
+  }
+  .slide-preview > img:first-child {
+    opacity: 1;
+  }
+}
