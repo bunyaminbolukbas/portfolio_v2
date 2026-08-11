@@ -325,8 +325,8 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal>
               <MediaSlot
-                video="/videos/over-mij.mp4"
-                poster="/videos/over-mij-poster.jpg"
+                image="/images/bunyamin-portret-strak.webp"
+                alt="Bünyamin Bölükbaş"
                 className="aspect-[4/5] max-w-md"
               />
             </Reveal>
