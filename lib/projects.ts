@@ -19,6 +19,8 @@ export type Project = {
   // Pagina-captures die als slideshow door het browser-frame crossfaden.
   slideImages?: { src: string; alt: string }[];
   featured?: boolean;
+  // Welk klantprobleem deze case bewijst (meer klanten / meer omzet / automatiseren).
+  proves?: string;
 };
 
 export const projects: Project[] = [
@@ -40,6 +42,7 @@ export const projects: Project[] = [
     image: '/images/cases/finclean.jpeg',
     scrollImage: '/images/cases/finclean-scroll.webp',
     featured: true,
+    proves: 'Meer omzet',
   },
   {
     slug: 'beek-automotive',
@@ -64,6 +67,7 @@ export const projects: Project[] = [
       { src: '/images/cases/beek-slide-4.webp', alt: 'Servicepagina van Beek Automotive' },
     ],
     featured: true,
+    proves: 'Meer klanten & automatiseren',
   },
   {
     slug: 'club49',

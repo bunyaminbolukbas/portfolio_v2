@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { AccentUnderline } from '@/components/site/AccentUnderline';
 import { Reveal } from '@/components/site/Reveal';
 import { MediaSlot } from '@/components/site/MediaSlot';
+import { MotionVideo } from '@/components/site/MotionVideo';
 import { ProjectForm } from '@/components/site/ProjectForm';
 import { NewsletterForm } from '@/components/site/NewsletterForm';
 import { SocialPill } from '@/components/site/SocialPill';
@@ -9,24 +10,33 @@ import { Testimonials } from '@/components/site/Testimonials';
 import { featuredProjects } from '@/lib/projects';
 import { site } from '@/lib/site';
 
-const capabilities = [
+// De propositie: elke ondernemer wil een van deze drie uitkomsten.
+const outcomes = [
   {
+    id: 'meer-klanten',
+    title: 'Meer klanten',
+    hook: 'Je wilt gevonden worden en meer aanvragen binnenkrijgen.',
+    build:
+      'Premium websites, scherpe positionering en leadflows die bezoekers omzetten in aanvragen.',
+    items: ['Websites & positionering', 'Leadflows & conversie', 'Vindbaarheid & merk'],
+    proof: 'Beek Automotive: nieuw merk, meer leads via de site',
+  },
+  {
+    id: 'meer-omzet',
     title: 'Meer omzet',
-    description:
-      'Digitale producten die klanten binnenhalen en vasthouden: van premium websites tot leadflows en klantportalen.',
-    items: ['Websites & positionering', 'Leadflows & conversie', 'Klantportalen'],
+    hook: 'Je wilt meer halen uit de bezoekers en klanten die je al hebt.',
+    build:
+      'Offerte- en boekingstools, klantportalen en conversie-optimalisatie die van interesse omzet maken.',
+    items: ['Offerte- & boekingstools', 'Klantportalen', 'Conversie-optimalisatie'],
+    proof: 'FinClean: aanvragen komen volledig gekwalificeerd binnen',
   },
   {
+    id: 'minder-handmatig-werk',
     title: 'Minder handmatig werk',
-    description:
-      'Stop met werk dat software voor je kan uitvoeren. AI en automatiseringen die je operatie efficiënter maken.',
+    hook: 'Je wilt uren terug die nu in repeterend werk gaan zitten.',
+    build: 'AI-workflows, integraties en custom software die het werk van je overnemen.',
     items: ['AI-workflows', 'Procesautomatisering', 'Integraties (n8n, API’s)'],
-  },
-  {
-    title: 'Betere systemen',
-    description:
-      'Custom software, dashboards en platforms, gebouwd rond hoe je bedrijf daadwerkelijk werkt.',
-    items: ['Webapplicaties & platforms', 'Dashboards & interne tooling', 'Technische architectuur'],
+    proof: 'Beek Automotive: voorraad loopt automatisch mee via Hexon',
   },
 ];
 
@@ -63,29 +73,43 @@ const differentiators = [
 export default function Home() {
   return (
     <>
-      {/* 01 — HERO */}
+      {/* 01 — HERO: de propositie als vraag */}
       <section className="relative flex min-h-svh flex-col justify-center pt-16">
         <div className="mx-auto w-full max-w-site px-5 sm:px-8">
           <Reveal>
-            <h1 className="max-w-4xl font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Ik bouw digitale systemen die bedrijven{' '}
+            <h1 className="max-w-4xl font-display text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
               <span className="underline decoration-accent decoration-[3px] underline-offset-8">
-                slimmer
+                Wat wil je?
               </span>{' '}
-              laten werken.
+              Meer klanten, meer omzet of minder handmatig werk?
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-              Van probleem naar werkend product. Ik combineer business, design en
-              development: van interne tools en automatiseringen tot digitale
-              producten die klanten opleveren.
+              Drie uitkomsten, één aanpak. Ik ontwerp en bouw wat daarvoor nodig
+              is — van premium website tot automatisering.
             </p>
+            <div className="mt-10 max-w-2xl">
+              {outcomes.map((outcome, index) => (
+                <a
+                  key={outcome.id}
+                  href={`#${outcome.id}`}
+                  className="group flex items-baseline gap-5 border-t border-line py-4 transition-colors last:border-b hover:text-accent"
+                >
+                  <span className="mono-label text-muted">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="font-display text-xl font-medium tracking-tight sm:text-2xl">
+                    {outcome.title}
+                  </span>
+                  <span aria-hidden className="ml-auto transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </a>
+              ))}
+            </div>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link href="/start" className="btn-primary">
-                Bespreek een idee
+                Vertel wat je wilt bereiken
               </Link>
-              <a href="#werk" className="btn-secondary">
-                Bekijk mijn werk
-              </a>
             </div>
           </Reveal>
         </div>
@@ -104,63 +128,104 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 03 — PROBLEEM / VISIE */}
-      <section aria-labelledby="visie-titel" className="border-t border-line">
+      {/* 02 — WIE: vertrouwen vóór het bewijs */}
+      <section aria-labelledby="over-titel" className="border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
-          <Reveal>
-            <div className="ml-auto max-w-3xl">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <Reveal>
+              <MediaSlot
+                image="/images/bunyamin-portret-strak.webp"
+                alt="Bünyamin Bölükbaş"
+                className="aspect-[4/5] max-w-md"
+              />
+            </Reveal>
+            <Reveal delay={0.1}>
               <h2
-                id="visie-titel"
-                className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
+                id="over-titel"
+                className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
               >
-                Ik begin niet bij technologie. Ik begin bij het{' '}
-                <em className="not-italic">
-                  <AccentUnderline>probleem</AccentUnderline>
-                </em>
-                .
+                Ik ben Bünyamin Bölükbaş.
               </h2>
-              <div className="mt-10 max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
+              <div className="mt-6 flex flex-wrap gap-3">
+                <SocialPill platform="youtube" handle="@thebunyaminn" href={site.social.youtube} />
+                <SocialPill platform="instagram" handle="@thebunyaminn" href={site.social.instagram} />
+                <SocialPill platform="linkedin" handle="bunyaminbolukbas" href={site.social.linkedin} />
+              </div>
+              <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted">
                 <p>
-                  Soms is een website de oplossing. Soms een automatisering, soms
-                  custom software. En soms hoef je helemaal niets te bouwen.
+                  Developer, tech lead en ondernemer. Ik werk als Tech Lead bij
+                  Code49, het bedrijf van Tibor Olgers, waar ik aan OS49 bouw:
+                  architectuur, development en het aansturen van het
+                  developmentteam.
                 </p>
                 <p>
-                  Daarom begint elk traject met begrijpen wat je bedrijf
-                  daadwerkelijk nodig heeft. Je krijgt een eerlijk antwoord, ook
-                  als dat betekent dat je mij niet nodig hebt.
+                  Daarnaast bouw ik zelfstandig digitale producten voor
+                  ondernemers. Geen bureau met lagen ertussen: je werkt direct
+                  met de persoon die je product ontwerpt én bouwt.
                 </p>
               </div>
-            </div>
-          </Reveal>
+              <div className="mt-10 max-w-xl border-t border-line pt-8">
+                <p className="text-lg leading-relaxed text-muted">
+                  Op YouTube en in mijn nieuwsbrief deel ik wat werkt, wat niet
+                  werkt en wat ik onderweg leer.
+                </p>
+                <div className="mt-6">
+                  <NewsletterForm />
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* 04 — CAPABILITIES */}
-      <section aria-labelledby="capabilities-titel" className="border-t border-line">
+      {/* 03 — DE DRIE UITKOMSTEN */}
+      <section aria-labelledby="uitkomsten-titel" className="border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
             <h2
-              id="capabilities-titel"
+              id="uitkomsten-titel"
               className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
             >
-              Drie soorten problemen.
+              Drie <AccentUnderline>uitkomsten</AccentUnderline>. Dat is wat ik verkoop.
             </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+              Soms is een website de oplossing, soms een automatisering — en
+              soms hoef je niets te bouwen. Je krijgt een eerlijk antwoord, ook
+              als dat betekent dat je mij niet nodig hebt.
+            </p>
           </Reveal>
           <div className="mt-14">
-            {capabilities.map((cap) => (
-              <Reveal key={cap.title}>
-                <div className="grid gap-6 border-t border-line py-10 sm:grid-cols-12 sm:gap-8">
-                  <h3 className="font-display text-2xl font-medium tracking-tight sm:col-span-5 sm:text-3xl">
-                    {cap.title}
+            {outcomes.map((outcome) => (
+              <Reveal key={outcome.id}>
+                <div
+                  id={outcome.id}
+                  className="grid scroll-mt-16 gap-6 border-t border-line py-10 sm:grid-cols-12 sm:gap-8"
+                >
+                  <h3 className="font-display text-2xl font-medium tracking-tight sm:col-span-4 sm:text-3xl">
+                    {outcome.title}
                   </h3>
-                  <p className="leading-relaxed text-muted sm:col-span-5">{cap.description}</p>
-                  <ul className="space-y-2 sm:col-span-2">
-                    {cap.items.map((item) => (
-                      <li key={item} className="mono-label text-muted">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="sm:col-span-5">
+                    <p className="leading-relaxed">{outcome.hook}</p>
+                    <p className="mt-3 leading-relaxed text-muted">{outcome.build}</p>
+                  </div>
+                  <div className="sm:col-span-3">
+                    <ul className="space-y-2">
+                      {outcome.items.map((item) => (
+                        <li key={item} className="mono-label text-muted">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-4 text-sm leading-relaxed text-muted">
+                      {outcome.proof} —{' '}
+                      <a
+                        href="#werk"
+                        className="underline underline-offset-4 transition-colors hover:text-accent"
+                      >
+                        bekijk de case
+                      </a>
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -173,7 +238,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 05 — FEATURED WORK */}
+      {/* 04 — BEWIJS: featured cases */}
       <section id="werk" aria-labelledby="werk-titel" className="scroll-mt-16 border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
@@ -202,7 +267,9 @@ export default function Home() {
                     }`}
                   />
                   <div>
-                    <p className="mono-label text-muted">{project.category}</p>
+                    <p className="mono-label text-muted">
+                      {project.proves ? `${project.proves} — ${project.category}` : project.category}
+                    </p>
                     <h3 className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl">
                       {project.name}
                     </h3>
@@ -254,24 +321,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 06 — DIFFERENTIATOR */}
+      {/* 05 — DIFFERENTIATOR + AAN HET WERK */}
       <section aria-labelledby="aanpak-titel" className="bg-ink text-paper">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
-          <Reveal>
-            <h2
-              id="aanpak-titel"
-              className="max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
-            >
-              Ik bouw niet alleen wat je vraagt.
-            </h2>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-paper/70">
-              Goede software begint niet bij code, maar bij begrijpen wat je
-              bedrijf nodig heeft. Ik werkte als developer en tech lead in
-              softwareteams en bouw nu producten voor ondernemers. Ik denk dus
-              mee over meer dan techniek alleen, en neem ownership over het
-              eindresultaat.
-            </p>
-          </Reveal>
+          <div className="grid gap-12 lg:grid-cols-[1fr_18rem] lg:gap-20">
+            <Reveal>
+              <h2
+                id="aanpak-titel"
+                className="max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
+              >
+                Ik bouw niet alleen wat je vraagt.
+              </h2>
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-paper/70">
+                Goede software begint niet bij code, maar bij begrijpen wat je
+                bedrijf nodig heeft. Ik werkte als developer en tech lead in
+                softwareteams en bouw nu producten voor ondernemers. Ik denk dus
+                mee over meer dan techniek alleen, en neem ownership over het
+                eindresultaat.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1} className="lg:justify-self-end">
+              <div className="relative aspect-[4/5] w-56 overflow-hidden sm:w-64">
+                <MotionVideo
+                  src="/videos/over-mij.mp4"
+                  poster="/videos/over-mij-poster.jpg"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+              <p className="mono-label mt-3 text-paper/70">Aan het werk</p>
+            </Reveal>
+          </div>
           <div className="mt-16 grid gap-px bg-line-dark sm:grid-cols-2 lg:grid-cols-4">
             {differentiators.map((item) => (
               <Reveal key={item.term} className="bg-ink p-8">
@@ -283,10 +362,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 07 — SOCIAL PROOF (verschijnt zodra er echte testimonials zijn) */}
+      {/* 06 — SOCIAL PROOF (verschijnt zodra er echte testimonials zijn) */}
       <Testimonials />
 
-      {/* 08 — PROCES */}
+      {/* 07 — PROCES */}
       <section aria-labelledby="proces-titel" className="border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
@@ -319,57 +398,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 09 — ABOUT / PERSONAL BRAND */}
-      <section aria-labelledby="over-titel" className="border-t border-line">
-        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <MediaSlot
-                image="/images/bunyamin-portret-strak.webp"
-                alt="Bünyamin Bölükbaş"
-                className="aspect-[4/5] max-w-md"
-              />
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2
-                id="over-titel"
-                className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
-              >
-                Ik ben Bünyamin Bölükbaş.
-              </h2>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <SocialPill platform="youtube" handle="@thebunyaminn" href={site.social.youtube} />
-                <SocialPill platform="instagram" handle="@thebunyaminn" href={site.social.instagram} />
-                <SocialPill platform="linkedin" handle="bunyaminbolukbas" href={site.social.linkedin} />
-              </div>
-              <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted">
-                <p>
-                  Developer, tech lead en ondernemer. Ik werk als Tech Lead bij
-                  Code49, het bedrijf van Tibor Olgers, waar ik aan OS49 bouw:
-                  architectuur, development en het aansturen van het
-                  developmentteam.
-                </p>
-                <p>
-                  Daarnaast bouw ik zelfstandig digitale producten voor
-                  ondernemers. Geen bureau met lagen ertussen: je werkt direct
-                  met de persoon die je product ontwerpt én bouwt.
-                </p>
-              </div>
-              <div className="mt-10 max-w-xl border-t border-line pt-8">
-                <p className="text-lg leading-relaxed text-muted">
-                  Op YouTube en in mijn nieuwsbrief deel ik wat werkt, wat niet
-                  werkt en wat ik onderweg leer.
-                </p>
-                <div className="mt-6">
-                  <NewsletterForm />
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 11 — FINAL CTA */}
+      {/* 08 — FINAL CTA: de vraag uit de hero komt terug */}
       <section aria-labelledby="cta-titel" className="bg-ink text-paper">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
@@ -378,11 +407,11 @@ export default function Home() {
                 id="cta-titel"
                 className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
               >
-                Heb je iets dat gebouwd moet worden?
+                Meer klanten, meer omzet of minder handmatig werk?
               </h2>
               <p className="mt-6 max-w-md text-lg leading-relaxed text-paper/70">
-                Vertel me waar je aan werkt, dan hoor je welke aanpak ik zou
-                kiezen.
+                Vertel me waar je aan werkt en wat je wilt bereiken, dan hoor je
+                welke aanpak ik zou kiezen.
               </p>
               <p className="mt-8 text-sm text-paper/60">
                 Liever direct praten?{' '}
