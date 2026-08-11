@@ -25,13 +25,24 @@ export function NewsletterForm() {
   }
 
   if (status === 'success') {
-    return <p className="text-sm">Je bent aangemeld. Check je inbox.</p>;
+    return (
+      <div className="text-sm">
+        <p>Je bent aangemeld voor de nieuwsbrief. Check je inbox.</p>
+        <button
+          type="button"
+          onClick={() => setStatus('idle')}
+          className="mt-2 text-muted underline underline-offset-4 transition-colors hover:text-ink"
+        >
+          Ander e-mailadres aanmelden
+        </button>
+      </div>
+    );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex max-w-md gap-2">
+    <form onSubmit={handleSubmit} className="flex max-w-md flex-wrap gap-2">
       <label htmlFor="nl-email" className="sr-only">
-        E-mailadres
+        E-mailadres voor de nieuwsbrief
       </label>
       <input
         id="nl-email"
@@ -50,7 +61,9 @@ export function NewsletterForm() {
         {status === 'sending' ? '…' : 'Aanmelden'}
       </button>
       {status === 'error' ? (
-        <p className="mt-2 w-full text-sm text-muted">Er ging iets mis. Probeer het opnieuw.</p>
+        <p className="w-full text-sm text-muted">
+          Aanmelden is niet gelukt. Controleer je e-mailadres en probeer het opnieuw.
+        </p>
       ) : null}
     </form>
   );

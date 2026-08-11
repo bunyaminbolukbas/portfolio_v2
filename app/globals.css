@@ -24,7 +24,7 @@ html.lenis body {
   }
 
   ::selection {
-    @apply bg-ink text-paper;
+    @apply bg-accent text-paper;
   }
 }
 
@@ -88,39 +88,11 @@ html.lenis body {
   }
 }
 
-/* Pagina-slideshow in case-frames: crossfade langs meerdere schermen,
-   alsof je door de site klikt. Timing is afgestemd op 4 slides (16s cyclus). */
-.slide-preview {
-  position: relative;
-  overflow: hidden;
-}
-.slide-preview > img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  animation: slide-preview 16s ease-in-out infinite;
-}
-@keyframes slide-preview {
-  0% {
-    opacity: 0;
-  }
-  5%,
-  25% {
-    opacity: 1;
-  }
-  31%,
-  100% {
-    opacity: 0;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .slide-preview > img {
-    animation: none;
-  }
-  .slide-preview > img:first-child {
-    opacity: 1;
+/* Print: motion-elementen (inline styles van framer-motion) nooit
+   verborgen of verschoven laten afdrukken. */
+@media print {
+  [style*="opacity"] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

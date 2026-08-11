@@ -81,9 +81,15 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} ${plexMono.variable}`}
     >
       <body className="font-sans">
+        <a
+          href="#inhoud"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-ink focus:px-5 focus:py-3 focus:text-sm focus:text-paper"
+        >
+          Direct naar inhoud
+        </a>
         <SmoothScroll />
         <Nav />
-        <main>{children}</main>
+        <main id="inhoud">{children}</main>
         <Footer />
         <script
           type="application/ld+json"

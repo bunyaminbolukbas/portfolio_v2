@@ -1,17 +1,48 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { site } from '@/lib/site';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
+// Concept blijft in sessionStorage staan zodat een refresh of tab-wissel
+// halverwege het invullen geen werk wist.
+const STORAGE_KEY = 'project-form-concept';
+
 export function ProjectForm({ dark = false }: { dark?: boolean }) {
   const [status, setStatus] = useState<Status>('idle');
+  const formRef = useRef<HTMLFormElement>(null);
 
   const inputClass = dark
-    ? 'w-full border border-paper/25 bg-transparent px-4 py-3.5 text-sm text-paper placeholder:text-paper/40 focus:border-paper focus:outline-none transition-colors'
+    ? 'w-full border border-paper/25 bg-transparent px-4 py-3.5 text-sm text-paper placeholder:text-paper/55 focus:border-paper focus:outline-none transition-colors'
     : 'input-field';
-  const labelClass = `mono-label mb-2 block ${dark ? 'text-paper/50' : 'text-muted'}`;
+  const labelClass = `mono-label mb-2 block ${dark ? 'text-paper/70' : 'text-muted'}`;
+
+  useEffect(() => {
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    if (!saved || !formRef.current) return;
+    try {
+      const data = JSON.parse(saved) as Record<string, string>;
+      for (const [name, value] of Object.entries(data)) {
+        const field = formRef.current.elements.namedItem(name);
+        if (
+          field instanceof HTMLInputElement ||
+          field instanceof HTMLTextAreaElement ||
+          field instanceof HTMLSelectElement
+        ) {
+          field.value = value;
+        }
+      }
+    } catch {
+      sessionStorage.removeItem(STORAGE_KEY);
+    }
+  }, []);
+
+  function persistDraft() {
+    if (!formRef.current) return;
+    const data = Object.fromEntries(new FormData(formRef.current).entries());
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,6 +57,7 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
       });
       if (!res.ok) throw new Error(`Formspree ${res.status}`);
       setStatus('success');
+      sessionStorage.removeItem(STORAGE_KEY);
       form.reset();
     } catch {
       setStatus('error');
@@ -38,7 +70,7 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
         <p className="font-display text-2xl font-medium tracking-tight">
           Dank, je aanvraag is binnen.
         </p>
-        <p className={`mt-3 text-sm ${dark ? 'text-paper/60' : 'text-muted'}`}>
+        <p className={`mt-3 text-sm ${dark ? 'text-paper/70' : 'text-muted'}`}>
           Ik neem snel contact met je op. Liever direct praten?{' '}
           <a
             href={site.calendly}
@@ -50,12 +82,21 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
           </a>
           .
         </p>
+        <button
+          type="button"
+          onClick={() => setStatus('idle')}
+          className={`mt-6 text-sm underline underline-offset-4 ${
+            dark ? 'text-paper/70 hover:text-paper' : 'text-muted hover:text-ink'
+          } transition-colors`}
+        >
+          Nog een bericht sturen
+        </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-2">
+    <form ref={formRef} onSubmit={handleSubmit} onChange={persistDraft} className="grid gap-5 sm:grid-cols-2">
       <div>
         <label htmlFor="pf-naam" className={labelClass}>
           Naam
@@ -64,7 +105,7 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
       </div>
       <div>
         <label htmlFor="pf-bedrijf" className={labelClass}>
-          Bedrijf
+          Bedrijf (optioneel)
         </label>
         <input id="pf-bedrijf" name="bedrijf" autoComplete="organization" className={inputClass} />
       </div>
@@ -97,7 +138,7 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
       </div>
       <div>
         <label htmlFor="pf-budget" className={labelClass}>
-          Indicatief budget
+          Indicatief budget (optioneel)
         </label>
         <select id="pf-budget" name="budget" className={inputClass} defaultValue="">
           <option value="">Nog geen idee</option>
@@ -130,7 +171,7 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
         </button>
         {status === 'error' ? (
           <p className={`mt-3 text-sm ${dark ? 'text-paper/70' : 'text-muted'}`}>
-            Er ging iets mis bij het versturen. Probeer het opnieuw, of{' '}
+            Versturen is niet gelukt; je invulwerk staat er nog. Probeer het opnieuw, of{' '}
             <a
               href={site.calendly}
               target="_blank"

@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 const links = [
+  { href: '/#werk', label: 'Werk' },
   { href: '/werkwijze', label: 'Werkwijze' },
 ];
 
@@ -54,7 +55,7 @@ export function Nav() {
         {/* Mobile */}
         <button
           type="button"
-          className="mono-label sm:hidden"
+          className="mono-label -mr-3 flex min-h-11 items-center px-3 sm:hidden"
           aria-expanded={open}
           aria-controls="mobiel-menu"
           onClick={() => setOpen((v) => !v)}

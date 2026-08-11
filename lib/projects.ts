@@ -17,7 +17,7 @@ export type Project = {
   // Lange full-page screenshot voor de scrollende preview in het browser-frame.
   scrollImage?: string;
   // Pagina-captures die als slideshow door het browser-frame crossfaden.
-  slideImages?: string[];
+  slideImages?: { src: string; alt: string }[];
   featured?: boolean;
 };
 
@@ -58,10 +58,10 @@ export const projects: Project[] = [
     url: 'https://www.beekautomotive.nl',
     image: '/images/cases/beek-automotive.jpeg',
     slideImages: [
-      '/images/cases/beek-slide-1.webp',
-      '/images/cases/beek-slide-2.webp',
-      '/images/cases/beek-slide-3.webp',
-      '/images/cases/beek-slide-4.webp',
+      { src: '/images/cases/beek-slide-1.webp', alt: 'Homepage van Beek Automotive' },
+      { src: '/images/cases/beek-slide-2.webp', alt: 'Occasionvoorraad van Beek Automotive' },
+      { src: '/images/cases/beek-slide-3.webp', alt: 'Autopagina van Beek Automotive' },
+      { src: '/images/cases/beek-slide-4.webp', alt: 'Servicepagina van Beek Automotive' },
     ],
     featured: true,
   },

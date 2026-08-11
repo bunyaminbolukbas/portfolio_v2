@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         ink: '#111110',
         paper: '#faf9f6',
+        accent: '#d43d1a',
         line: '#e4e2dc',
         'line-dark': '#2a2a28',
         muted: {

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { AccentUnderline } from '@/components/site/AccentUnderline';
 import { Reveal } from '@/components/site/Reveal';
 import { MediaSlot } from '@/components/site/MediaSlot';
 import { ProjectForm } from '@/components/site/ProjectForm';
@@ -10,21 +11,18 @@ import { site } from '@/lib/site';
 
 const capabilities = [
   {
-    number: '01',
     title: 'Meer omzet',
     description:
       'Digitale producten die klanten binnenhalen en vasthouden: van premium websites tot leadflows en klantportalen.',
     items: ['Websites & positionering', 'Leadflows & conversie', 'Klantportalen'],
   },
   {
-    number: '02',
     title: 'Minder handmatig werk',
     description:
       'Stop met werk dat software voor je kan uitvoeren. AI en automatiseringen die je operatie efficiënter maken.',
     items: ['AI-workflows', 'Procesautomatisering', 'Integraties (n8n, API’s)'],
   },
   {
-    number: '03',
     title: 'Betere systemen',
     description:
       'Custom software, dashboards en platforms, gebouwd rond hoe je bedrijf daadwerkelijk werkt.',
@@ -58,9 +56,7 @@ const processSteps = [
 const differentiators = [
   { term: 'Business', detail: 'Wat moet dit opleveren?' },
   { term: 'Gebruiker', detail: 'Voor wie bouwen we dit echt?' },
-  { term: 'Positionering', detail: 'Hoe kom je over op je markt?' },
   { term: 'Conversie', detail: 'Beweegt dit bezoekers tot actie?' },
-  { term: 'Technologie', detail: 'De juiste oplossing, niet de hipste.' },
   { term: 'Schaalbaarheid', detail: 'Werkt dit ook als je groeit?' },
 ];
 
@@ -68,12 +64,15 @@ export default function Home() {
   return (
     <>
       {/* 01 — HERO */}
-      <section className="flex min-h-svh flex-col justify-center pt-16">
+      <section className="relative flex min-h-svh flex-col justify-center pt-16">
         <div className="mx-auto w-full max-w-site px-5 sm:px-8">
           <Reveal>
-            <p className="mono-label text-muted">Developer · Tech Lead · Ondernemer</p>
-            <h1 className="mt-6 max-w-4xl font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Ik bouw digitale systemen die bedrijven slimmer laten werken.
+            <h1 className="max-w-4xl font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+              Ik bouw digitale systemen die bedrijven{' '}
+              <span className="underline decoration-accent decoration-[3px] underline-offset-8">
+                slimmer
+              </span>{' '}
+              laten werken.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
               Van probleem naar werkend product. Ik combineer business, design en
@@ -90,6 +89,19 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
+        <div className="absolute inset-x-0 bottom-0 hidden border-t border-line sm:block">
+          <div className="mx-auto flex max-w-site items-center justify-between px-5 py-5 sm:px-8">
+            <p className="mono-label text-muted">Developer · Tech Lead · Ondernemer</p>
+            <a
+              href={site.social.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mono-label text-muted transition-colors hover:text-accent"
+            >
+              YouTube — @thebunyaminn ↗
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* 03 — PROBLEEM / VISIE */}
@@ -97,13 +109,15 @@ export default function Home() {
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
             <div className="ml-auto max-w-3xl">
-              <p className="mono-label text-muted">Hoe ik denk</p>
               <h2
                 id="visie-titel"
-                className="mt-6 font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
+                className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
               >
                 Ik begin niet bij technologie. Ik begin bij het{' '}
-                <em className="not-italic underline decoration-1 underline-offset-8">probleem</em>.
+                <em className="not-italic">
+                  <AccentUnderline>probleem</AccentUnderline>
+                </em>
+                .
               </h2>
               <div className="mt-10 max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
                 <p>
@@ -125,23 +139,21 @@ export default function Home() {
       <section aria-labelledby="capabilities-titel" className="border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
-            <p className="mono-label text-muted">Wat ik oplos</p>
             <h2
               id="capabilities-titel"
-              className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+              className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
             >
               Drie soorten problemen.
             </h2>
           </Reveal>
           <div className="mt-14">
             {capabilities.map((cap) => (
-              <Reveal key={cap.number}>
+              <Reveal key={cap.title}>
                 <div className="grid gap-6 border-t border-line py-10 sm:grid-cols-12 sm:gap-8">
-                  <span className="mono-label text-muted sm:col-span-1">{cap.number}</span>
                   <h3 className="font-display text-2xl font-medium tracking-tight sm:col-span-5 sm:text-3xl">
                     {cap.title}
                   </h3>
-                  <p className="leading-relaxed text-muted sm:col-span-4">{cap.description}</p>
+                  <p className="leading-relaxed text-muted sm:col-span-5">{cap.description}</p>
                   <ul className="space-y-2 sm:col-span-2">
                     {cap.items.map((item) => (
                       <li key={item} className="mono-label text-muted">
@@ -162,13 +174,12 @@ export default function Home() {
       </section>
 
       {/* 05 — FEATURED WORK */}
-      <section id="werk" aria-labelledby="werk-titel" className="border-t border-line">
+      <section id="werk" aria-labelledby="werk-titel" className="scroll-mt-16 border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
-            <p className="mono-label text-muted">Werk</p>
             <h2
               id="werk-titel"
-              className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+              className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
             >
               Enkele voorbeelden van mijn werk.
             </h2>
@@ -185,15 +196,13 @@ export default function Home() {
                     alt={`Website van ${project.name}`}
                     chromeUrl={project.url?.replace(/^https?:\/\//, '')}
                     fallbackText={project.name}
-                    fallbackMeta={`Project ${String(index + 1).padStart(2, '0')}`}
+                    fallbackMeta={project.category}
                     className={`${project.image || project.video ? '' : 'aspect-video'} ${
                       index % 2 === 1 ? 'lg:order-2' : ''
                     }`}
                   />
                   <div>
-                    <p className="mono-label text-muted">
-                      Project {String(index + 1).padStart(2, '0')} / {project.category}
-                    </p>
+                    <p className="mono-label text-muted">{project.category}</p>
                     <h3 className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl">
                       {project.name}
                     </h3>
@@ -230,7 +239,7 @@ export default function Home() {
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mono-label border-b border-ink/30 pb-1 transition-colors hover:border-ink"
+                          className="mono-label border-b border-ink/30 pb-1 transition-colors hover:border-accent hover:text-accent"
                         >
                           Bekijk live ↗
                         </a>
@@ -249,10 +258,9 @@ export default function Home() {
       <section aria-labelledby="aanpak-titel" className="bg-ink text-paper">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
-            <p className="mono-label text-paper/50">Waarom het werkt</p>
             <h2
               id="aanpak-titel"
-              className="mt-6 max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
+              className="max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
             >
               Ik bouw niet alleen wat je vraagt.
             </h2>
@@ -264,14 +272,11 @@ export default function Home() {
               eindresultaat.
             </p>
           </Reveal>
-          <div className="mt-16 grid gap-px bg-line-dark sm:grid-cols-2 lg:grid-cols-3">
-            {differentiators.map((item, index) => (
+          <div className="mt-16 grid gap-px bg-line-dark sm:grid-cols-2 lg:grid-cols-4">
+            {differentiators.map((item) => (
               <Reveal key={item.term} className="bg-ink p-8">
-                <p className="mono-label text-paper/40">{String(index + 1).padStart(2, '0')}</p>
-                <h3 className="mt-4 font-display text-xl font-medium tracking-tight">
-                  {item.term}
-                </h3>
-                <p className="mt-2 text-sm text-paper/60">{item.detail}</p>
+                <h3 className="font-display text-xl font-medium tracking-tight">{item.term}</h3>
+                <p className="mt-2 text-sm text-paper/70">{item.detail}</p>
               </Reveal>
             ))}
           </div>
@@ -285,10 +290,9 @@ export default function Home() {
       <section aria-labelledby="proces-titel" className="border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <Reveal>
-            <p className="mono-label text-muted">Zo werken we samen</p>
             <h2
               id="proces-titel"
-              className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+              className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
             >
               Vier stappen. Geen gedoe.
             </h2>
@@ -307,7 +311,7 @@ export default function Home() {
           <Reveal className="mt-10">
             <Link
               href="/werkwijze"
-              className="mono-label border-b border-ink/30 pb-1 transition-colors hover:border-ink"
+              className="mono-label border-b border-ink/30 pb-1 transition-colors hover:border-accent hover:text-accent"
             >
               Meer over mijn werkwijze →
             </Link>
@@ -327,10 +331,9 @@ export default function Home() {
               />
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mono-label text-muted">De persoon achter het werk</p>
               <h2
                 id="over-titel"
-                className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+                className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
               >
                 Ik ben Bünyamin Bölükbaş.
               </h2>
@@ -371,10 +374,9 @@ export default function Home() {
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
             <Reveal>
-              <p className="mono-label text-paper/50">Volgende stap</p>
               <h2
                 id="cta-titel"
-                className="mt-6 font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
+                className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl"
               >
                 Heb je iets dat gebouwd moet worden?
               </h2>

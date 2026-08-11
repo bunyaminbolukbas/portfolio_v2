@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { MotionVideo } from '@/components/site/MotionVideo';
+import { SlidePreview } from '@/components/site/SlidePreview';
 
 /**
  * Universele media-container, voorbereid op video.
@@ -26,8 +27,8 @@ export function MediaSlot({
   image?: string;
   /** Lange full-page screenshot die vanzelf door het frame scrolt. */
   scrollImage?: string;
-  /** Pagina-captures die als slideshow crossfaden (timing: 4 slides). */
-  slideImages?: string[];
+  /** Pagina-captures die als slideshow crossfaden, elk met eigen alt-tekst. */
+  slideImages?: { src: string; alt: string }[];
   alt?: string;
   chromeUrl?: string;
   fallbackText?: string;
@@ -48,18 +49,7 @@ export function MediaSlot({
           </div>
           <div className="overflow-hidden">
             {slideImages ? (
-              <div className="slide-preview aspect-[16/10]">
-                {slideImages.map((src, i) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={src}
-                    src={src}
-                    alt={alt}
-                    loading="lazy"
-                    style={{ animationDelay: `${i * 4}s` }}
-                  />
-                ))}
-              </div>
+              <SlidePreview slides={slideImages} />
             ) : scrollImage ? (
               <div className="scroll-preview aspect-[16/10]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
