@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 const links = [
-  { href: '/werk', label: 'Werk' },
   { href: '/werkwijze', label: 'Werkwijze' },
 ];
 

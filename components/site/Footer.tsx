@@ -19,7 +19,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-10 sm:gap-20">
             <nav aria-label="Footer" className="flex flex-col gap-3 text-sm">
               <span className="mono-label text-paper/60">Navigatie</span>
-              <Link href="/werk" className="text-paper/70 transition-colors hover:text-paper">
+              <Link href="/#werk" className="text-paper/70 transition-colors hover:text-paper">
                 Werk
               </Link>
               <Link href="/werkwijze" className="text-paper/70 transition-colors hover:text-paper">

@@ -84,9 +84,9 @@ export default function Home() {
               <Link href="/start" className="btn-primary">
                 Bespreek een idee
               </Link>
-              <Link href="/werk" className="btn-secondary">
+              <a href="#werk" className="btn-secondary">
                 Bekijk mijn werk
-              </Link>
+              </a>
             </div>
           </Reveal>
         </div>
@@ -162,9 +162,18 @@ export default function Home() {
       </section>
 
       {/* 05 — FEATURED WORK */}
-      <section id="werk" aria-label="Uitgelicht werk" className="border-t border-line">
+      <section id="werk" aria-labelledby="werk-titel" className="border-t border-line">
         <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
-          <div className="space-y-24">
+          <Reveal>
+            <p className="mono-label text-muted">Werk</p>
+            <h2
+              id="werk-titel"
+              className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+            >
+              Enkele voorbeelden van mijn werk.
+            </h2>
+          </Reveal>
+          <div className="mt-14 space-y-24">
             {featuredProjects.map((project, index) => (
               <Reveal key={project.slug}>
                 <article className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
@@ -233,11 +242,6 @@ export default function Home() {
             ))}
           </div>
 
-          <Reveal className="mt-20">
-            <Link href="/werk" className="btn-secondary w-full sm:w-auto">
-              Alle projecten →
-            </Link>
-          </Reveal>
         </div>
       </section>
 
