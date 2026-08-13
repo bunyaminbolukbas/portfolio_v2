@@ -81,7 +81,7 @@ export default function Home() {
             <h1 className="max-w-4xl font-display text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
               Ik bouw{' '}
               <span className="underline decoration-accent decoration-[3px] underline-offset-8">
-                software-oplossingen
+                software
               </span>{' '}
               voor ondernemers.
             </h1>
@@ -89,15 +89,12 @@ export default function Home() {
               Niet om het bouwen zelf, maar om wat het je oplevert:
             </p>
             <div className="mt-10 max-w-2xl">
-              {outcomes.map((outcome, index) => (
+              {outcomes.map((outcome) => (
                 <a
                   key={outcome.id}
                   href={`#${outcome.id}`}
                   className="group flex items-baseline gap-5 border-t border-line py-4 transition-colors last:border-b hover:text-accent"
                 >
-                  <span className="mono-label text-muted">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
                   <span className="font-display text-xl font-medium tracking-tight sm:text-2xl">
                     {outcome.title}
                   </span>
@@ -113,19 +110,6 @@ export default function Home() {
               </Link>
             </div>
           </Reveal>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 hidden border-t border-line sm:block">
-          <div className="mx-auto flex max-w-site items-center justify-between px-5 py-5 sm:px-8">
-            <p className="mono-label text-muted">Developer · Tech Lead · Ondernemer</p>
-            <a
-              href={site.social.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mono-label text-muted transition-colors hover:text-accent"
-            >
-              YouTube · @thebunyaminn ↗
-            </a>
-          </div>
         </div>
       </section>
 
@@ -188,7 +172,8 @@ export default function Home() {
               id="uitkomsten-titel"
               className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
             >
-              Drie <AccentUnderline>uitkomsten</AccentUnderline>. Dat is wat ik verkoop.
+              Alles wat ik bouw doet één van deze{' '}
+              <AccentUnderline>drie dingen</AccentUnderline>.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
               Soms is een website de oplossing, soms een automatisering. En
@@ -248,7 +233,7 @@ export default function Home() {
               id="werk-titel"
               className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
             >
-              Wat het anderen opleverde.
+              Wat het andere ondernemers opleverde.
             </h2>
           </Reveal>
           <div className="mt-14 space-y-24">
@@ -302,7 +287,13 @@ export default function Home() {
                       )}
                     </dl>
                     <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
-                      <p className="mono-label text-muted">{project.stack.join(' · ')}</p>
+                      <ul className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                        {project.stack.map((tech) => (
+                          <li key={tech} className="mono-label text-muted">
+                            {tech}
+                          </li>
+                        ))}
+                      </ul>
                       {project.url && (
                         <a
                           href={project.url}
@@ -415,7 +406,7 @@ export default function Home() {
                 Vertel me waar je aan werkt en wat je wilt bereiken, dan hoor je
                 welke aanpak ik zou kiezen.
               </p>
-              <p className="mt-8 text-sm text-paper/60">
+              <p className="mt-8 text-sm text-paper/70">
                 Liever direct praten?{' '}
                 <a
                   href={site.calendly}

@@ -20,12 +20,11 @@ export function Testimonials() {
     <section aria-labelledby="testimonials-titel" className="border-t border-line">
       <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
         <Reveal>
-          <p className="mono-label text-muted">Wat opdrachtgevers zeggen</p>
           <h2
             id="testimonials-titel"
-            className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl"
+            className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
           >
-            Niet mijn woorden.
+            Wat opdrachtgevers zeggen.
           </h2>
         </Reveal>
         <div className="mt-14 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
