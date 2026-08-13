@@ -35,19 +35,19 @@ html.lenis body {
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-ink text-paper px-7 py-4 text-sm font-medium transition-colors hover:bg-ink/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink;
+    @apply inline-flex items-center justify-center gap-2 bg-ink text-paper px-7 py-4 text-sm font-medium transition-[background-color,transform] hover:bg-ink/85 active:translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink;
   }
 
   .btn-primary-inverted {
-    @apply inline-flex items-center justify-center gap-2 bg-paper text-ink px-7 py-4 text-sm font-medium transition-colors hover:bg-paper/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper;
+    @apply inline-flex items-center justify-center gap-2 bg-paper text-ink px-7 py-4 text-sm font-medium transition-[background-color,transform] hover:bg-paper/85 active:translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 border border-ink/25 px-7 py-4 text-sm font-medium transition-colors hover:border-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink;
+    @apply inline-flex items-center justify-center gap-2 border border-ink/25 px-7 py-4 text-sm font-medium transition-[border-color,transform] hover:border-ink active:translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink;
   }
 
   .btn-secondary-inverted {
-    @apply inline-flex items-center justify-center gap-2 border border-paper/30 px-7 py-4 text-sm font-medium transition-colors hover:border-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper;
+    @apply inline-flex items-center justify-center gap-2 border border-paper/30 px-7 py-4 text-sm font-medium transition-[border-color,transform] hover:border-paper active:translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper;
   }
 
   .input-field {

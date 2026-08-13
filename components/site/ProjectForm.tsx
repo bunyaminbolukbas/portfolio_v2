@@ -14,7 +14,7 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const inputClass = dark
-    ? 'w-full border border-paper/25 bg-transparent px-4 py-3.5 text-sm text-paper placeholder:text-paper/55 focus:border-paper focus:outline-none transition-colors'
+    ? 'w-full border border-paper/25 bg-transparent px-4 py-3.5 text-sm text-paper placeholder:text-paper/70 focus:border-paper focus:outline-none transition-colors'
     : 'input-field';
   const labelClass = `mono-label mb-2 block ${dark ? 'text-paper/70' : 'text-muted'}`;
 

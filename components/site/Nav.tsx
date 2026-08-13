@@ -46,9 +46,9 @@ export function Nav() {
           ))}
           <Link
             href="/start"
-            className="bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-colors hover:bg-ink/85"
+            className="bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-[background-color,transform] hover:bg-ink/85 active:translate-y-px"
           >
-            Bespreek een idee
+            Vertel wat je wilt bereiken
           </Link>
         </div>
 
@@ -82,7 +82,7 @@ export function Nav() {
               className="btn-primary mt-2 w-full"
               onClick={() => setOpen(false)}
             >
-              Bespreek een idee
+              Vertel wat je wilt bereiken
             </Link>
           </div>
         </div>

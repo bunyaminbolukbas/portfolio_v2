@@ -121,7 +121,7 @@ export default function Werkwijze() {
             </h2>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <Link href="/start" className="btn-primary-inverted">
-                Bespreek een idee
+                Vertel wat je wilt bereiken
               </Link>
               <a
                 href={site.calendly}

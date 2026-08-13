@@ -25,7 +25,7 @@ export function BuiltBy({
         dark ? 'border-paper/40 hover:border-paper' : 'border-ink/30 hover:border-ink'
       } ${className}`}
     >
-      <span className={`mono-label ${dark ? 'text-paper/60' : 'text-muted'}`}>
+      <span className={`mono-label ${dark ? 'text-paper/70' : 'text-muted'}`}>
         made by
       </span>
       <Image
