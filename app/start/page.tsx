@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Bespreek een idee',
   description:
-    'Vertel waar je aan werkt: een website, custom software of automatisering. Je krijgt een eerlijk advies over de beste aanpak.',
+    'Vertel wat je wilt bereiken: meer klanten, meer omzet of minder handmatig werk. Je krijgt een eerlijk advies over de beste aanpak.',
 };
 
 export default function Start() {
@@ -17,7 +17,7 @@ export default function Start() {
           <Reveal>
             <p className="mono-label text-muted">Bespreek een idee</p>
             <h1 className="mt-6 font-display text-4xl font-medium leading-tight tracking-tight sm:text-5xl">
-              Vertel me waar je aan werkt.
+              Vertel me wat je wilt bereiken.
             </h1>
             <p className="mt-8 max-w-md text-lg leading-relaxed text-muted">
               Een korte omschrijving is genoeg, geen lange intake. Je krijgt een

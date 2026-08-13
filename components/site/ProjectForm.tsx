@@ -124,15 +124,15 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
       </div>
       <div>
         <label htmlFor="pf-type" className={labelClass}>
-          Wat wil je laten bouwen?
+          Wat wil je bereiken?
         </label>
-        <select id="pf-type" name="projecttype" required className={inputClass} defaultValue="">
+        <select id="pf-type" name="doel" required className={inputClass} defaultValue="">
           <option value="" disabled>
             Maak een keuze
           </option>
-          <option>Website</option>
-          <option>Software of platform</option>
-          <option>AI & automatisering</option>
+          <option>Meer klanten</option>
+          <option>Meer omzet</option>
+          <option>Minder handmatig werk</option>
           <option>Weet ik nog niet precies</option>
         </select>
       </div>
@@ -157,7 +157,7 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
           name="bericht"
           rows={4}
           required
-          placeholder="Vertel kort waar je aan werkt en wat er gebouwd moet worden."
+          placeholder="Vertel kort waar je aan werkt en wat er beter moet."
           className={inputClass}
         />
       </div>

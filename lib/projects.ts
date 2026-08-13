@@ -35,7 +35,7 @@ export const projects: Project[] = [
     solution:
       'Een fris merk en een strakke bedrijfswebsite met een offerte-tool waarin bezoekers pandtype, frequentie, oppervlakte en diensten kiezen en direct hun aanvraag versturen.',
     result:
-      'Bezoekers stellen hun offerte-aanvraag zelf samen; aanvragen komen volledig gekwalificeerd binnen in plaats van als los telefoontje.',
+      'Aanvragen komen volledig gekwalificeerd binnen in plaats van als los telefoontje: bezoekers stellen hun offerte-aanvraag zelf samen.',
     role: 'Ontwerp en development, van eerste opzet tot livegang',
     stack: ['Next.js', 'TypeScript', 'Tailwind'],
     url: 'https://finncleaning.nl',
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     solution:
       'Een compleet nieuwe website in de nieuwe huisstijl, met een API-koppeling naar Hexon: de occasionvoorraad loopt automatisch mee, inclusief opschoning en contactafhandeling.',
     result:
-      'Voor een scherpe prijs een volledig nieuw merk en een complete autowebsite met live Hexon-voorraad, én meer leads via de formulieren op de site.',
+      'Meer leads via de formulieren op de site en een occasionvoorraad die automatisch meeloopt, zonder handmatig invoerwerk. En dat inclusief een volledig nieuw merk, voor een scherpe prijs.',
     role: 'Design en de volledige build: frontend én backend',
     stack: ['Next.js', 'Neon Postgres', 'Hexon-koppeling', 'Vercel'],
     url: 'https://www.beekautomotive.nl',

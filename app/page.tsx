@@ -17,7 +17,7 @@ const outcomes = [
     title: 'Meer klanten',
     hook: 'Je wilt gevonden worden en meer aanvragen binnenkrijgen.',
     build:
-      'Premium websites, scherpe positionering en leadflows die bezoekers omzetten in aanvragen.',
+      'Dus zorg ik dat bezoekers je vinden, je vertrouwen en een aanvraag doen. De website, positionering en leadflow zijn het middel.',
     items: ['Websites & positionering', 'Leadflows & conversie', 'Vindbaarheid & merk'],
     proof: 'Beek Automotive: nieuw merk, meer leads via de site',
   },
@@ -26,7 +26,7 @@ const outcomes = [
     title: 'Meer omzet',
     hook: 'Je wilt meer halen uit de bezoekers en klanten die je al hebt.',
     build:
-      'Offerte- en boekingstools, klantportalen en conversie-optimalisatie die van interesse omzet maken.',
+      'Dus zorg ik dat interesse omzet wordt, zonder extra verkoopwerk. Offerte-tools, boekingsflows en klantportalen doen dat werk voor je.',
     items: ['Offerte- & boekingstools', 'Klantportalen', 'Conversie-optimalisatie'],
     proof: 'FinClean: aanvragen komen volledig gekwalificeerd binnen',
   },
@@ -34,7 +34,8 @@ const outcomes = [
     id: 'minder-handmatig-werk',
     title: 'Minder handmatig werk',
     hook: 'Je wilt uren terug die nu in repeterend werk gaan zitten.',
-    build: 'AI-workflows, integraties en custom software die het werk van je overnemen.',
+    build:
+      'Dus geef ik je die uren terug voor werk dat geld oplevert. AI-workflows, integraties en custom software nemen de rest over.',
     items: ['AI-workflows', 'Procesautomatisering', 'Integraties (n8n, API’s)'],
     proof: 'Beek Automotive: voorraad loopt automatisch mee via Hexon',
   },
@@ -78,14 +79,14 @@ export default function Home() {
         <div className="mx-auto w-full max-w-site px-5 sm:px-8">
           <Reveal>
             <h1 className="max-w-4xl font-display text-4xl font-medium leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+              Ik bouw{' '}
               <span className="underline decoration-accent decoration-[3px] underline-offset-8">
-                Wat wil je?
+                software-oplossingen
               </span>{' '}
-              Meer klanten, meer omzet of minder handmatig werk?
+              voor ondernemers.
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
-              Drie uitkomsten, één aanpak. Ik ontwerp en bouw wat daarvoor nodig
-              is — van premium website tot automatisering.
+              Niet om het bouwen zelf, maar om wat het je oplevert:
             </p>
             <div className="mt-10 max-w-2xl">
               {outcomes.map((outcome, index) => (
@@ -122,7 +123,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="mono-label text-muted transition-colors hover:text-accent"
             >
-              YouTube — @thebunyaminn ↗
+              YouTube · @thebunyaminn ↗
             </a>
           </div>
         </div>
@@ -189,7 +190,7 @@ export default function Home() {
               Drie <AccentUnderline>uitkomsten</AccentUnderline>. Dat is wat ik verkoop.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Soms is een website de oplossing, soms een automatisering — en
+              Soms is een website de oplossing, soms een automatisering. En
               soms hoef je niets te bouwen. Je krijgt een eerlijk antwoord, ook
               als dat betekent dat je mij niet nodig hebt.
             </p>
@@ -217,12 +218,12 @@ export default function Home() {
                       ))}
                     </ul>
                     <p className="mt-4 text-sm leading-relaxed text-muted">
-                      {outcome.proof} —{' '}
+                      {outcome.proof}.{' '}
                       <a
                         href="#werk"
                         className="underline underline-offset-4 transition-colors hover:text-accent"
                       >
-                        bekijk de case
+                        Bekijk de case
                       </a>
                     </p>
                   </div>
@@ -246,7 +247,7 @@ export default function Home() {
               id="werk-titel"
               className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
             >
-              Enkele voorbeelden van mijn werk.
+              Wat het anderen opleverde.
             </h2>
           </Reveal>
           <div className="mt-14 space-y-24">
@@ -268,7 +269,7 @@ export default function Home() {
                   />
                   <div>
                     <p className="mono-label text-muted">
-                      {project.proves ? `${project.proves} — ${project.category}` : project.category}
+                      {project.proves ? `${project.proves} · ${project.category}` : project.category}
                     </p>
                     <h3 className="mt-4 font-display text-3xl font-medium tracking-tight sm:text-4xl">
                       {project.name}
@@ -337,7 +338,7 @@ export default function Home() {
                 bedrijf nodig heeft. Ik werkte als developer en tech lead in
                 softwareteams en bouw nu producten voor ondernemers. Ik denk dus
                 mee over meer dan techniek alleen, en neem ownership over het
-                eindresultaat.
+                eindresultaat: niet “site opgeleverd”, maar “probleem opgelost”.
               </p>
             </Reveal>
             <Reveal delay={0.1} className="lg:justify-self-end">

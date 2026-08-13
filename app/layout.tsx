@@ -18,15 +18,15 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://bunyaminbolukbas.com'),
   title: {
-    default: 'Bünyamin Bölükbaş | Digitale systemen die bedrijven slimmer laten werken',
+    default: 'Bünyamin Bölükbaş | Meer klanten, meer omzet, minder handmatig werk',
     template: '%s | thebunyaminn.',
   },
   description:
-    'Van probleem naar werkend product: custom software, automatisering, AI en digitale producten voor ondernemers en groeiende bedrijven.',
+    'Ik help ondernemers aan meer klanten, meer omzet en minder handmatig werk. Ik ontwerp en bouw wat daarvoor nodig is: websites, software en automatisering.',
   openGraph: {
-    title: 'Bünyamin Bölükbaş | Digitale systemen die bedrijven slimmer laten werken',
+    title: 'Bünyamin Bölükbaş | Meer klanten, meer omzet, minder handmatig werk',
     description:
-      'Van probleem naar werkend product: custom software, automatisering, AI en digitale producten, ontworpen en gebouwd door Bünyamin Bölükbaş.',
+      'Ik help ondernemers aan meer klanten, meer omzet en minder handmatig werk. Bünyamin Bölükbaş ontwerpt en bouwt wat daarvoor nodig is: websites, software en automatisering.',
     locale: 'nl_NL',
     type: 'website',
     siteName: 'thebunyaminn.',
@@ -59,7 +59,7 @@ const serviceJsonLd = {
   url: 'https://bunyaminbolukbas.com',
   founder: { '@type': 'Person', name: 'Bünyamin Bölükbaş' },
   description:
-    'Custom software, automatisering, AI en digitale producten voor ondernemers en groeiende bedrijven.',
+    'Helpt ondernemers aan meer klanten, meer omzet en minder handmatig werk met websites, custom software, AI en automatisering.',
   areaServed: 'NL',
   knowsAbout: [
     'Custom software',

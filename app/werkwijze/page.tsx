@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Werkwijze',
   description:
-    'Van idee naar werkend product in vier duidelijke stappen: begrijpen, richting, bouwen, lanceren.',
+    'In vier duidelijke stappen naar het resultaat dat je zoekt: begrijpen, richting, bouwen, lanceren. Je weet altijd waar je aan toe bent.',
 };
 
 const steps = [
@@ -14,7 +14,7 @@ const steps = [
     number: '01',
     title: 'Begrijpen',
     description:
-      'We bespreken waar je aan werkt. Ik stel vragen om te begrijpen welk probleem er daadwerkelijk opgelost moet worden, wie je klant is en wat het resultaat moet zijn.',
+      'We bespreken waar je aan werkt. Ik stel vragen om te begrijpen wat het je moet opleveren, wie je klant is en welk probleem er daadwerkelijk opgelost moet worden.',
     outcome: 'Je weet of we een match zijn',
   },
   {
@@ -54,7 +54,7 @@ export default function Werkwijze() {
         <Reveal>
           <p className="mono-label text-muted">Werkwijze</p>
           <h1 className="mt-6 max-w-3xl font-display text-4xl font-medium leading-tight tracking-tight sm:text-6xl">
-            Van idee naar werkend product. In vier stappen.
+            Van idee naar uitkomst. In vier stappen.
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">
             Geen agency-proces met twaalf fases en drie accountmanagers. Wel een
