@@ -154,15 +154,16 @@ export default function Home() {
               </div>
               <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted">
                 <p>
-                  Developer, tech lead en ondernemer. Ik werk als Tech Lead bij
-                  Code49, het bedrijf van Tibor Olgers, waar ik aan OS49 bouw:
-                  architectuur, development en het aansturen van het
-                  developmentteam.
+                  Ik help ondernemers vooruit met software. Die ervaring komt
+                  niet uit boeken: als tech lead stuur ik dagelijks een
+                  developmentteam aan dat aan een groot softwareplatform bouwt,
+                  en dat niveau neem ik mee naar elk project dat ik zelfstandig
+                  doe.
                 </p>
                 <p>
-                  Daarnaast bouw ik zelfstandig digitale producten voor
-                  ondernemers. Geen bureau met lagen ertussen: je werkt direct
-                  met de persoon die je product ontwerpt én bouwt.
+                  Geen bureau met lagen ertussen: je werkt direct met de
+                  persoon die je product ontwerpt én bouwt, meedenkt over je
+                  bedrijf en pas tevreden is als het je iets oplevert.
                 </p>
               </div>
               <div className="mt-10 max-w-xl border-t border-line pt-8">
