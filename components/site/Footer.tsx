@@ -25,21 +25,18 @@ export function Footer() {
               <Link href="/werkwijze" className="text-paper/70 transition-colors hover:text-paper">
                 Werkwijze
               </Link>
-              <Link href="/start" className="text-paper/70 transition-colors hover:text-paper">
-                Vertel wat je wilt bereiken
-              </Link>
-            </nav>
-
-            <div className="flex flex-col gap-3 text-sm">
-              <span className="mono-label text-paper/70">Volg</span>
               <a
-                href={site.social.youtube}
+                href={site.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-paper/70 transition-colors hover:text-paper"
               >
-                YouTube
+                Plan een call
               </a>
+            </nav>
+
+            <div className="flex flex-col gap-3 text-sm">
+              <span className="mono-label text-paper/70">Volg</span>
               <a
                 href={site.social.instagram}
                 target="_blank"

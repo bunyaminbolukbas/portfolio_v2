@@ -57,8 +57,8 @@ export default function Werkwijze() {
             Van idee naar uitkomst. In vier stappen.
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted">
-            Geen agency-proces met twaalf fases en drie accountmanagers. Wel een
-            duidelijke aanpak waarbij je altijd weet waar je aan toe bent.
+            Geen agency-proces met twaalf fases en drie accountmanagers. Wel een duidelijke aanpak
+            waarbij je altijd weet waar je aan toe bent.
           </p>
         </Reveal>
       </section>
@@ -75,16 +75,17 @@ export default function Werkwijze() {
                 <p className="max-w-xl leading-relaxed text-muted sm:col-span-5">
                   {step.description}
                 </p>
-                <p className="mono-label self-start text-ink sm:col-span-3">
-                  → {step.outcome}
-                </p>
+                <p className="mono-label self-start text-ink sm:col-span-3">→ {step.outcome}</p>
               </div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      <section aria-labelledby="voor-jou-titel" className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
+      <section
+        aria-labelledby="voor-jou-titel"
+        className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32"
+      >
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <p className="mono-label text-muted">Herkenbaar?</p>
@@ -120,17 +121,17 @@ export default function Werkwijze() {
               Klaar voor stap één?
             </h2>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/start" className="btn-primary-inverted">
-                Vertel wat je wilt bereiken
-              </Link>
               <a
                 href={site.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary-inverted"
+                className="btn-primary-inverted"
               >
-                Plan een gesprek (30 min, vrijblijvend)
+                Plan een call
               </a>
+              <Link href="/start" className="btn-secondary-inverted">
+                Stuur een bericht
+              </Link>
             </div>
           </Reveal>
         </div>

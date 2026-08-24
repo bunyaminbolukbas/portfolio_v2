@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { site } from '@/lib/site';
 
 const links = [
   { href: '/#werk', label: 'Werk' },
@@ -44,12 +45,14 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/start"
+          <a
+            href={site.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-[background-color,transform] hover:bg-ink/85 active:translate-y-px"
           >
-            Vertel wat je wilt bereiken
-          </Link>
+            Plan een call
+          </a>
         </div>
 
         {/* Mobile */}
@@ -77,13 +80,15 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/start"
+            <a
+              href={site.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary mt-2 w-full"
               onClick={() => setOpen(false)}
             >
-              Vertel wat je wilt bereiken
-            </Link>
+              Plan een call
+            </a>
           </div>
         </div>
       ) : null}

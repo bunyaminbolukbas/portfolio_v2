@@ -32,7 +32,7 @@ export default function Start() {
                   rel="noopener noreferrer"
                   className="text-ink underline underline-offset-4"
                 >
-                  Plan een gesprek van 30 minuten
+                  Plan een call
                 </a>
                 . Vrijblijvend.
               </p>

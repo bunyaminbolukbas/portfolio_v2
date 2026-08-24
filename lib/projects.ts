@@ -5,11 +5,14 @@ export type Project = {
   category: string;
   year?: string;
   summary: string;
-  problem?: string;
-  solution?: string;
+  // Eén regel die de uitkomst voor de klant samenvat; staat direct onder de naam.
+  outcome?: string;
+  situation?: string;
+  work?: string;
   result?: string;
   role?: string;
-  stack: string[];
+  // Techniek staat bewust niet op de site; alleen voor eigen administratie.
+  stack?: string[];
   url?: string;
   // MediaSlot: vul `image` of `video` zodra materiaal beschikbaar is.
   image?: string;
@@ -19,65 +22,71 @@ export type Project = {
   // Pagina-captures die als slideshow door het browser-frame crossfaden.
   slideImages?: { src: string; alt: string }[];
   featured?: boolean;
-  // Welk klantprobleem deze case bewijst (meer klanten / meer omzet / automatiseren).
-  proves?: string;
 };
 
 export const projects: Project[] = [
   {
     slug: 'finclean',
     name: 'FinClean',
-    category: 'Rebranding & website',
+    category: 'Rebranding en website',
     summary:
-      'Rebranding en nieuwe website voor schoonmaakspecialist FinClean, met een offerte-tool waarmee bezoekers direct een aanvraag samenstellen.',
-    problem:
-      'FinClean wilde een rebranding en een nieuwe website: de doelgroep van VvE’s en vastgoedbeheerders verwacht professionaliteit voordat ze een aanvraag doet.',
-    solution:
-      'Een fris merk en een strakke bedrijfswebsite met een offerte-tool waarin bezoekers pandtype, frequentie, oppervlakte en diensten kiezen en direct hun aanvraag versturen.',
+      'Nieuwe uitstraling en website voor schoonmaakspecialist FinClean, met een offerteflow waarmee bezoekers direct aangeven wat ze nodig hebben.',
+    outcome: 'Van verouderde uitstraling naar een professionele website die nieuwe leads oplevert.',
+    situation:
+      'FinClean wilde professioneler overkomen bij VvE’s en vastgoedbeheerders en aanvragen beter kwalificeren.',
+    work: 'Een nieuwe uitstraling, website en offerteflow waarmee bezoekers direct aangeven wat ze nodig hebben.',
     result:
-      'Aanvragen komen volledig gekwalificeerd binnen: bezoekers stellen hun offerte zelf samen in plaats van te bellen.',
-    role: 'Ontwerp en development, van eerste opzet tot livegang',
-    stack: ['Next.js', 'TypeScript', 'Tailwind'],
+      'FinClean krijgt nieuwe leads via de website, met de belangrijkste informatie al ingevuld. Minder heen-en-weer contact, meer gekwalificeerde aanvragen.',
+    role: 'Branding, ontwerp en development.',
     url: 'https://finncleaning.nl',
     image: '/images/cases/finclean.jpeg',
     scrollImage: '/images/cases/finclean-scroll.webp',
     featured: true,
-    proves: 'Meer omzet',
   },
   {
     slug: 'beek-automotive',
     name: 'Beek Automotive',
-    category: 'Rebranding, website & API-koppeling',
+    category: 'Rebranding en website',
     summary:
-      'Volledige rebranding en een complete autowebsite met live occasionvoorraad via een Hexon-koppeling.',
-    problem:
-      'Beek Automotive wilde een volledige rebranding én een complete autowebsite met live voorraad, voor een scherpe prijs.',
-    solution:
-      'Een compleet nieuwe website in de nieuwe huisstijl, met een API-koppeling naar Hexon: de occasionvoorraad loopt automatisch mee, inclusief opschoning en contactafhandeling.',
+      'Volledige rebranding en een nieuwe autowebsite waarin de occasionvoorraad automatisch actueel blijft.',
+    outcome:
+      'Een nieuw merk, een autowebsite die nieuwe leads oplevert en voorraad die automatisch actueel blijft.',
+    situation:
+      'Beek Automotive wilde professioneler naar buiten treden en zijn occasions beter online presenteren.',
+    work: 'Een volledige rebranding en nieuwe website waarin de actuele occasionvoorraad automatisch wordt verwerkt.',
     result:
-      'Meer leads via de formulieren op de site en een occasionvoorraad die automatisch meeloopt, zonder handmatig invoerwerk. Inclusief een volledig nieuw merk.',
-    role: 'Design en de volledige build: frontend én backend',
-    stack: ['Next.js', 'Neon Postgres', 'Hexon-koppeling', 'Vercel'],
+      'Een professionelere uitstraling, nieuwe leads via de website en geen handmatig beheer van de voertuigvoorraad.',
+    role: 'Branding, ontwerp en volledige development.',
     url: 'https://www.beekautomotive.nl',
     image: '/images/cases/beek-automotive.jpeg',
     slideImages: [
-      { src: '/images/cases/beek-slide-1.webp', alt: 'Homepage van Beek Automotive' },
-      { src: '/images/cases/beek-slide-2.webp', alt: 'Occasionvoorraad van Beek Automotive' },
-      { src: '/images/cases/beek-slide-3.webp', alt: 'Autopagina van Beek Automotive' },
-      { src: '/images/cases/beek-slide-4.webp', alt: 'Servicepagina van Beek Automotive' },
+      {
+        src: '/images/cases/beek-slide-1.webp',
+        alt: 'Homepage van Beek Automotive',
+      },
+      {
+        src: '/images/cases/beek-slide-2.webp',
+        alt: 'Occasionvoorraad van Beek Automotive',
+      },
+      {
+        src: '/images/cases/beek-slide-3.webp',
+        alt: 'Autopagina van Beek Automotive',
+      },
+      {
+        src: '/images/cases/beek-slide-4.webp',
+        alt: 'Servicepagina van Beek Automotive',
+      },
     ],
     featured: true,
-    proves: 'Meer klanten & automatiseren',
   },
   {
     slug: 'club49',
     name: 'Club49',
-    category: 'Software & Digital Products',
+    category: 'Software',
     summary:
       'Boekingsplatform en ledenapp voor Club49: zalen boeken met live beschikbaarheid, offertes en betalingen, plus een community-app met agenda, chat en teams.',
-    solution:
-      'Een boekingsflow waarin klanten zaal, datum, catering en pakketten kiezen en direct betalen, naast een ledenapp voor de community.',
-    role: 'Product, design en development',
+    work: 'Een boekingsflow waarin klanten zaal, datum, catering en pakketten kiezen en direct betalen, naast een ledenapp voor de community.',
+    role: 'Product, ontwerp en development.',
     stack: ['React', 'TypeScript', 'Supabase', 'Firebase'],
   },
 ];

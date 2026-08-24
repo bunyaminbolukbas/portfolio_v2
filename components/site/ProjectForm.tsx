@@ -78,7 +78,7 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
             rel="noopener noreferrer"
             className="underline underline-offset-4"
           >
-            Plan een gesprek
+            Plan een call
           </a>
           .
         </p>

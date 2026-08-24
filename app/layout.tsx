@@ -8,7 +8,10 @@ import { SmoothScroll } from '@/components/site/SmoothScroll';
 import { site } from '@/lib/site';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-display' });
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-display',
+});
 const plexMono = IBM_Plex_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -49,7 +52,7 @@ const personJsonLd = {
     '@type': 'Organization',
     name: 'Code49',
   },
-  sameAs: [site.social.youtube, site.social.instagram, site.social.linkedin],
+  sameAs: [site.social.instagram, site.social.linkedin],
 };
 
 const serviceJsonLd = {
@@ -59,27 +62,14 @@ const serviceJsonLd = {
   url: 'https://bunyaminbolukbas.com',
   founder: { '@type': 'Person', name: 'Bünyamin Bölükbaş' },
   description:
-    'Helpt ondernemers aan meer klanten, meer omzet en minder handmatig werk met websites, custom software, AI en automatisering.',
+    'Helpt ondernemers aan meer klanten, meer omzet en minder handmatig werk met websites, software en automatisering.',
   areaServed: 'NL',
-  knowsAbout: [
-    'Custom software',
-    'Procesautomatisering',
-    'AI-workflows',
-    'Webapplicaties',
-    'Websites',
-  ],
+  knowsAbout: ['Websites', 'Webapplicaties', 'Software op maat', 'Procesautomatisering'],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="nl"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${plexMono.variable}`}
-    >
+    <html lang="nl" className={`${inter.variable} ${spaceGrotesk.variable} ${plexMono.variable}`}>
       <body className="font-sans">
         <a
           href="#inhoud"
