@@ -46,6 +46,3 @@ next-env.d.ts
 # Claude Code: lokale permissies en gegenereerde critique-output
 .claude/settings.local.json
 .impeccable/
-
-# Subprojects
-salesdeck
