@@ -1,12 +1,22 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import { CalendlyLink } from '@/components/site/CalendlyLink';
 import { AccentUnderline } from '@/components/site/AccentUnderline';
 import { Reveal } from '@/components/site/Reveal';
 import { MediaSlot } from '@/components/site/MediaSlot';
 import { MotionVideo } from '@/components/site/MotionVideo';
 import { SocialPill } from '@/components/site/SocialPill';
 import { Testimonials } from '@/components/site/Testimonials';
-import { featuredProjects } from '@/lib/projects';
+import { caseBlocks, featuredProjects } from '@/lib/projects';
 import { site } from '@/lib/site';
+import { pageMetadata } from '@/lib/seo';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Bünyamin Bölükbaş | Meer klanten, meer omzet, minder handmatig werk',
+  description: site.description,
+  path: '/',
+  image: '/og.png',
+});
 
 // De propositie: elke ondernemer wil een van deze drie uitkomsten.
 const outcomes = [
@@ -59,12 +69,6 @@ const processSteps = [
   },
 ];
 
-const caseBlocks = [
-  { key: 'situation', label: 'De situatie' },
-  { key: 'work', label: 'Wat ik heb gedaan' },
-  { key: 'result', label: 'Het resultaat' },
-] as const;
-
 export default function Home() {
   return (
     <>
@@ -84,14 +88,9 @@ export default function Home() {
               handmatig werk. Ik ontwerp en bouw wat daarvoor nodig is.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={site.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-              >
+              <CalendlyLink location="home-hero" className="btn-primary">
                 Plan een call
-              </a>
+              </CalendlyLink>
               <a href="#werk" className="btn-secondary">
                 Bekijk mijn werk
               </a>
@@ -233,6 +232,12 @@ export default function Home() {
                     </dl>
                     <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
                       {project.role && <p className="text-sm text-muted">{project.role}</p>}
+                      <Link
+                        href={`/werk/${project.slug}/`}
+                        className="mono-label border-b border-ink/30 pb-1 transition-colors hover:border-accent hover:text-accent"
+                      >
+                        Lees de case
+                      </Link>
                       {project.url && (
                         <a
                           href={project.url}
@@ -342,14 +347,12 @@ export default function Home() {
               Plan een vrijblijvende call. Dan kijken we samen wat er nodig is om daar te komen.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-              <a
-                href={site.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
+              <CalendlyLink
+                location="home-slot"
                 className="btn-primary-inverted"
               >
                 Plan een call
-              </a>
+              </CalendlyLink>
               <Link
                 href="/start"
                 className="text-sm text-paper/70 underline underline-offset-4 transition-colors hover:text-paper"

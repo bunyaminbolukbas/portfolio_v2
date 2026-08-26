@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { site } from '@/lib/site';
+import { CalendlyLink } from '@/components/site/CalendlyLink';
 import { BuiltBy } from './BuiltBy';
 
 export function Footer() {
@@ -19,20 +20,18 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-10 sm:gap-20">
             <nav aria-label="Footer" className="flex flex-col gap-3 text-sm">
               <span className="mono-label text-paper/70">Navigatie</span>
-              <Link href="/#werk" className="text-paper/70 transition-colors hover:text-paper">
+              <Link href="/werk/" className="text-paper/70 transition-colors hover:text-paper">
                 Werk
               </Link>
               <Link href="/werkwijze" className="text-paper/70 transition-colors hover:text-paper">
                 Werkwijze
               </Link>
-              <a
-                href={site.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
+              <CalendlyLink
+                location="footer"
                 className="text-paper/70 transition-colors hover:text-paper"
               >
                 Plan een call
-              </a>
+              </CalendlyLink>
             </nav>
 
             <div className="flex flex-col gap-3 text-sm">

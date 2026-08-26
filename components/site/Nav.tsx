@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { site } from '@/lib/site';
+import { CalendlyLink } from '@/components/site/CalendlyLink';
 
 const links = [
   { href: '/#werk', label: 'Werk' },
@@ -45,14 +45,12 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={site.calendly}
-            target="_blank"
-            rel="noopener noreferrer"
+          <CalendlyLink
+            location="nav-desktop"
             className="bg-ink px-5 py-2.5 text-sm font-medium text-paper transition-[background-color,transform] hover:bg-ink/85 active:translate-y-px"
           >
             Plan een call
-          </a>
+          </CalendlyLink>
         </div>
 
         {/* Mobile */}
@@ -80,15 +78,13 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href={site.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
+            <CalendlyLink
+              location="nav-mobile"
               className="btn-primary mt-2 w-full"
               onClick={() => setOpen(false)}
             >
               Plan een call
-            </a>
+            </CalendlyLink>
           </div>
         </div>
       ) : null}

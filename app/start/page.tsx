@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import { Reveal } from '@/components/site/Reveal';
+import { CalendlyLink } from '@/components/site/CalendlyLink';
 import { ProjectForm } from '@/components/site/ProjectForm';
-import { site } from '@/lib/site';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Vertel wat je wilt bereiken',
   description:
     'Vertel wat je wilt bereiken: meer klanten, meer omzet of minder handmatig werk. Je krijgt een eerlijk advies over de beste aanpak.',
-};
+  path: '/start',
+});
 
 export default function Start() {
   return (
@@ -26,14 +28,12 @@ export default function Start() {
             <div className="mt-10 space-y-3 border-t border-line pt-6">
               <p className="mono-label text-muted">Liever direct praten?</p>
               <p className="text-sm leading-relaxed text-muted">
-                <a
-                  href={site.calendly}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <CalendlyLink
+                  location="start-intro"
                   className="text-ink underline underline-offset-4"
                 >
                   Plan een call
-                </a>
+                </CalendlyLink>
                 . Vrijblijvend.
               </p>
             </div>

@@ -22,7 +22,16 @@ export type Project = {
   // Pagina-captures die als slideshow door het browser-frame crossfaden.
   slideImages?: { src: string; alt: string }[];
   featured?: boolean;
+  /** Datum van de laatste inhoudelijke wijziging (ISO), voor de sitemap. */
+  updatedAt: string;
 };
+
+/** Volgorde en labels van de drie caseblokken, gedeeld door homepage en case-pagina's. */
+export const caseBlocks = [
+  { key: 'situation', label: 'De situatie' },
+  { key: 'work', label: 'Wat ik heb gedaan' },
+  { key: 'result', label: 'Het resultaat' },
+] as const;
 
 export const projects: Project[] = [
   {
@@ -42,6 +51,7 @@ export const projects: Project[] = [
     image: '/images/cases/finclean.jpeg',
     scrollImage: '/images/cases/finclean-scroll.webp',
     featured: true,
+    updatedAt: '2026-08-25',
   },
   {
     slug: 'beek-automotive',
@@ -78,6 +88,7 @@ export const projects: Project[] = [
       },
     ],
     featured: true,
+    updatedAt: '2026-08-25',
   },
   {
     slug: 'club49',
@@ -88,7 +99,12 @@ export const projects: Project[] = [
     work: 'Een boekingsflow waarin klanten zaal, datum, catering en pakketten kiezen en direct betalen, naast een ledenapp voor de community.',
     role: 'Product, ontwerp en development.',
     stack: ['React', 'TypeScript', 'Supabase', 'Firebase'],
+    updatedAt: '2026-08-25',
   },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
+
+export function getProject(slug: string): Project | undefined {
+  return projects.find((p) => p.slug === slug);
+}

@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Reveal } from '@/components/site/Reveal';
-import { site } from '@/lib/site';
+import { CalendlyLink } from '@/components/site/CalendlyLink';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Werkwijze',
   description:
     'In vier duidelijke stappen naar het resultaat dat je zoekt: begrijpen, richting, bouwen, lanceren. Je weet altijd waar je aan toe bent.',
-};
+  path: '/werkwijze',
+});
 
 const steps = [
   {
@@ -121,14 +123,12 @@ export default function Werkwijze() {
               Klaar voor stap één?
             </h2>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-              <a
-                href={site.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
+              <CalendlyLink
+                location="werkwijze-slot"
                 className="btn-primary-inverted"
               >
                 Plan een call
-              </a>
+              </CalendlyLink>
               <Link href="/start" className="btn-secondary-inverted">
                 Stuur een bericht
               </Link>

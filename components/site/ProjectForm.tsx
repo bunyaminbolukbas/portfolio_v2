@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { track } from '@vercel/analytics';
 import { site } from '@/lib/site';
+import { CalendlyLink } from '@/components/site/CalendlyLink';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
@@ -57,6 +59,7 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
       });
       if (!res.ok) throw new Error(`Formspree ${res.status}`);
       setStatus('success');
+      track('form_submit', { form: 'project_aanvraag' });
       sessionStorage.removeItem(STORAGE_KEY);
       form.reset();
     } catch {
@@ -72,14 +75,12 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
         </p>
         <p className={`mt-3 text-sm ${dark ? 'text-paper/70' : 'text-muted'}`}>
           Ik neem snel contact met je op. Liever direct praten?{' '}
-          <a
-            href={site.calendly}
-            target="_blank"
-            rel="noopener noreferrer"
+          <CalendlyLink
+            location="form-success"
             className="underline underline-offset-4"
           >
             Plan een call
-          </a>
+          </CalendlyLink>
           .
         </p>
         <button
@@ -172,14 +173,12 @@ export function ProjectForm({ dark = false }: { dark?: boolean }) {
         {status === 'error' ? (
           <p className={`mt-3 text-sm ${dark ? 'text-paper/70' : 'text-muted'}`}>
             Versturen is niet gelukt; je invulwerk staat er nog. Probeer het opnieuw, of{' '}
-            <a
-              href={site.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
+            <CalendlyLink
+              location="form-error"
               className="underline underline-offset-4"
             >
               plan direct een gesprek
-            </a>
+            </CalendlyLink>
             .
           </p>
         ) : null}
