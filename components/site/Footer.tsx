@@ -67,10 +67,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col-reverse items-start gap-8 border-t border-line-dark pt-10 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs leading-relaxed text-paper/50">
-            {site.name} is een handelsnaam van {site.legalName}. KvK {site.kvk}. {site.city}.
-          </p>
+        <div className="mt-16 flex flex-col-reverse items-start gap-10 border-t border-line-dark pt-10 sm:flex-row sm:items-end sm:justify-between">
+          <dl className="flex flex-wrap gap-x-12 gap-y-4 text-sm">
+            <div className="flex flex-col gap-2">
+              <dt className="mono-label text-paper/70">Handelsnaam van</dt>
+              <dd className="text-paper/70">{site.legalName}</dd>
+            </div>
+            <div className="flex flex-col gap-2">
+              <dt className="mono-label text-paper/70">KvK</dt>
+              <dd className="text-paper/70 tabular-nums">{site.kvk}</dd>
+            </div>
+          </dl>
           <BuiltBy />
         </div>
       </div>
