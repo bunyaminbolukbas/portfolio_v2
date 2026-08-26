@@ -1,6 +1,11 @@
 export const site = {
   name: 'thebunyaminn.',
   founder: 'Bünyamin Bölükbaş',
+  // Wettelijk verplichte bedrijfsgegevens (Handelsregisterwet): staan in de footer en in het Organization-schema.
+  legalName: 'BBE Operations',
+  kvk: '89397703',
+  city: 'Utrecht',
+  email: 'hallo@thebunyaminn.nl',
   // Productiedomein. Enige plek waar dit staat: metadata, sitemap, robots en JSON-LD lezen het hier.
   url: 'https://thebunyaminn.nl',
   description:

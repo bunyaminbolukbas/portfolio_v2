@@ -147,7 +147,8 @@ Nog te doen door de gebruiker (kan niet vanuit code):
 - Search Console: domein-property aanmaken, DNS TXT bij registrar; daarna eventueel `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel zetten (alleen nodig bij meta-tag-verificatie)
 - Bing Webmaster Tools: site importeren vanuit Search Console of `NEXT_PUBLIC_BING_SITE_VERIFICATION` zetten; sitemap indienen
 - Controleren dat de GitHub-repo aan Vercel gekoppeld is (anders IndexNow handmatig via `npm run indexnow`)
-- Beslissingen B en C (bedrijfsgegevens, Code49-verhaal) voor fase 2.3 en 2.4
+
+Beslissingen B en C afgerond (26 aug): thebunyaminn. is een handelsnaam van BBE Operations, KvK 89397703, Utrecht, hallo@thebunyaminn.nl. Staat in footer en Organization-schema (2.3 en 2.4 klaar).
 
 Nog te bouwen (fase 2 en 3): `/over-mij/` met ProfilePage, FAQ op `/start/`, NAP in footer, kennisbank.
 

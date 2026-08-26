@@ -27,7 +27,19 @@ export const siteGraph = {
       '@type': 'ProfessionalService',
       '@id': organizationId,
       name: site.name,
+      legalName: site.legalName,
       url: site.url,
+      email: site.email,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: site.city,
+        addressCountry: 'NL',
+      },
+      identifier: {
+        '@type': 'PropertyValue',
+        propertyID: 'KVK',
+        value: site.kvk,
+      },
       logo: {
         '@type': 'ImageObject',
         url: absoluteUrl('/brand/tb-logo-512.png'),

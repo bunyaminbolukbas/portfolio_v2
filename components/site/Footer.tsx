@@ -17,7 +17,7 @@ export function Footer() {
             className="h-7 w-auto sm:h-8"
           />
 
-          <div className="grid grid-cols-2 gap-10 sm:gap-20">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 sm:gap-20">
             <nav aria-label="Footer" className="flex flex-col gap-3 text-sm">
               <span className="mono-label text-paper/70">Navigatie</span>
               <Link href="/werk/" className="text-paper/70 transition-colors hover:text-paper">
@@ -53,10 +53,24 @@ export function Footer() {
                 LinkedIn
               </a>
             </div>
+
+            <div className="flex flex-col gap-3 text-sm">
+              <span className="mono-label text-paper/70">Contact</span>
+              <a
+                href={`mailto:${site.email}`}
+                className="text-paper/70 transition-colors hover:text-paper"
+              >
+                {site.email}
+              </a>
+              <span className="text-paper/70">{site.city}</span>
+            </div>
           </div>
         </div>
 
-        <div className="mt-16 flex justify-center border-t border-line-dark pt-10">
+        <div className="mt-16 flex flex-col-reverse items-start gap-8 border-t border-line-dark pt-10 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs leading-relaxed text-paper/50">
+            {site.name} is een handelsnaam van {site.legalName}. KvK {site.kvk}. {site.city}.
+          </p>
           <BuiltBy />
         </div>
       </div>
