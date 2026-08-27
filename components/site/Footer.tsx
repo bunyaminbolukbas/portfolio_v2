@@ -26,6 +26,9 @@ export function Footer() {
               <Link href="/werkwijze" className="text-paper/70 transition-colors hover:text-paper">
                 Werkwijze
               </Link>
+              <Link href="/inzichten/" className="text-paper/70 transition-colors hover:text-paper">
+                Inzichten
+              </Link>
               <CalendlyLink
                 location="footer"
                 className="text-paper/70 transition-colors hover:text-paper"

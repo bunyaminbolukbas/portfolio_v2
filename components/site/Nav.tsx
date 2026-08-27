@@ -9,6 +9,7 @@ import { CalendlyLink } from '@/components/site/CalendlyLink';
 const links = [
   { href: '/#werk', label: 'Werk' },
   { href: '/werkwijze', label: 'Werkwijze' },
+  { href: '/inzichten', label: 'Inzichten' },
 ];
 
 export function Nav() {

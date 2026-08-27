@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { projects } from '@/lib/projects';
+import { getAllInzichten } from '@/lib/inzichten';
 import { absoluteUrl } from '@/lib/site';
 
 export const dynamic = 'force-static';
@@ -12,11 +13,13 @@ export const dynamic = 'force-static';
 const pages: { path: string; updatedAt: string; priority: number }[] = [
   { path: '/', updatedAt: '2026-08-25', priority: 1 },
   { path: '/werk', updatedAt: '2026-08-26', priority: 0.8 },
+  { path: '/inzichten', updatedAt: '2026-08-27', priority: 0.8 },
   { path: '/werkwijze', updatedAt: '2026-08-25', priority: 0.6 },
   { path: '/start', updatedAt: '2026-08-25', priority: 0.8 },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const inzichten = await getAllInzichten();
   return [
     ...pages.map((p) => ({
       url: absoluteUrl(p.path),
@@ -26,6 +29,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...projects.map((project) => ({
       url: absoluteUrl(`/werk/${project.slug}`),
       lastModified: new Date(project.updatedAt),
+      priority: 0.7,
+    })),
+    ...inzichten.map((a) => ({
+      url: absoluteUrl(`/inzichten/${a.slug}`),
+      lastModified: new Date(a.updatedAt),
       priority: 0.7,
     })),
   ];

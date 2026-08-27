@@ -79,3 +79,28 @@ export function breadcrumbList(crumbs: Crumb[]) {
     })),
   };
 }
+
+export function articleJsonLd(a: {
+  slug: string;
+  title: string;
+  description: string;
+  publishedAt: string;
+  updatedAt: string;
+}) {
+  const url = absoluteUrl(`/inzichten/${a.slug}`);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: a.title,
+    description: a.description,
+    url,
+    mainEntityOfPage: url,
+    inLanguage: 'nl-NL',
+    datePublished: `${a.publishedAt}T09:00:00+02:00`,
+    dateModified: `${a.updatedAt}T09:00:00+02:00`,
+    image: `${url}opengraph-image`,
+    author: { '@id': personId },
+    publisher: { '@id': organizationId },
+  };
+}
