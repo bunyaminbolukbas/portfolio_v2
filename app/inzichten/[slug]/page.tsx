@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Reveal } from '@/components/site/Reveal';
 import { CalendlyLink } from '@/components/site/CalendlyLink';
+import { FaqAccordion } from '@/components/site/FaqAccordion';
 import { JsonLd } from '@/components/site/JsonLd';
-import { articleJsonLd, breadcrumbList } from '@/lib/jsonld';
+import { articleJsonLd, breadcrumbList, faqJsonLd } from '@/lib/jsonld';
 import { formatDate, getInzicht, inzichtSlugs } from '@/lib/inzichten';
 import { pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
@@ -47,6 +48,7 @@ export default async function InzichtPagina({ params }: Params) {
     <div className="pt-16">
       <JsonLd data={breadcrumbList(crumbs)} />
       <JsonLd data={articleJsonLd(a)} />
+      {a.faq && <JsonLd data={faqJsonLd(`/inzichten/${a.slug}`, a.faq)} />}
 
       <article className="mx-auto max-w-site px-5 pt-12 sm:px-8 sm:pt-16">
         <header className="max-w-3xl">
@@ -126,6 +128,24 @@ export default async function InzichtPagina({ params }: Params) {
           </aside>
         </div>
       </article>
+
+      {a.faq && (
+        <section aria-labelledby="faq-titel" className="mx-auto max-w-site px-5 sm:px-8">
+          <div className="mt-20 max-w-3xl sm:mt-28">
+            <Reveal>
+              <h2
+                id="faq-titel"
+                className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
+              >
+                Veelgestelde vragen
+              </h2>
+              <div className="mt-10 sm:mt-14">
+                <FaqAccordion items={a.faq} />
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <section aria-labelledby="inzicht-cta-titel" className="mt-16 bg-ink text-paper">
         <div className="mx-auto max-w-site px-5 py-24 text-center sm:px-8 sm:py-32">

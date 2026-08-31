@@ -1,11 +1,15 @@
 import type { ComponentType } from 'react';
 import { inzichtModules, type InzichtSlug } from '@/content/inzichten';
 
+export type FaqItem = { question: string; answer: string };
+
 export type InzichtMeta = {
   title: string;
   description: string;
   /** Kort antwoord van 2 à 3 zinnen; staat bovenaan het artikel en is wat AI-zoekmachines citeren. */
   answer: string;
+  /** Veelgestelde vragen onderaan het artikel; dezelfde array voedt het FAQPage-schema. */
+  faq?: FaqItem[];
   category: string;
   publishedAt: string;
   updatedAt: string;

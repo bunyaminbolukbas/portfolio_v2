@@ -1,3 +1,4 @@
+import type { FaqItem } from '@/lib/inzichten';
 import { absoluteUrl, site } from '@/lib/site';
 
 const personId = `${site.url}/#person`;
@@ -76,6 +77,28 @@ export function breadcrumbList(crumbs: Crumb[]) {
       position: i + 1,
       name: c.name,
       item: absoluteUrl(c.path),
+    })),
+  };
+}
+
+/**
+ * FAQPage-schema uit dezelfde array als de zichtbare FAQ-sectie, zodat de
+ * markup per definitie exact de zichtbare inhoud weerspiegelt.
+ */
+export function faqJsonLd(path: string, items: FaqItem[]) {
+  const url = absoluteUrl(path);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${url}#faq`,
+    inLanguage: 'nl-NL',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
     })),
   };
 }
