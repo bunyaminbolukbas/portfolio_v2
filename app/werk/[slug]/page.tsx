@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Reveal } from '@/components/site/Reveal';
-import { MediaSlot } from '@/components/site/MediaSlot';
 import { CalendlyLink } from '@/components/site/CalendlyLink';
 import { JsonLd } from '@/components/site/JsonLd';
 import { breadcrumbList } from '@/lib/jsonld';
@@ -74,19 +73,7 @@ export default async function Case({ params }: Params) {
         </header>
 
         <div className="mx-auto max-w-site px-5 py-14 sm:px-8 sm:py-20">
-          <Reveal>
-            <MediaSlot
-              image={project.image}
-              video={project.video}
-              alt={`Website van ${project.name}`}
-              chromeUrl={project.url?.replace(/^https?:\/\//, '')}
-              fallbackText={project.name}
-              fallbackMeta={project.category}
-              className={project.image || project.video ? '' : 'aspect-video'}
-            />
-          </Reveal>
-
-          <div className="mt-16 grid gap-12 lg:grid-cols-3 lg:gap-16">
+          <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
             <Reveal className="lg:col-span-2">
               <dl className="space-y-10">
                 {project.outcome && project.summary !== project.outcome && (

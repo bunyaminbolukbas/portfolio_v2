@@ -174,20 +174,9 @@ export default function Home() {
             </h2>
           </Reveal>
           <div className="mt-14 space-y-24">
-            {featuredProjects.map((project, index) => (
+            {featuredProjects.map((project) => (
               <Reveal key={project.slug}>
-                <article className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-                  <MediaSlot
-                    image={project.image}
-                    video={project.video}
-                    alt={`Website van ${project.name}`}
-                    chromeUrl={project.url?.replace(/^https?:\/\//, '')}
-                    fallbackText={project.name}
-                    fallbackMeta={project.category}
-                    className={`${project.image || project.video ? '' : 'aspect-video'} ${
-                      index % 2 === 1 ? 'lg:order-2' : ''
-                    }`}
-                  />
+                <article className="max-w-3xl">
                   <div>
                     <h3 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
                       {project.name}

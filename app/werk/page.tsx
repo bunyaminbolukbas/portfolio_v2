@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Reveal } from '@/components/site/Reveal';
-import { MediaSlot } from '@/components/site/MediaSlot';
 import { CalendlyLink } from '@/components/site/CalendlyLink';
 import { JsonLd } from '@/components/site/JsonLd';
 import { breadcrumbList } from '@/lib/jsonld';
@@ -43,16 +42,7 @@ export default function Werk() {
           {projects.map((project) => (
             <Reveal key={project.slug} className="bg-paper">
               <article className="flex h-full flex-col p-8">
-                <MediaSlot
-                  image={project.image}
-                  video={project.video}
-                  alt={`Website van ${project.name}`}
-                  chromeUrl={project.url?.replace(/^https?:\/\//, '')}
-                  fallbackText={project.name}
-                  fallbackMeta={project.category}
-                  className={project.image || project.video ? '' : 'aspect-video'}
-                />
-                <p className="mono-label mt-8 text-muted">{project.category}</p>
+                <p className="mono-label text-muted">{project.category}</p>
                 <h2 className="mt-3 font-display text-2xl font-medium tracking-tight sm:text-3xl">
                   <Link href={`/werk/${project.slug}/`} className="hover:text-accent">
                     {project.name}
