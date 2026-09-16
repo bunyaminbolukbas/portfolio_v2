@@ -46,29 +46,6 @@ const differentiators = [
   { term: 'Groei', detail: 'Werkt dit ook als je bedrijf groeit?' },
 ];
 
-const processSteps = [
-  {
-    number: '01',
-    title: 'Begrijpen',
-    description: 'Wat wil je bereiken en wat staat nu in de weg?',
-  },
-  {
-    number: '02',
-    title: 'Richting',
-    description: 'We bepalen wat daarvoor gebouwd moet worden.',
-  },
-  {
-    number: '03',
-    title: 'Bouwen',
-    description: 'Ik ontwerp en ontwikkel de oplossing.',
-  },
-  {
-    number: '04',
-    title: 'Lanceren',
-    description: 'We zetten het live en verbeteren waar nodig.',
-  },
-];
-
 export default function Home() {
   return (
     <>
@@ -299,37 +276,6 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 06 - PROCES + 07 - ONDERHOUD */}
-      <section aria-labelledby="proces-titel" className="border-t border-line">
-        <div className="mx-auto max-w-site px-5 py-24 sm:px-8 sm:py-32">
-          <Reveal>
-            <h2
-              id="proces-titel"
-              className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
-            >
-              Vier stappen. Geen gedoe.
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
-            {processSteps.map((step) => (
-              <Reveal key={step.number} className="bg-paper py-8 sm:p-8 sm:pl-0 lg:pl-8">
-                <p className="mono-label text-muted">{step.number}</p>
-                <h3 className="mt-4 font-display text-xl font-medium tracking-tight">
-                  {step.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-muted">{step.description}</p>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal className="mt-12">
-            <p className="max-w-2xl text-lg leading-relaxed text-muted">
-              Ook na livegang kan ik betrokken blijven bij hosting, onderhoud, updates en
-              doorontwikkeling.
-            </p>
-          </Reveal>
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk, IBM_Plex_Mono } from 'next/font/google';
+import { Source_Serif_4, IBM_Plex_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { Nav } from '@/components/site/Nav';
 import { Footer } from '@/components/site/Footer';
@@ -9,10 +9,12 @@ import { JsonLd } from '@/components/site/JsonLd';
 import { siteGraph } from '@/lib/jsonld';
 import { site } from '@/lib/site';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-display',
+// Eén schreefletter voor koppen en lopende tekst (naar het voorbeeld van leerob.com).
+// latin-ext voor de ş in Bölükbaş; opsz laat de letter zich aanpassen aan kop- en tekstgrootte.
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin', 'latin-ext'],
+  axes: ['opsz'],
+  variable: '--font-serif',
 });
 const plexMono = IBM_Plex_Mono({
   subsets: ['latin'],
@@ -78,7 +80,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nl" className={`${inter.variable} ${spaceGrotesk.variable} ${plexMono.variable}`}>
+    <html lang="nl" className={`${sourceSerif.variable} ${plexMono.variable}`}>
       <body className="font-sans">
         <a
           href="#inhoud"

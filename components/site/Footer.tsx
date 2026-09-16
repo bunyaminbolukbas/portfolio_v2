@@ -83,6 +83,11 @@ export function Footer() {
           </dl>
           <BuiltBy />
         </div>
+
+        <p className="mt-10 max-w-2xl text-sm leading-relaxed text-paper/50">
+          Zelf ontworpen en gebouwd, met Claude Code als sparringpartner. Geschreven in
+          TypeScript op Next.js, live op Vercel. Alle tekst is gezet in Source Serif.
+        </p>
       </div>
     </footer>
   );
