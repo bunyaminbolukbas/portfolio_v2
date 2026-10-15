@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { InstagramLogo } from '@phosphor-icons/react/dist/ssr';
 import { CopyEmail } from '@/components/site/CopyEmail';
 import { LinkedInIcon, LinkedInLink } from '@/components/site/LinkedInLink';
 import { WorkList, type WorkItem } from '@/components/site/WorkList';
@@ -147,17 +148,7 @@ export default async function Home() {
           Stuur me een bericht
         </LinkedInLink>
         <a className="pill" href={site.social.instagram} target="_blank" rel="noopener noreferrer">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            aria-hidden="true"
-          >
-            <rect x="3" y="3" width="18" height="18" rx="5" />
-            <circle cx="12" cy="12" r="4" />
-            <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" />
-          </svg>
+          <InstagramLogo aria-hidden="true" />
           Instagram
         </a>
       </div>
@@ -186,7 +177,6 @@ export default async function Home() {
             height={1500}
             sizes="520px"
           />
-          <figcaption>Bunyamin, {site.city}</figcaption>
         </figure>
         <div className="body">
           <h2 id="werk-titel" className="label">
