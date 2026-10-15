@@ -136,8 +136,8 @@ export default async function Home() {
         height={152}
         priority
       />
-      <Link className="logo rise" href="/">
-        thebunyaminn<span>.</span>
+      <Link className="logo rise" href="/" aria-label="thebunyaminn.">
+        <Image src="/brand/thebunyaminn-black.svg" alt="thebunyaminn." width={6766} height={900} />
       </Link>
       <h1 className="rise">
         Hey, ik bouw <em>software</em> voor ondernemers.

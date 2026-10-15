@@ -73,8 +73,8 @@
 .home a:focus-visible, .home button:focus-visible { outline: 2px solid var(--text); outline-offset: 3px }
 
 .home .portrait { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; object-position: 50% 18%; margin-bottom: 14px }
-.home .logo { font-weight: 600; font-size: 22px; letter-spacing: -0.03em; text-decoration: none }
-.home .logo span { color: var(--accent) }
+.home .logo { display: block; line-height: 0 }
+.home .logo img { height: 20px; width: auto }
 .home h1 { margin: 28px 0 24px; font-size: clamp(38px, 9.4vw, 68px); font-weight: 600; line-height: 1.04; letter-spacing: -0.03em; text-wrap: balance }
 .home em { font-family: var(--font-serif), Georgia, serif; font-weight: 400; font-style: italic; color: var(--accent) }
 .home h1 em { letter-spacing: -0.01em }
