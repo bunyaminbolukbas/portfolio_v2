@@ -100,7 +100,7 @@ const upcoming = [
 
 const quotes = [
   {
-    text: 'Een behulpzame en slimme ontwikkelaar die de kleinste details niet ontgaat. De communicatie is altijd open en hij heeft een can-do mentaliteit. Ik kan Bunyamin aanbevelen aan iedereen die een full-stack ontwikkelaar zoekt die tot het uiterste gaat.',
+    text: 'Een behulpzame en slimme ontwikkelaar die de kleinste details niet ontgaat. De communicatie is altijd open en hij heeft een can-do mentaliteit. Ik kan Bunyamin aanbevelen aan iedereen.',
     name: 'Maurice Derksen',
     role: 'Politie Nederland',
   },
