@@ -1,28 +1,31 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Source_Serif_4, IBM_Plex_Mono } from 'next/font/google';
+import { Inter, Instrument_Serif, Geist_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
-import { Nav } from '@/components/site/Nav';
 import { Footer } from '@/components/site/Footer';
-import { SmoothScroll } from '@/components/site/SmoothScroll';
 import { JsonLd } from '@/components/site/JsonLd';
 import { siteGraph } from '@/lib/jsonld';
 import { site } from '@/lib/site';
 
-// Eén schreefletter voor koppen en lopende tekst (naar het voorbeeld van leerob.com).
-// latin-ext voor de ş in Bölükbaş; opsz laat de letter zich aanpassen aan kop- en tekstgrootte.
-const sourceSerif = Source_Serif_4({
+// Strakke sans voor alles, een cursieve serif voor losse accentwoorden en een mono voor labels
+// (naar het voorbeeld van danieldalen.com). latin-ext voor de ş in Bölükbaş.
+const inter = Inter({
   subsets: ['latin', 'latin-ext'],
-  axes: ['opsz'],
+  variable: '--font-sans',
+});
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
   variable: '--font-serif',
 });
-const plexMono = IBM_Plex_Mono({
+const geistMono = Geist_Mono({
   subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['400', '500', '600'],
   variable: '--font-mono',
 });
 
-const defaultTitle = 'Bünyamin Bölükbaş | Meer klanten, meer omzet, minder handmatig werk';
+const defaultTitle = 'Bunyamin | Software engineer en tech lead';
 
 // Verificatiecodes komen uit Vercel-env (build-time). Zonder waarde wordt de tag weggelaten.
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
@@ -80,7 +83,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nl" className={`${sourceSerif.variable} ${plexMono.variable}`}>
+    <html
+      lang="nl"
+      className={`${inter.variable} ${instrumentSerif.variable} ${geistMono.variable}`}
+    >
       <body className="font-sans">
         <a
           href="#inhoud"
@@ -88,8 +94,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Direct naar inhoud
         </a>
-        <SmoothScroll />
-        <Nav />
         <main id="inhoud">{children}</main>
         <Footer />
         <JsonLd data={siteGraph} />

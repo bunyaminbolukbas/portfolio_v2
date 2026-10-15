@@ -1,9 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
-    { "source": "/portfolio", "destination": "/werk/", "permanent": true },
-    { "source": "/portfolio/", "destination": "/werk/", "permanent": true },
-    { "source": "/contact", "destination": "/start/", "permanent": true },
-    { "source": "/contact/", "destination": "/start/", "permanent": true }
+    { "source": "/werk", "destination": "/", "permanent": true },
+    { "source": "/werk/:path*", "destination": "/", "permanent": true },
+    { "source": "/werkwijze", "destination": "/", "permanent": true },
+    { "source": "/werkwijze/:path*", "destination": "/", "permanent": true },
+    { "source": "/start", "destination": "/#contact", "permanent": true },
+    { "source": "/start/:path*", "destination": "/#contact", "permanent": true },
+    { "source": "/portfolio", "destination": "/", "permanent": true },
+    { "source": "/portfolio/:path*", "destination": "/", "permanent": true },
+    { "source": "/contact", "destination": "/#contact", "permanent": true },
+    { "source": "/contact/:path*", "destination": "/#contact", "permanent": true }
   ]
 }

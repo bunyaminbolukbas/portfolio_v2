@@ -9,9 +9,7 @@ export const site = {
   // Productiedomein. Enige plek waar dit staat: metadata, sitemap, robots en JSON-LD lezen het hier.
   url: 'https://thebunyaminn.nl',
   description:
-    'Ik help ondernemers aan meer klanten, meer omzet en minder handmatig werk. Ik ontwerp en bouw wat daarvoor nodig is: websites, software en automatisering.',
-  calendly: 'https://calendly.com/bunyaminbolukbas',
-  formspree: 'https://formspree.io/f/mnndnple',
+    'Ik ben Bunyamin, software engineer en tech lead bij Club49. Ik ontwikkel SaaS-platformen, bouw integraties en stuur developmentteams aan, van architectuur tot livegang.',
   social: {
     instagram: 'https://instagram.com/thebunyaminn',
     linkedin: 'https://linkedin.com/in/bunyaminbolukbas',

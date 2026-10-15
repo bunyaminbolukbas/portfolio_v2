@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Reveal } from '@/components/site/Reveal';
-import { CalendlyLink } from '@/components/site/CalendlyLink';
+import { LinkedInIcon, LinkedInLink } from '@/components/site/LinkedInLink';
 import { FaqAccordion } from '@/components/site/FaqAccordion';
 import { JsonLd } from '@/components/site/JsonLd';
 import { articleJsonLd, breadcrumbList, faqJsonLd } from '@/lib/jsonld';
@@ -45,7 +45,7 @@ export default async function InzichtPagina({ params }: Params) {
   ];
 
   return (
-    <div className="pt-16">
+    <div>
       <JsonLd data={breadcrumbList(crumbs)} />
       <JsonLd data={articleJsonLd(a)} />
       {a.faq && <JsonLd data={faqJsonLd(`/inzichten/${a.slug}`, a.faq)} />}
@@ -113,16 +113,17 @@ export default async function InzichtPagina({ params }: Params) {
                   />
                   <div>
                     <p className="text-sm font-medium">{site.founder}</p>
-                    <p className="mono-label mt-1 text-muted">Developer en ondernemer</p>
+                    <p className="mono-label mt-1 text-muted">Software engineer en tech lead</p>
                   </div>
                 </div>
                 <p className="mt-5 text-sm leading-relaxed text-muted">
-                  Ik bouw websites, software en automatisering voor ondernemers, met een achtergrond in
-                  softwareontwikkeling. Ik schrijf hier over wat ik in echte projecten tegenkom.
+                  Ik bouw SaaS-platformen, integraties en automatiseringen, van architectuur tot
+                  livegang. Ik schrijf hier over wat ik in echte projecten tegenkom.
                 </p>
-                <CalendlyLink location={`inzicht-${a.slug}`} className="btn-primary mt-6 w-full">
-                  Plan een call
-                </CalendlyLink>
+                <LinkedInLink location={`inzicht-${a.slug}`} className="btn-linkedin mt-6 w-full">
+                  <LinkedInIcon className="h-4 w-4" />
+                  Stuur me een bericht
+                </LinkedInLink>
               </div>
             </Reveal>
           </aside>
@@ -154,16 +155,17 @@ export default async function InzichtPagina({ params }: Params) {
               id="inzicht-cta-titel"
               className="font-display text-3xl font-medium tracking-tight sm:text-4xl"
             >
-              Waar wil je naartoe met je bedrijf?
+              Wat wil <em className="font-serif font-normal italic text-accent">jij</em> live hebben?
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-paper/70">
-              Vertel het in een kort gesprek. Je krijgt een eerlijk antwoord over de beste aanpak, ook
-              als dat betekent dat je mij niet nodig hebt.
+              Een idee voor software, een proces dat slimmer kan of een systeem dat gekoppeld moet
+              worden? Vertel me wat je wilt bereiken. Dan kijken we samen wat er mogelijk is.
             </p>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-              <CalendlyLink location={`inzicht-${a.slug}-slot`} className="btn-primary-inverted">
-                Plan een call
-              </CalendlyLink>
+              <LinkedInLink location={`inzicht-${a.slug}-slot`} className="btn-linkedin">
+                <LinkedInIcon className="h-4 w-4" />
+                Stuur me een bericht
+              </LinkedInLink>
               <Link href="/inzichten" className="btn-secondary-inverted">
                 Meer inzichten
               </Link>

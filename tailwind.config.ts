@@ -11,20 +11,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: '#111110',
-        paper: '#faf9f6',
-        accent: '#d43d1a',
-        line: '#e4e2dc',
+        ink: '#0a0a0a',
+        paper: '#fafaf7',
+        accent: '#e5620f',
+        line: '#e3e3df',
         'line-dark': '#2a2a28',
         muted: {
-          DEFAULT: '#6b6963',
+          DEFAULT: '#5c5c5a',
           dark: '#a3a19a',
         },
       },
       fontFamily: {
-        display: ['var(--font-serif)', 'Georgia', 'serif'],
-        sans: ['var(--font-serif)', 'Georgia', 'serif'],
-        mono: ['var(--font-mono)', 'monospace'],
+        display: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
       letterSpacing: {
         'mono-label': '0.14em',

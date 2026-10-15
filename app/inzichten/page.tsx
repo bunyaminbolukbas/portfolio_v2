@@ -17,7 +17,7 @@ export default async function Inzichten() {
   const artikelen = await getAllInzichten();
 
   return (
-    <div className="pt-16">
+    <div>
       <JsonLd
         data={breadcrumbList([
           { name: 'Home', path: '/' },

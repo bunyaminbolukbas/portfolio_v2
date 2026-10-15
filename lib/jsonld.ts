@@ -18,10 +18,10 @@ export const siteGraph = {
       '@id': personId,
       name: site.founder,
       alternateName: 'thebunyaminn',
-      jobTitle: 'Developer, tech lead en ondernemer',
+      jobTitle: 'Software engineer en tech lead',
       url: site.url,
       image: absoluteUrl('/images/bunyamin-portret-strak.webp'),
-      worksFor: { '@type': 'Organization', name: 'Code49' },
+      worksFor: { '@type': 'Organization', name: 'Club49', url: 'https://club49.org/' },
       sameAs: [site.social.instagram, site.social.linkedin],
     },
     {
@@ -50,9 +50,9 @@ export const siteGraph = {
       image: absoluteUrl('/og.png'),
       founder: { '@id': personId },
       description:
-        'Helpt ondernemers aan meer klanten, meer omzet en minder handmatig werk met websites, software en automatisering.',
+        'Bouwt software voor ondernemers: SaaS-platformen, integraties en automatiseringen, van architectuur tot livegang.',
       areaServed: 'NL',
-      knowsAbout: ['Websites', 'Webapplicaties', 'Software op maat', 'Procesautomatisering'],
+      knowsAbout: ['SaaS-platformen', 'Software op maat', 'API-integraties', 'Betaalintegraties', 'Procesautomatisering'],
       sameAs: [site.social.instagram, site.social.linkedin],
     },
     {
